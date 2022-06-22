@@ -1,0 +1,57 @@
+.page {
+  margin-bottom: 2rem;
+  color: #fff;
+  cursor: pointer;
+}
+
+.root {
+  padding: 4rem 0;
+}
+
+.logo {
+  width: 15rem;
+  height: auto;
+  margin-left: -1rem;
+}
+
+.item:not(:last-of-type) {
+  margin-bottom: 3.5rem;
+}
+
+.top .logoBox {
+  margin-bottom: 4rem;
+}
+
+.item .icon {
+  margin-right: 1rem;
+  width: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.data {
+  color: #fff;
+}
+
+.logoBox .item {
+  display: flex;
+  align-items: center;
+}
+
+.logoBox .item .data {
+  margin-left: 1rem;
+}
+
+.bottom {
+  margin-top: 6rem;
+}
+
+.left1,
+.center1,
+.right1 {
+  margin-right: 15rem;
+}
+
+.socialIcon {
+  margin-left: 4rem;
+  cursor: pointer;
+}

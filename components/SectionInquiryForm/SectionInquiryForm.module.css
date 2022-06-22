@@ -1,0 +1,169 @@
+.label {
+  font-weight: 700;
+  font-size: 2.6rem;
+  line-height: 4rem;
+
+  letter-spacing: 0.1px;
+
+  color: var(--black);
+  margin-bottom: 8px;
+}
+
+.root {
+  background: rgba(7, 40, 84, 0.1);
+}
+
+.inputBox {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.input {
+  width: 100%;
+}
+
+.row3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 6rem;
+  margin-bottom: 2rem;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 6rem;
+  margin-bottom: 2rem;
+}
+
+.input::placeholder {
+  color: #b9b3b3 !important;
+}
+
+.placeholder {
+  font-weight: 500;
+  font-size: 2.1rem;
+  /* identical to box height, or 267% */
+  letter-spacing: 0.2px;
+
+  color: #b9b3b3 !important;
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  transform: translateY(-50%);
+}
+
+.message {
+  width: 100%;
+}
+
+.btnBox {
+  margin-top: 2rem;
+}
+
+.btn {
+  max-width: 17rem !important;
+  font-weight: 700;
+  font-size: 21px;
+  /* identical to box height, or 267% */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.2px;
+}
+
+.addBox {
+  width: 100%;
+  background: #f6f6f6;
+  border-radius: 6px;
+  height: 19rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.addText {
+  font-weight: bold;
+}
+
+.lorem {
+  color: var(--grey);
+}
+
+.rootCalculator {
+  margin-top: 12rem;
+  background: #ffffff;
+  box-shadow: 6px 6px 44px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  padding: 8rem 6rem;
+}
+
+.card {
+  display: flex;
+}
+
+.card:not(:last-of-type) {
+  margin-bottom: 4rem;
+}
+
+.card .left {
+  width: 30%;
+  background-color: var(--dummy-grey);
+  height: 10rem;
+}
+
+.card .right {
+  padding-left: 3.8rem;
+}
+
+.priceItem {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.priceBox {
+  margin-top: 6rem;
+  margin-bottom: 4rem;
+}
+
+.priceLabel,
+.price {
+  color: var(--blue) !important;
+  font-weight: 500 !important;
+  margin-bottom: 1rem;
+  font-size: 2rem;
+}
+
+.total,
+.totalLabel {
+  font-size: 2rem;
+}
+
+.card .title {
+  font-size: 2.6rem !important;
+}
+
+.right {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.card .btnBox {
+  align-self: flex-end;
+  background-color: var(--blue);
+  color: var(--white) !important;
+  border-radius: 200px;
+}
+
+.card .btn {
+  background-color: transparent;
+  color: var(--white);
+  padding: 0.3rem 1rem;
+  font-size: 1.4rem;
+}

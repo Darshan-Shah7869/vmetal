@@ -1,0 +1,26 @@
+.root {
+  height: 27.5rem;
+  width: 27.5rem;
+}
+
+.back {
+  width: 100%;
+  height: 100%;
+  background-color: var(--yellow);
+  border-radius: 20px;
+  z-index: 10;
+  transform: rotate(0deg) !important;
+  transition: all 0.2s;
+}
+
+.front {
+  width: 100%;
+  height: 100%;
+  background-color: var(--dummy-grey);
+  border-radius: 20px;
+  z-index: 20;
+}
+
+.front:hover + .back {
+  transform: rotate(7deg) !important;
+}

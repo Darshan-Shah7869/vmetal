@@ -1,0 +1,28 @@
+.container {
+  position: relative;
+}
+
+.root {
+  background-color: #f1f1f1;
+  padding-bottom: 0 !important;
+}
+
+.title {
+  position: absolute;
+  transform: rotate(90deg);
+  left: 0;
+  top: 50%;
+}
+
+.body {
+  width: 50%;
+  margin: 0 auto;
+  background-color: var(--white);
+  display: flex;
+  padding: 12rem 8rem;
+  justify-content: space-between;
+}
+
+.item {
+  line-height: 5.6rem;
+}

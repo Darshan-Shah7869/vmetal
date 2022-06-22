@@ -2,28 +2,15 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import classes from "./homepage.module.css";
-import logo from "./../public/assets/images/logo.png";
+import ComingSoon from "../components/ComingSoon/ComingSoon";
+import Homepage1 from "components/Homepage1/Homepage1";
+import Homepage2 from "components/Homepage2/Homepage2";
 
 const Home: NextPage = () => {
   return (
-    <div className={`${classes.root} w-100 h-100-vh bg-blue`}>
-      <div
-        className={`${classes.container} container d-flex align-items-center bg-blue justify-content-center`}
-      >
-        <div className="w-50 d-flex align-items-center justify-content-center">
-          <img src={logo.src} className={`${classes.logo}`} alt="logo-img" />
-        </div>
-        <div className={`w-50 ${classes.right}`}>
-          <div className={`${classes.title} heading-1 text-white-2`}>
-            Coming Soon
-          </div>
-          <div className={`${classes.text} w-75 text-white-2 mt-3`}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae
-            obcaecati enim labore officia! Nisi iusto hic repudiandae beatae
-            quia vel.
-          </div>
-        </div>
-      </div>
+    <div className="root">
+      <Homepage1 />
+      <Homepage2 />
     </div>
   );
 };

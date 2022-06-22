@@ -1,0 +1,24 @@
+.body {
+  width: 60%;
+  margin: 0 auto;
+  padding: 8rem 5rem;
+  display: flex;
+  height: 80vh;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  height: 100%;
+}
+
+.root {
+  position: relative;
+}
+
+.title {
+  position: absolute;
+  transform: rotate(90deg);
+  left: 0;
+  top: 50%;
+}

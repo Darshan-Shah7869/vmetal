@@ -1,0 +1,14 @@
+.logo {
+  width: 8rem;
+  height: auto;
+}
+
+.root {
+}
+
+.item:not(:last-of-type) {
+  margin-right: 5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #fafafa;
+}

@@ -1,0 +1,23 @@
+.left {
+  margin-right: 6rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 6rem;
+  grid-row-gap: 2rem;
+}
+
+.fullRow {
+  grid-column: 1/3;
+}
+
+.label {
+  grid-column: 1/3;
+}
+
+.btn {
+  grid-column: 1/3;
+}
+
+.input::placeholder {
+  color: #b9b3b3;
+}

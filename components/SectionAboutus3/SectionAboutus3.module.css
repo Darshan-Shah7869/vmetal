@@ -1,0 +1,10 @@
+.body {
+  width: 80%;
+  margin-left: auto;
+  padding: 8rem 5rem;
+  display: flex;
+  height: 80vh;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 15vw !important;
+}

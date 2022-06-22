@@ -1,0 +1,5 @@
+.root {
+  min-height: 80vh;
+  width: 100%;
+  background-color: var(--dummy-grey);
+}

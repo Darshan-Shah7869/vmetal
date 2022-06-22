@@ -1,0 +1,49 @@
+.root {
+  background: #f6f6f6;
+  border-radius: 10px;
+  font-weight: 500;
+  font-size: 2.1rem;
+  /* identical to box height, or 267% */
+  padding: 1rem 2rem;
+  letter-spacing: 0.2px;
+
+  color: #b9b3b3;
+  outline: none;
+  border: none;
+  position: relative;
+}
+
+.label {
+  font-size: 2.1rem;
+
+  color: #b9b3b3;
+  font-weight: 500;
+}
+
+.right {
+  height: 100%;
+  padding-left: 1rem;
+  border-left: 1px solid #c4c4c4;
+}
+
+.menu {
+  position: absolute;
+  top: 4rem;
+  left: 0;
+  width: 100%;
+  background: #f6f6f6;
+  z-index: 50;
+}
+
+.menu {
+  padding: 1rem 2rem;
+  height: 16rem;
+  overflow-y: scroll;
+  box-shadow: 6px 6px 44px rgba(0, 0, 0, 0.05);
+}
+
+.menuItem {
+  margin-bottom: 1rem;
+  cursor: pointer;
+  color: #b9b3b3;
+}
