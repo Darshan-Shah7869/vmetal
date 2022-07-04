@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import classes from "./../SectionInquiryForm/SectionInquiryForm.module.css";
 import clsx from "clsx";
 import DropdownMenu from "components/DropdownMenu/DropdownMenu";
 import CaptchaImage from "public/assets/images/captcha.png";
+import popupContext from "contexts/popupContext";
+import ThankYouPopup from "components/ThankYouPopup/ThankYouPopup";
 
 const BuyerDetails = () => {
+  const { popupData, setPopupData } = useContext(popupContext);
   const state = [
     "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -553,9 +556,18 @@ const BuyerDetails = () => {
         />
       </div>
 
-      <button className="btn btn-contained mt-5 w-100">
-        Continue Buyer’s Details
-        {/* Book Order Online */}
+      <button
+        onClick={() => {
+          setPopupData((prev: any) => ({
+            ...prev,
+            isVisible: true,
+            childComponent: <ThankYouPopup />,
+          }));
+        }}
+        className="btn btn-contained mt-5 w-100"
+      >
+        {/* Continue Buyer’s Details */}
+        Book Order Online
       </button>
     </div>
   );

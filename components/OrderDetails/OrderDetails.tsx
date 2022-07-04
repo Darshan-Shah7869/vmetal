@@ -4,7 +4,7 @@ import classes from "./../SectionInquiryForm/SectionInquiryForm.module.css";
 import clsx from "clsx";
 import DropdownMenu from "components/DropdownMenu/DropdownMenu";
 
-const OrderDetails = () => {
+const OrderDetails = ({ clicked }: any) => {
   return (
     <div
       style={{ backgroundColor: "transparent" }}
@@ -59,7 +59,12 @@ const OrderDetails = () => {
           <div className={classes.lorem}>Lorem ipsum dolor sit amet</div>
         </div>
       </div>
-      <button className="btn btn-contained mt-5 w-100">
+      <button
+        onClick={() => {
+          clicked();
+        }}
+        className="btn btn-contained mt-5 w-100"
+      >
         Continue Buyer’s Details
       </button>
     </div>

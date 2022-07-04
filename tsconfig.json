@@ -26,7 +26,8 @@
     "components/SectionAboutus/SectionAboutus.tsx",
     "components/SectionAboutus2/SectionAboutus2.tsx",
     "components/SectionContact/SectionContact.tsx",
-    "components/SummaryBox/SummaryBox.tsx"
+    "components/SummaryBox/SummaryBox.tsx",
+    "components/ThankYouPopup/ThankYouPopup.tsx"
   ],
   "exclude": ["node_modules"]
 }

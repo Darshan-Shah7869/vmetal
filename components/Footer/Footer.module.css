@@ -8,6 +8,10 @@
   padding: 4rem 0;
 }
 
+.root > div {
+  font-size: 1.6rem;
+}
+
 .logo {
   width: 15rem;
   height: auto;
@@ -42,7 +46,7 @@
 }
 
 .bottom {
-  margin-top: 6rem;
+  margin-top: 2rem;
 }
 
 .left1,
@@ -54,4 +58,12 @@
 .socialIcon {
   margin-left: 4rem;
   cursor: pointer;
+}
+
+.left .item {
+  margin-bottom: 1.5rem;
+}
+
+.data {
+  max-width: 35rem;
 }

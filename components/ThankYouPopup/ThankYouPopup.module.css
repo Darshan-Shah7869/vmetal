@@ -1,0 +1,38 @@
+.root {
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 4rem 8.8rem;
+}
+
+.title,
+.subtitle {
+  font-weight: 700;
+  font-size: 3rem;
+  line-height: 3.6rem;
+  letter-spacing: 0.2px;
+
+  color: var(--blue);
+}
+
+.subtitle {
+  font-weight: 400;
+  font-size: 2.4rem;
+}
+
+.text {
+  max-width: 28.3rem;
+  text-align: center;
+  color: var(--blue);
+  font-weight: 600;
+  margin-bottom: 4rem;
+}
+
+.socialText {
+  color: var(--grey);
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.social {
+  cursor: pointer;
+}
