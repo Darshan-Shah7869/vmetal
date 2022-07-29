@@ -1,9 +1,11 @@
-import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import Layout from "components/Layout/Layout";
 import { useState, useEffect, useContext } from "react";
 import PopupContext from "contexts/popupContext";
+import "animate.css";
 import "@splidejs/react-splide/css";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [popupData, setPopupData] = useState({
@@ -21,6 +23,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <PopupContext.Provider value={{ popupData, setPopupData }}>
+      <CssBaseline />
       <Layout>
         <Component {...pageProps} />
       </Layout>

@@ -49,15 +49,15 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 
   background: var(--white);
-  font-family: "Mulish";
+  font-family: "Mulish" !important;
   font-weight: 400;
-  font-size: 2rem;
-  line-height: 2.6rem;
+  font-size: 2rem !important;
+  line-height: 2.6rem !important;
   /* or 130% */
 
-  letter-spacing: 0.3px;
+  letter-spacing: 0.3px !important;
   overflow-x: hidden !important;
-  color: var(--black);
+  color: var(--black) !important;
 }
 
 .root {
@@ -637,4 +637,13 @@ input::placeholder {
 
 .pointer {
   cursor: pointer;
+}
+
+.MuiInputBase-input.MuiInputBase-inputAdornedStart::after {
+  display: none;
+  opacity: 0;
+}
+
+.animate__animated-slow {
+  animation-duration: 1s;
 }

@@ -13,11 +13,21 @@ const SectionAboutus2 = () => {
           "bg-white d-flex flex-column justify-content-center"
         )}
       >
-        <div className={clsx(classes.subtitle, "heading-3 mb-5 pb-5")}>
+        <div
+          className={clsx(
+            classes.subtitle,
+            "heading-3 mb-5 pb-5 animate__animated animate__fadeInRight"
+          )}
+        >
           Ad eos saepe lucilius, noster postulant philosophia ea usu, qui dicta
           sadipscing te.
         </div>
-        <div className={clsx(classes.text, "")}>
+        <div
+          className={clsx(
+            classes.text,
+            " animate__animated animate__fadeInRight"
+          )}
+        >
           Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam
           no suscipit quaerendum. At nam minimum ponderum. Est audiam animal
           molestiae te. Ex duo eripuit mentitum. Et has minim elitr intellegat.

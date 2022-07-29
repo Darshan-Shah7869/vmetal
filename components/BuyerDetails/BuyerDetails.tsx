@@ -557,13 +557,13 @@ const BuyerDetails = () => {
       </div>
 
       <button
-        onClick={() => {
-          setPopupData((prev: any) => ({
-            ...prev,
-            isVisible: true,
-            childComponent: <ThankYouPopup />,
-          }));
-        }}
+        // onClick={() => {
+        //   setPopupData((prev: any) => ({
+        //     ...prev,
+        //     isVisible: true,
+        //     childComponent: <ThankYouPopup />,
+        //   }));
+        // }}
         className="btn btn-contained mt-5 w-100"
       >
         {/* Continue Buyer’s Details */}

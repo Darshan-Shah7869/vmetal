@@ -1,5 +1,12 @@
 .root {
-  min-height: 80vh;
+  height: 90vh;
   width: 100%;
   background-color: var(--dummy-grey);
+  transition: all 2s;
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

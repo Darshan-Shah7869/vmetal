@@ -4,6 +4,16 @@
   padding: 4rem 8.8rem;
 }
 
+.root input {
+  width: 25rem;
+}
+
+.phoneInput {
+  padding: 10px 14px !important;
+  border-radius: 6px !important;
+  border: 1px solid #bbb !important;
+}
+
 .title,
 .subtitle {
   font-weight: 700;

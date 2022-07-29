@@ -4,8 +4,14 @@ import classes from "./SectionSlider.module.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import clsx from "clsx";
 import CardProduct from "components/CardProduct/CardProduct";
+import { baseURL } from "config";
 
-const SectionSlider = ({ title, bgColor }: any) => {
+const SectionSlider = ({
+  title,
+  bgColor,
+  data,
+  isBrandSlider = false,
+}: any) => {
   return (
     <div
       style={{ backgroundColor: bgColor }}
@@ -21,27 +27,39 @@ const SectionSlider = ({ title, bgColor }: any) => {
         <div>
           <Splide
             style={{ width: "100%" }}
-            options={{ width: "100%", perPage: 3, perMove: 3 }}
+            options={{ width: "100%", perPage: 3, perMove: 1 }}
             aria-label="My Favorite Images"
           >
-            <SplideSlide className="d-flex justify-content-center">
-              <CardProduct />
-            </SplideSlide>
-            <SplideSlide className="d-flex justify-content-center">
-              <CardProduct />
-            </SplideSlide>
-            <SplideSlide className="d-flex justify-content-center">
-              <CardProduct />
-            </SplideSlide>
-            <SplideSlide className="d-flex justify-content-center">
-              <CardProduct />
-            </SplideSlide>
-            <SplideSlide className="d-flex justify-content-center">
-              <CardProduct />
-            </SplideSlide>
-            <SplideSlide className="d-flex justify-content-center">
-              <CardProduct />
-            </SplideSlide>
+            {data && isBrandSlider
+              ? data.map((el: any, index: number) => {
+                  console.log(el);
+                  return (
+                    <SplideSlide
+                      key={index}
+                      className="d-flex justify-content-center"
+                    >
+                      <CardProduct
+                        isBrandCard={true}
+                        name={el?.attributes?.name}
+                        image={`${baseURL}${el.attributes.image.data[0].attributes.url}`}
+                      />
+                    </SplideSlide>
+                  );
+                })
+              : data.map((el: any, index: number) => {
+                  return (
+                    <SplideSlide
+                      key={index}
+                      className="d-flex justify-content-center"
+                    >
+                      <CardProduct
+                        name={el.attributes.name}
+                        slug={el.attributes.slug}
+                        image={`${baseURL}${el.attributes.coverImage.data.attributes.url}`}
+                      />
+                    </SplideSlide>
+                  );
+                })}
           </Splide>
         </div>
       </div>

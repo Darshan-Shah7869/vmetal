@@ -1,6 +1,8 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  reactStrictMode: true,
-}
+// @ts-ignore
+const withVideos = require("next-videos");
 
-module.exports = nextConfig
+module.exports = {
+  reactStrictMode: true,
+};
+
+module.exports = withVideos();
