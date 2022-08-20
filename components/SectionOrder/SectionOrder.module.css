@@ -3,7 +3,11 @@
 }
 
 .root {
-  background-color: #e6e9ee;
+  background: rgba(13, 98, 208, 0.1);
+}
+
+.root input {
+  max-width: 100% !important;
 }
 
 .nav {

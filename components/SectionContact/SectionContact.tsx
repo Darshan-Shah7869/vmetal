@@ -243,33 +243,41 @@ const SectionContact = () => {
         )}
       >
         <div className={clsx(classes.left, "w-50")}>
-          <div className={clsx(classes.label, "heading-3 text-black")}>
+          <div className={clsx(classes.label, "heading-3 text-black mb-5")}>
             Address
+          </div>
+
+          <div
+            className={clsx(classes.input, classes.fullRow, classes.greyBox)}
+          >
+            523, Rd Number 14, Kathwada GIDC, Odhav Industrial Estate, Odhav
           </div>
           <input
             type="text"
-            className={clsx(classes.input, classes.fullRow, "")}
-            placeholder="Country/region"
-          />
-          <input
-            type="text"
-            className={clsx(classes.input, classes.fullRow, "")}
-            placeholder="Address"
-          />
-          <DropdownMenu label="" pvalue="City" dataArr={city} />
-          <DropdownMenu label="" pvalue="State" dataArr={state} />
-          <input
-            type="text"
             className={clsx(classes.input, "")}
-            placeholder="Pincode"
-          />
-          <input
-            type="text"
-            className={clsx(classes.input, "")}
-            placeholder="Mobile No."
+            placeholder="Ahmedabad"
+            readOnly
           />
 
-          <button className={clsx("btn btn-contained w-100", classes.btn)}>
+          <input
+            type="text"
+            className={clsx(classes.input, "")}
+            placeholder="Gujarat"
+            readOnly
+          />
+          <input
+            type="text"
+            className={clsx(classes.input, "")}
+            placeholder="380005"
+            readOnly
+          />
+          <input
+            type="text"
+            className={clsx(classes.input, "")}
+            placeholder="95102 15623"
+          />
+
+          <button className={clsx("btn btn-contained w-100 mt-5", classes.btn)}>
             Continue Shipping
           </button>
         </div>

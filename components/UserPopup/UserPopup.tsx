@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 import classes from "./../ThankYouPopup/ThankYouPopup.module.css";
 // @ts-ignore
@@ -8,6 +8,7 @@ import clsx from "clsx";
 import { TextField } from "@material-ui/core";
 import axios from "axios";
 import { baseURL } from "config";
+import popupContext from "contexts/popupContext";
 
 const UserPopup = () => {
   const [data, setData] = useState({
@@ -16,6 +17,8 @@ const UserPopup = () => {
     country: "",
     phone: "",
   });
+
+  const { popupData, setPopupData } = useContext(popupContext);
 
   const handleOnChange = (value: any, country: any) => {
     setData((prev: any) => ({ ...prev, phone: value, country: country.name }));
@@ -80,6 +83,7 @@ const UserPopup = () => {
             })
             .then((response) => {
               console.log(response.data);
+              setPopupData((prev: any) => ({ ...prev, isVisible: false }));
             })
             .catch((error) => {
               console.log(error.message);

@@ -5,7 +5,13 @@ import dummyImage from "public/assets/images/dummyProduct.png";
 import clsx from "clsx";
 import Link from "next/link";
 
-const CardProduct = ({ name, slug, image, isBrandCard = false }: any) => {
+const CardProduct = ({
+  name,
+  slug,
+  image,
+  isBrandCard = false,
+  toService = false,
+}: any) => {
   console.log(name);
   return (
     <div className={clsx(classes.root, "p-relative")}>
@@ -26,11 +32,19 @@ const CardProduct = ({ name, slug, image, isBrandCard = false }: any) => {
           "d-flex flex-column align-items-center"
         )}
       >
-        <div className="heading-4 text-white text-center mb-4">{name}</div>
+        <div
+          style={{ lineHeight: "120%" }}
+          className="heading-4 text-white text-center mb-4"
+        >
+          {name}
+        </div>
         {!isBrandCard && (
           <>
             <div className="d-flex align-items-center justify-content-center mb-4">
-              <Link href={`/products/${slug}`} passHref>
+              <Link
+                href={`/${toService ? "services" : "products"}/${slug}`}
+                passHref
+              >
                 <button
                   style={{ fontSize: "1rem" }}
                   className="btn btn-contained mr-1"
@@ -42,7 +56,10 @@ const CardProduct = ({ name, slug, image, isBrandCard = false }: any) => {
                 Send Inquiry
               </button>
             </div>
-            <Link href={`/products/${slug}`} passHref>
+            <Link
+              href={`/${toService ? "services" : "products"}/${slug}`}
+              passHref
+            >
               <div className="text-small text-underline text-yellow pointer align-self-end">
                 More Info
               </div>

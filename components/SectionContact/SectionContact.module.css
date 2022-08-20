@@ -2,8 +2,6 @@
   margin-right: 6rem;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 6rem;
-  grid-row-gap: 2rem;
 }
 
 .fullRow {
@@ -20,4 +18,10 @@
 
 .input::placeholder {
   color: #b9b3b3;
+}
+
+.greyBox {
+  color: #b9b3b3;
+  padding: 1rem 2rem;
+  background-color: #f6f6f6;
 }

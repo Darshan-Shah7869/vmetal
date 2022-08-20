@@ -9,6 +9,7 @@ import SectionSlider from "components/SectionSlider/SectionSlider";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseURL } from "config";
+import SectionReview from "components/SectionReview/SectionReview";
 
 const Home: NextPage = () => {
   const [productsData, setProductsData] = useState([]);
@@ -47,6 +48,7 @@ const Home: NextPage = () => {
         title="Our Products"
         bgColor="#f1f1f1"
       />
+      <SectionReview />
       <SectionSlider
         isBrandSlider={true}
         data={brandsData}

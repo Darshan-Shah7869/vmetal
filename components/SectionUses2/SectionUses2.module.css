@@ -26,3 +26,11 @@
 .item {
   line-height: 5.6rem;
 }
+
+.items {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 8rem;
+  justify-content: space-around;
+}

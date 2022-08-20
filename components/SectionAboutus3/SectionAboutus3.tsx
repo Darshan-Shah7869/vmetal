@@ -11,7 +11,6 @@ const SectionAboutus3 = () => {
   return (
     <VisibilitySensor
       partialVisibility={true}
-      offset={{ top: 60 }}
       onChange={(value: boolean) => {
         setVisibility(value);
       }}
@@ -24,6 +23,7 @@ const SectionAboutus3 = () => {
               "heading-1",
               visibility && "animate__animated animate__fadeIn"
             )}
+            style={{ animationDuration: "5s" }}
           >
             Lorem ipsum dolor{" "}
           </div>
@@ -36,27 +36,29 @@ const SectionAboutus3 = () => {
               "heading-3 mb-5 pb-5",
               visibility && "animate__animated animate__fadeIn"
             )}
+            style={{ animationDuration: "5s" }}
           >
-            Ad eos saepe lucilius, noster postulant philosophia ea usu, qui
-            dicta sadipscing te.
+            The steel industry is often considered an indicator of economic
+            progress, because of the critical role played by steel in
+            infrastructural and overall economic development.
           </div>
           <div
             className={clsx(
               classes.text,
               visibility && "animate__animated animate__fadeIn"
             )}
+            style={{
+              animationDuration: "5s",
+              width: "80%",
+              textAlign: "justify",
+            }}
           >
-            Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam
-            no suscipit quaerendum. At nam minimum ponderum. Est audiam animal
-            molestiae te. Ex duo eripuit mentitum. Et has minim elitr
-            intellegat. Mea aeterno eleifend antiopam ad, nam no suscipit
-            quaerendum. At nam minimum ponderum. Est audiam animal molestiae te.
-            Ex duo eripuit mentitum. Et has minim elitr intellegat. Mea aeterno
-            eleifend antiopam ad, nam no suscipit quaerendum. At nam minimum
-            ponderum. Est audiam animal molestiae te. Ex duo eripuit mentitum.
-            Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam
-            no suscipit quaerendum. At nam minimum ponderum. Est audiam animal
-            molestiae te. Ex duo eripuit mentitum.
+            V Metal Solutions Inc of Steel is manufacturing and merchanting
+            highly contributes to various processes by giving their customers
+            mild steel sheets, coils, slitted coils and corrugated sheets as per
+            their requirements and specifications. Mainly the mild steel
+            products (CRCA/HRPO/GP/GI/PPGI) are manufactured in various forms
+            and are delivered to various companies.
           </div>
         </div>
       </div>

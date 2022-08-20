@@ -6,9 +6,13 @@ import DropdownMenu from "components/DropdownMenu/DropdownMenu";
 import CaptchaImage from "public/assets/images/captcha.png";
 import popupContext from "contexts/popupContext";
 import ThankYouPopup from "components/ThankYouPopup/ThankYouPopup";
+import orderContext from "contexts/orderContext";
+import axios from "axios";
+import { baseURL } from "config";
 
 const BuyerDetails = () => {
   const { popupData, setPopupData } = useContext(popupContext);
+  const { orderData, setOrderData } = useContext(orderContext);
   const state = [
     "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -497,50 +501,148 @@ const BuyerDetails = () => {
     >
       <div className={clsx(classes.inputBox, "mb-5")}>
         <div className={clsx(classes.label, "")}>Full Name</div>
-        <input type="text" className={classes.input} placeholder="" />
+        <input
+          onChange={(e) => {
+            setOrderData((prev: any) => ({
+              ...prev,
+              name: e.target.value,
+            }));
+          }}
+          type="text"
+          className={classes.input}
+          placeholder=""
+        />
       </div>
       <div className={clsx(classes.inputBox, "mb-5")}>
         <div className={clsx(classes.label, "")}>Contact No.</div>
-        <input type="text" className={classes.input} placeholder="" />
+        <input
+          onChange={(e) => {
+            setOrderData((prev: any) => ({
+              ...prev,
+              contactNumber: e.target.value,
+            }));
+          }}
+          type="text"
+          className={classes.input}
+          placeholder=""
+        />
       </div>
       <div className={clsx(classes.inputBox, "mb-5")}>
         <div className={clsx(classes.label, "")}>Email Address</div>
-        <input type="text" className={classes.input} placeholder="" />
+        <input
+          onChange={(e) => {
+            setOrderData((prev: any) => ({
+              ...prev,
+              email: e.target.value,
+            }));
+          }}
+          type="text"
+          className={classes.input}
+          placeholder=""
+        />
       </div>
       <div className={clsx(classes.inputBox, "mb-5")}>
         <div className={clsx(classes.label, "")}>Company Name</div>
-        <input type="text" className={classes.input} placeholder="" />
+        <input
+          onChange={(e) => {
+            setOrderData((prev: any) => ({
+              ...prev,
+              companyName: e.target.value,
+            }));
+          }}
+          type="text"
+          className={classes.input}
+          placeholder=""
+        />
       </div>
       <div className={clsx(classes.inputBox, "mb-5")}>
         <div className={clsx(classes.label, "")}>Billing Address</div>
         <input
+          onChange={(e) => {
+            setOrderData((prev: any) => ({
+              ...prev,
+              addressLine1: e.target.value,
+            }));
+          }}
           type="text"
           className={`${classes.input} mb-2`}
           placeholder="Line 1"
         />
         <input
+          onChange={(e) => {
+            setOrderData((prev: any) => ({
+              ...prev,
+              addressLine2: e.target.value,
+            }));
+          }}
           type="text"
           className={`${classes.input} mb-2`}
           placeholder="Line 2"
         />
         <input
+          onChange={(e) => {
+            setOrderData((prev: any) => ({
+              ...prev,
+              pincode: e.target.value,
+            }));
+          }}
           type="text"
           className={`${classes.input} mb-2`}
           placeholder="Pincode"
         />
         <div className="mb-2">
-          <DropdownMenu label="" pvalue="City" dataArr={city} />
+          <DropdownMenu
+            changeHandler={(v: any) => {
+              setOrderData((prev: any) => ({
+                ...prev,
+                city: v,
+              }));
+            }}
+            label=""
+            pvalue="City"
+            dataArr={city}
+          />
         </div>{" "}
         <div className="mb-2">
-          <DropdownMenu label="" pvalue="State" dataArr={state} />
+          <DropdownMenu
+            changeHandler={(v: any) => {
+              setOrderData((prev: any) => ({
+                ...prev,
+                state: v,
+              }));
+            }}
+            label=""
+            pvalue="State"
+            dataArr={state}
+          />
         </div>
         <div>
-          <DropdownMenu label="" pvalue="Country" dataArr={countryList} />
+          <DropdownMenu
+            changeHandler={(v: any) => {
+              setOrderData((prev: any) => ({
+                ...prev,
+                country: v,
+              }));
+            }}
+            label=""
+            pvalue="Country"
+            dataArr={countryList}
+          />
         </div>
       </div>
       <div className={clsx(classes.inputBox, "mb-5")}>
         <div className={clsx(classes.label, "")}>GST Number</div>
-        <input type="text" className={classes.input} placeholder="" />
+        <input
+          onChange={(e) => {
+            setOrderData((prev: any) => ({
+              ...prev,
+              GSTNumber: e.target.value,
+            }));
+          }}
+          type="text"
+          className={classes.input}
+          placeholder=""
+        />
       </div>
       <div className="d-flex w-100 align-items-center">
         <img
@@ -558,12 +660,48 @@ const BuyerDetails = () => {
 
       <button
         // onClick={() => {
-        //   setPopupData((prev: any) => ({
-        //     ...prev,
-        //     isVisible: true,
-        //     childComponent: <ThankYouPopup />,
-        //   }));
+        //
         // }}
+        onClick={() => {
+          console.log(orderData);
+          const newOrderData: any = { ...orderData };
+          newOrderData.order.forEach((el: any) => {
+            el.basicValue = el.basicValue * el.quantity;
+            el.invoiceValue = el.invoiceValue * el.quantity;
+            el.totalValue = el.totalValue * el.quantity;
+          });
+
+          let subt: any = 0;
+          let inv: any = 0;
+          let tv: any = 0;
+          newOrderData.order.forEach((el: any) => {
+            subt = el.basicValue + subt;
+          });
+          newOrderData.order.forEach((el: any) => {
+            inv = el.invoiceValue + inv;
+          });
+          newOrderData.order.forEach((el: any) => {
+            tv = el.totalValue + tv;
+          });
+          subt.toFixed(2);
+          inv.toFixed(2);
+          tv.toFixed(2);
+
+          axios
+            .post(`${baseURL}/api/orders`, {
+              data: { ...orderData, subtotal: subt, tax: inv, total: tv },
+            })
+            .then((res) =>
+              setPopupData((prev: any) => ({
+                ...prev,
+                isVisible: true,
+                childComponent: <ThankYouPopup />,
+              }))
+            )
+            .catch((err) => {
+              console.log(err.message);
+            });
+        }}
         className="btn btn-contained mt-5 w-100"
       >
         {/* Continue Buyer’s Details */}

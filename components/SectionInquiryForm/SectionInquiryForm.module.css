@@ -10,7 +10,11 @@
 }
 
 .root {
-  background: rgba(7, 40, 84, 0.1);
+  background: rgba(13, 98, 208, 0.1);
+}
+
+.root input {
+  max-width: 47rem;
 }
 
 .inputBox {

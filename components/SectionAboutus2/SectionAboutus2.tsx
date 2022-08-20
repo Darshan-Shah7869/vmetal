@@ -1,42 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 
 import classes from "./SectionAboutus2.module.css";
 import clsx from "clsx";
 
+import VisibilitySensor from "react-visibility-sensor";
+
 const SectionAboutus2 = () => {
+  const [visibility, setVisibility] = useState(false);
   return (
-    <div className={clsx(classes.root, "bg-white-2 d-flex root")}>
-      <div className={clsx(classes.left, "")}>&nbsp;</div>
-      <div
-        className={clsx(
-          classes.body,
-          "bg-white d-flex flex-column justify-content-center"
-        )}
-      >
+    <VisibilitySensor
+      partialVisibility={true}
+      offset={{ top: 60 }}
+      onChange={(value: boolean) => {
+        setVisibility(value);
+      }}
+    >
+      <div className={clsx(classes.root, "bg-white-2 d-flex root")}>
+        <div className={clsx(classes.left, "")}>&nbsp;</div>
         <div
           className={clsx(
-            classes.subtitle,
-            "heading-3 mb-5 pb-5 animate__animated animate__fadeInRight"
+            classes.body,
+            "bg-white d-flex flex-column justify-content-center"
           )}
         >
-          Ad eos saepe lucilius, noster postulant philosophia ea usu, qui dicta
-          sadipscing te.
-        </div>
-        <div
-          className={clsx(
-            classes.text,
-            " animate__animated animate__fadeInRight"
-          )}
-        >
-          Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam
-          no suscipit quaerendum. At nam minimum ponderum. Est audiam animal
-          molestiae te. Ex duo eripuit mentitum. Et has minim elitr intellegat.
-          Mea aeterno eleifend antiopam ad, nam no suscipit quaerendum. At nam
-          minimum ponderum. Est audiam animal molestiae te. Ex duo eripuit
-          mentitum.
+          <div
+            className={clsx(
+              classes.subtitle,
+              "heading-3 mb-5 pb-5",
+              visibility && "animate__animated animate__fadeInRight"
+            )}
+          >
+            Our company believes in Quality with Excellency. V Metal Solutions
+            Inc is the sister company of Ackroll Group.
+          </div>
+          <div
+            className={clsx(
+              classes.text,
+              visibility && "animate__animated animate__fadeInRight"
+            )}
+          >
+            V Metal Solutions Inc’s coil processing service Centre is in
+            Ahmedabad, Gujarat stands on solid foundation of 30 years of
+            association of mild steel. V Metal Solutions Inc is fully geared to
+            process 6,000 tones on its Cut-To-Length line, Corrugation line and
+            Slitting line to the minimum.
+          </div>
         </div>
       </div>
-    </div>
+    </VisibilitySensor>
   );
 };
 

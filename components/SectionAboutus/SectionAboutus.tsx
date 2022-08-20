@@ -10,8 +10,7 @@ const SectionAboutus = ({ title, subtitle, description }: any) => {
   const [visibility, setVisibility] = useState(false);
   return (
     <VisibilitySensor
-      partialVisibility={true}
-      offset={{ top: 60 }}
+      partialVisibility={false}
       onChange={(value: boolean) => {
         setVisibility(value);
       }}
@@ -19,7 +18,7 @@ const SectionAboutus = ({ title, subtitle, description }: any) => {
       <div className={clsx(classes.root, "bg-white-2 root")}>
         <div className={clsx(classes.container, "container")}>
           <div
-            style={{ animationDuration: "2s", animationDelay: "0.5s" }}
+            style={{ animationDuration: "5s !important", animationDelay: "0.5s !important" }}
             className={clsx(
               classes.title,
               "heading-1 ",
@@ -31,7 +30,7 @@ const SectionAboutus = ({ title, subtitle, description }: any) => {
 
           <div className={clsx(classes.body, "bg-white")}>
             <div
-              style={{ animationDuration: "2s", animationDelay: "0.5s" }}
+              style={{ animationDuration: "5s !important", animationDelay: "0.5s !important" }}
               className={clsx(
                 classes.subtitle,
                 "heading-3 mb-5 pb-5 ",
@@ -41,7 +40,7 @@ const SectionAboutus = ({ title, subtitle, description }: any) => {
               {subtitle}
             </div>
             <div
-              style={{ animationDuration: "2s", animationDelay: "0.5s" }}
+              style={{ animationDuration: "5s !important", animationDelay: "0.5s !important" }}
               className={clsx(
                 classes.text,
                 "",

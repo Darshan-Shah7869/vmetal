@@ -1,112 +1,295 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import classes from "./SectionInquiryForm.module.css";
 import clsx from "clsx";
 import DropdownMenu from "components/DropdownMenu/DropdownMenu";
+import { baseURL } from "config";
+import axios from "axios";
 
 const SectionInquiryForm = () => {
+  const [contactData, setContactData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    contactNumber: "",
+    category: "",
+    product: "",
+    weight: "",
+    service: "",
+    message: "",
+    length: "",
+    width: "",
+    thickness: "",
+    attachment: "",
+  });
+  const [productData, setProductData] = useState<any>(null);
+  const [activeProduct, setActiveProduct] = useState<any>(null);
+  const [categoryData, setCategoryData] = useState<any>(null);
+  const [serviceData, setServiceData] = useState<any>(null);
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/products?populate=*`)
+      .then((res) => {
+        console.log(res.data.data);
+        setProductData(res.data.data);
+        setActiveProduct(res.data.data[0].attributes.name);
+
+        setCategoryData(
+          res.data.data[0].attributes.categories.data.map((el: any) => {
+            return el.attributes.name;
+          })
+        );
+        setServiceData(
+          res.data.data[0].attributes.services.data.map((el: any) => {
+            return el.attributes.name;
+          })
+        );
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
+  useEffect(() => {
+    if (productData !== null) {
+      let outputCategory;
+      let outputService;
+      productData.forEach((el: any) => {
+        if (el.attributes.name === activeProduct) {
+          console.log(
+            el.attributes?.categories?.data.map(
+              (category: any) => category.attributes.name
+            ),
+            activeProduct
+          );
+          outputCategory = el.attributes.categories?.data.map(
+            (category: any) => category.attributes.name
+          );
+        }
+      });
+      setCategoryData(outputCategory);
+      productData.forEach((el: any) => {
+        if (el.attributes.name === activeProduct) {
+          outputService = el.attributes?.services?.data.map(
+            (service: any) => service.attributes.name
+          );
+        }
+      }),
+      setServiceData(outputService);
+    }
+  }, [activeProduct]);
+
+  useEffect(() => {
+    console.log(categoryData, serviceData);
+  }, [categoryData, serviceData]);
+
   return (
-    <div className={clsx(classes.root, "section")}>
-      <div className="container">
-        <div className={clsx(classes.title, "heading-2 text-black mb-5 pb-2")}>
-          Inquiry Form
-        </div>
-        <div className={clsx(classes.body, "")}>
-          <div className={clsx(classes.row3, "")}>
-            <div className={clsx(classes.inputBox, "")}>
-              <div className={clsx(classes.label, "")}>First Name</div>
-              <input type="text" className={classes.input} />
+    <>
+      {productData && (
+        <div className={clsx(classes.root, "section")}>
+          <div className="container">
+            <div
+              className={clsx(classes.title, "heading-2 text-black mb-5 pb-2")}
+            >
+              Inquiry Form
             </div>
-            <div className={clsx(classes.inputBox, "")}>
-              <div className={clsx(classes.label, "")}>Last Name</div>
-              <input type="text" className={classes.input} />
-            </div>
-            <div className={clsx(classes.inputBox, "")}>
-              <div className={clsx(classes.label, "")}>Email Address</div>
-              <input type="text" className={classes.input} />
-            </div>
-          </div>
-          <div className={clsx(classes.row2, "")}>
-            <div className={clsx(classes.inputBox, "")}>
-              <div className={clsx(classes.label, "")}>Contact Number</div>
-              <input type="text" className={classes.input} />
-            </div>
-            <div className={clsx(classes.inputBox, "")}>
-              <div className={clsx(classes.label, "")}>Category</div>
-              <DropdownMenu
-                label=""
-                pvalue="Category1"
-                dataArr={["Category1", "Category2", "Category3", "Category4"]}
-              />
-            </div>
-          </div>
-          <div className={clsx(classes.row3, "")}>
-            <div className={clsx(classes.inputBox, "")}>
-              <div className={clsx(classes.label, "")}>Products</div>
-              <DropdownMenu
-                label=""
-                pvalue="Product1"
-                dataArr={["Product1", "Product2", "Product3", "Product4"]}
-              />
-            </div>
-            <div className={clsx(classes.inputBox, "")}>
-              <div className={clsx(classes.label, "")}>Weight</div>
-              <div className="p-relative w-100 d-flex align-items-center">
-                <input type="text" className={classes.input} />
-                <span className={classes.placeholder}>MT</span>
+            <div className={clsx(classes.body, "")}>
+              <div className={clsx(classes.row3, "")}>
+                <div className={clsx(classes.inputBox, "")}>
+                  <div className={clsx(classes.label, "")}>First Name</div>
+                  <input
+                    onChange={(e) => {
+                      setContactData((prev: any) => ({
+                        ...prev,
+                        firstName: e.target.value,
+                      }));
+                    }}
+                    type="text"
+                    className={classes.input}
+                  />
+                </div>
+                <div className={clsx(classes.inputBox, "")}>
+                  <div className={clsx(classes.label, "")}>Last Name</div>
+                  <input
+                    onChange={(e) => {
+                      setContactData((prev: any) => ({
+                        ...prev,
+                        lastName: e.target.value,
+                      }));
+                    }}
+                    type="text"
+                    className={classes.input}
+                  />
+                </div>
+                <div className={clsx(classes.inputBox, "")}>
+                  <div className={clsx(classes.label, "")}>Email Address</div>
+                  <input
+                    onChange={(e) => {
+                      setContactData((prev: any) => ({
+                        ...prev,
+                        email: e.target.value,
+                      }));
+                    }}
+                    type="text"
+                    className={classes.input}
+                  />
+                </div>
               </div>
-            </div>
-            <div className={clsx(classes.inputBox, "")}>
-              <div className={clsx(classes.label, "")}>Service</div>
-              <DropdownMenu
-                label=""
-                pvalue="Cut-To-Length"
-                dataArr={["Cut-To-Length", "Service2", "Service3", "Service4"]}
-              />
-            </div>
-          </div>
-          <div className={clsx(classes.row3, "")}>
-            <div className={clsx(classes.inputBox, "")}>
-              <div className={clsx(classes.label, "")}>Cut-To-Length</div>
-              <div className="p-relative w-100 d-flex align-items-center">
+              <div className={clsx(classes.row2, "")}>
+                <div className={clsx(classes.inputBox, "")}>
+                  <div className={clsx(classes.label, "")}>Contact Number</div>
+                  <input
+                    onChange={(e) => {
+                      setContactData((prev: any) => ({
+                        ...prev,
+                        contactNumber: e.target.value,
+                      }));
+                    }}
+                    type="text"
+                    className={classes.input}
+                  />
+                </div>
+                <div className={clsx(classes.inputBox, "")}>
+                  <div className={clsx(classes.label, "")}>Products</div>
+                  <DropdownMenu
+                    changeHandler={(v: any) => {
+                      setContactData((prev: any) => ({ ...prev, product: v }));
+                      setActiveProduct(v);
+                    }}
+                    label=""
+                    pvalue={activeProduct}
+                    dataArr={productData.map((el: any) => {
+                      return el.attributes.name;
+                    })}
+                  />
+                </div>
+              </div>
+              <div className={clsx(classes.row3, "")}>
+                <div className={clsx(classes.inputBox, "")}>
+                  <div className={clsx(classes.label, "")}>Category</div>
+                  <DropdownMenu
+                    changeHandler={(v: any) => {
+                      setContactData((prev: any) => ({ ...prev, category: v }));
+                    }}
+                    label=""
+                    pvalue={categoryData[0]}
+                    dataArr={categoryData}
+                  />
+                </div>
+                <div className={clsx(classes.inputBox, "")}>
+                  <div className={clsx(classes.label, "")}>Weight</div>
+                  <div className="p-relative w-100 d-flex align-items-center">
+                    <input
+                      onChange={(e) => {
+                        setContactData((prev: any) => ({
+                          ...prev,
+                          weight: e.target.value,
+                        }));
+                      }}
+                      type="text"
+                      className={classes.input}
+                    />
+                    <span className={classes.placeholder}>MT</span>
+                  </div>
+                </div>
+                <div className={clsx(classes.inputBox, "")}>
+                  <div className={clsx(classes.label, "")}>Service</div>
+                  <DropdownMenu
+                    changeHandler={(v: any) => {
+                      setContactData((prev: any) => ({ ...prev, service: v }));
+                    }}
+                    label=""
+                    pvalue={serviceData[0]}
+                    dataArr={serviceData}
+                  />
+                </div>
+              </div>
+              <div className={clsx(classes.row3, "")}>
+                <div className={clsx(classes.inputBox, "")}>
+                  <div className={clsx(classes.label, "")}>Cut-To-Length</div>
+                  <div className="p-relative w-100 d-flex align-items-center">
+                    <input
+                      onChange={(e) => {
+                        setContactData((prev: any) => ({
+                          ...prev,
+                          length: e.target.value,
+                        }));
+                      }}
+                      placeholder="Length"
+                      type="text"
+                      className={classes.input}
+                    />
+                    <span className={classes.placeholder}>MM</span>
+                  </div>
+                </div>
+                <div className={clsx(classes.inputBox, "")}>
+                  <div className={clsx(classes.label, "")}>&nbsp;</div>
+                  <div className="p-relative w-100 d-flex align-items-center">
+                    <input
+                      onChange={(e) => {
+                        setContactData((prev: any) => ({
+                          ...prev,
+                          width: e.target.value,
+                        }));
+                      }}
+                      placeholder="Width"
+                      type="text"
+                      className={classes.input}
+                    />
+                    <span className={classes.placeholder}>MM</span>
+                  </div>
+                </div>
+                <div className={clsx(classes.inputBox, "")}>
+                  <div className={clsx(classes.label, "")}>&nbsp;</div>
+                  <div className="p-relative w-100 d-flex align-items-center">
+                    <input
+                      onChange={(e) => {
+                        setContactData((prev: any) => ({
+                          ...prev,
+                          thickness: e.target.value,
+                        }));
+                      }}
+                      placeholder="Thickness"
+                      type="text"
+                      className={classes.input}
+                    />
+                    <span className={classes.placeholder}>MM</span>
+                  </div>
+                </div>
+              </div>
+              <div className={clsx(classes.row1, "")}>
+                <div className={clsx(classes.label, "")}>Message</div>
+                <textarea
+                  onChange={(e) => {
+                    setContactData((prev: any) => ({
+                      ...prev,
+                      message: e.target.value,
+                    }));
+                  }}
+                  className={classes.message}
+                />
+              </div>
+              <div className={clsx(classes.row1, "")}>
+                <div className={clsx(classes.label, "")}>Attachments</div>
                 <input
-                  placeholder="Length"
-                  type="text"
+                  id="file-input"
+                  onChange={(e) => {
+                    setContactData((prev: any) => ({
+                      ...prev,
+                      // @ts-ignore
+                      attachment:
+                        document?.getElementById("file-input")?.files[0],
+                    }));
+                  }}
+                  placeholder="Attach your doc"
+                  type="file"
                   className={classes.input}
                 />
-                <span className={classes.placeholder}>MM</span>
               </div>
             </div>
-            <div className={clsx(classes.inputBox, "")}>
-              <div className={clsx(classes.label, "")}>&nbsp;</div>
-              <div className="p-relative w-100 d-flex align-items-center">
-                <input
-                  placeholder="Width"
-                  type="text"
-                  className={classes.input}
-                />
-                <span className={classes.placeholder}>MM</span>
-              </div>
-            </div>
-            <div className={clsx(classes.inputBox, "")}>
-              <div className={clsx(classes.label, "")}>&nbsp;</div>
-              <div className="p-relative w-100 d-flex align-items-center">
-                <input
-                  placeholder="Thickness"
-                  type="text"
-                  className={classes.input}
-                />
-                <span className={classes.placeholder}>MM</span>
-              </div>
-            </div>
-          </div>
-          <div className={clsx(classes.row1, "")}>
-            <div className={clsx(classes.label, "")}>Message</div>
-            <textarea className={classes.message} />
-          </div>
-        </div>
-        <div className={clsx(classes.btnBox, "d-flex align-items-center")}>
-          <button className={clsx(classes.btn, "btn btn-white mr-4")}>
+            <div className={clsx(classes.btnBox, "d-flex align-items-center")}>
+              {/* <button className={clsx(classes.btn, "btn btn-white mr-4")}>
             <svg
               className="mr-1"
               width={14}
@@ -124,30 +307,71 @@ const SectionInquiryForm = () => {
               />
             </svg>
             Attach
-          </button>
-          <button className={clsx(classes.btn, "btn btn-white mr-4")}>
-            <svg
-              style={{ transform: "translateY(-0.3rem)" }}
-              className="mr-1"
-              width="20"
-              height="24"
-              viewBox="0 0 20 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M16.4773 6.85714H10.8636V15.0734L13.7077 12.2513C13.871 12.0973 14.0884 12.0127 14.3136 12.0156C14.5388 12.0184 14.754 12.1085 14.9132 12.2666C15.0725 12.4246 15.1632 12.6382 15.1661 12.8617C15.169 13.0852 15.0838 13.301 14.9287 13.463L10.6105 17.7488C10.4485 17.9094 10.229 17.9996 10 17.9996C9.77105 17.9996 9.55146 17.9094 9.38952 17.7488L5.07134 13.463C4.91621 13.301 4.831 13.0852 4.83389 12.8617C4.83677 12.6382 4.92751 12.4246 5.08677 12.2666C5.24603 12.1085 5.46119 12.0184 5.6864 12.0156C5.9116 12.0127 6.12902 12.0973 6.2923 12.2513L9.13636 15.0734V6.85714H3.52273C2.72131 6.85799 1.95297 7.17434 1.38628 7.73676C0.819598 8.29919 0.500857 9.06175 0.5 9.85714V21C0.500857 21.7954 0.819598 22.558 1.38628 23.1204C1.95297 23.6828 2.72131 23.9991 3.52273 24H16.4773C17.2787 23.9991 18.047 23.6828 18.6137 23.1204C19.1804 22.558 19.4991 21.7954 19.5 21V9.85714C19.4991 9.06175 19.1804 8.29919 18.6137 7.73676C18.047 7.17434 17.2787 6.85799 16.4773 6.85714ZM10.8636 0.857143C10.8636 0.629814 10.7726 0.411797 10.6107 0.251051C10.4487 0.0903058 10.2291 0 10 0C9.77095 0 9.55128 0.0903058 9.38932 0.251051C9.22735 0.411797 9.13636 0.629814 9.13636 0.857143V6.85714H10.8636V0.857143Z"
-                fill="#B9B3B3"
-              />
-            </svg>
-            Download
-          </button>
-          <button className={clsx(classes.btn, "btn btn-contained")}>
-            Submit
-          </button>
+          </button> */}
+              <a
+                href={`${baseURL}/uploads/Brochure_cda3aec44e.pdf`}
+                download
+                target="_blank"
+                rel="noreferrer"
+              >
+                <button className={clsx(classes.btn, "btn btn-white mr-4")}>
+                  <svg
+                    style={{ transform: "translateY(-0.3rem)" }}
+                    className="mr-1"
+                    width="20"
+                    height="24"
+                    viewBox="0 0 20 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M16.4773 6.85714H10.8636V15.0734L13.7077 12.2513C13.871 12.0973 14.0884 12.0127 14.3136 12.0156C14.5388 12.0184 14.754 12.1085 14.9132 12.2666C15.0725 12.4246 15.1632 12.6382 15.1661 12.8617C15.169 13.0852 15.0838 13.301 14.9287 13.463L10.6105 17.7488C10.4485 17.9094 10.229 17.9996 10 17.9996C9.77105 17.9996 9.55146 17.9094 9.38952 17.7488L5.07134 13.463C4.91621 13.301 4.831 13.0852 4.83389 12.8617C4.83677 12.6382 4.92751 12.4246 5.08677 12.2666C5.24603 12.1085 5.46119 12.0184 5.6864 12.0156C5.9116 12.0127 6.12902 12.0973 6.2923 12.2513L9.13636 15.0734V6.85714H3.52273C2.72131 6.85799 1.95297 7.17434 1.38628 7.73676C0.819598 8.29919 0.500857 9.06175 0.5 9.85714V21C0.500857 21.7954 0.819598 22.558 1.38628 23.1204C1.95297 23.6828 2.72131 23.9991 3.52273 24H16.4773C17.2787 23.9991 18.047 23.6828 18.6137 23.1204C19.1804 22.558 19.4991 21.7954 19.5 21V9.85714C19.4991 9.06175 19.1804 8.29919 18.6137 7.73676C18.047 7.17434 17.2787 6.85799 16.4773 6.85714ZM10.8636 0.857143C10.8636 0.629814 10.7726 0.411797 10.6107 0.251051C10.4487 0.0903058 10.2291 0 10 0C9.77095 0 9.55128 0.0903058 9.38932 0.251051C9.22735 0.411797 9.13636 0.629814 9.13636 0.857143V6.85714H10.8636V0.857143Z"
+                      fill="#B9B3B3"
+                    />
+                  </svg>
+                  Download
+                </button>
+              </a>
+
+              <button
+                onClick={() => {
+                  let formData = new FormData();
+                  formData.append("files", contactData.attachment);
+
+                  axios
+                    .post(`${baseURL}/api/upload`, formData)
+                    .then((res) => {
+                      const fileID = res.data[0].id;
+                      console.log(fileID);
+                      setContactData((prev: any) => ({
+                        ...contactData,
+                        attachment: fileID,
+                      }));
+                      axios
+                        .post(`${baseURL}/api/inquiries`, {
+                          data: { ...contactData, attachment: fileID },
+                        })
+                        .then((res) => {
+                          console.log(contactData);
+                          console.log(res.data);
+                        })
+                        .catch((err) => {
+                          console.log(err.message);
+                        });
+                    })
+                    .catch((err) => {
+                      console.log(err.message);
+                    });
+                }}
+                className={clsx(classes.btn, "btn btn-contained")}
+              >
+                Submit
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      )}
+    </>
   );
 };
 

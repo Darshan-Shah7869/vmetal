@@ -48,7 +48,8 @@ const Footer = () => {
                 />
               </div>
               <div className={clsx(classes.data, "")}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit
+                Plot No. 523, Road No.14, Kathwada GIDC, Odhav Industrial
+                Estate, Odhav, Ahmedabad, Gujarat 382415, India
               </div>
             </div>
           </div>

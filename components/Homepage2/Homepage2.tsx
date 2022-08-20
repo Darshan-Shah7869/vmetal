@@ -10,13 +10,11 @@ const Homepage2 = () => {
       <div className={clsx(classes.left, "w-50")}>&nbsp;</div>
       <div className={clsx(classes.right, "w-50 align-self-center")}>
         <div className={clsx(classes.title, "heading-3 mb-1 pb-5")}>
-          Ad eos saepe lucilius, noster postulant philosophia ea usu, qui dicta
-          sadipscing te.
+          V Metal Solutions Inc was established in 2020 and successfully caters
+          to its customers with its products and services.
         </div>
         <div className={clsx(classes.text, "mb-5 pb-5")}>
-          Et has minim elitr intellegat. Mea aeterno eleifend antiopam ad, nam
-          no suscipit quaerendum. At nam minimum ponderum. Est audiam animal
-          molestiae te. Ex duo eripuit mentitum.
+        We contribute to Steel manufacturing and merchanting, which highly contribute to different functions by giving their customers mild steel sheets, coils, slitted coils, and corrugated sheets as per their requirements and specifications.
         </div>
         <div className={clsx(classes.btnBox, "")}>
           <button className="btn btn-contained">Know More</button>

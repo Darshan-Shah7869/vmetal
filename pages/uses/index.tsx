@@ -6,8 +6,11 @@ import React from "react";
 const UsesPage = () => {
   return (
     <div>
-      <ProductsHero />
-      <SectionUses />
+      <ProductsHero
+        title="Uses Page Title 1"
+        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ad amet unde corporis, at ab repellendus illum voluptate sint ipsa."
+      />
+      {/* <SectionUses /> */}
       <SectionUses2 />
     </div>
   );

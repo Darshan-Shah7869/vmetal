@@ -5,9 +5,11 @@ import clsx from "clsx";
 
 import VisibilitySensor from "react-visibility-sensor";
 import { baseURL } from "config";
+import { useRouter } from "next/router";
 
-const ProductsHero = ({ title, subtitle, image }: any) => {
+const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
   const [visibility, setVisibility] = useState(false);
+  const router = useRouter();
   return (
     <VisibilitySensor
       partialVisibility={true}
@@ -20,9 +22,12 @@ const ProductsHero = ({ title, subtitle, image }: any) => {
           <div className={clsx(classes.left, "h-100 w-40")}>&nbsp;</div>
           <div
             style={{
-              backgroundImage: `url(${baseURL}${image})`,
+              backgroundImage: isLocal
+                ? `url('${image}')`
+                : `url(${baseURL}${image})`,
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
             }}
             className={clsx(classes.right, "bg-dummy-grey w-60")}
           >
@@ -48,6 +53,18 @@ const ProductsHero = ({ title, subtitle, image }: any) => {
               )}
             >
               {subtitle}
+            </div>
+            <div className={clsx(classes.btnBox, "")}>
+              {router.pathname.includes("/products/") && (
+                <button
+                  onClick={() => {
+                    router.push("/orderDetails");
+                  }}
+                  className={clsx(classes.btn, "btn btn-contained mr-5")}
+                >
+                  Order now
+                </button>
+              )}
             </div>
           </div>
         </div>

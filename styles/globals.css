@@ -42,6 +42,9 @@ html {
   --yellow: #f8bc24;
   --dummy-grey: #b1bed8;
   --pink: #ffd2dd;
+  --animate-duration: 2s;
+  --animate-delay: 2s;
+  --animate-repeat: 1;
 }
 
 body {
@@ -193,6 +196,7 @@ a {
 
 .text-small {
   font-size: 1.2rem;
+  line-height: 145%;
 }
 
 .text-white {
@@ -248,7 +252,7 @@ a {
 }
 
 .container {
-  width: 90vw;
+  width: 85vw;
   margin: 0 auto;
 }
 
@@ -646,4 +650,68 @@ input::placeholder {
 
 .animate__animated-slow {
   animation-duration: 1s;
+}
+
+.splide__arrow {
+  background-color: transparent !important;
+  opacity: 1 !important;
+}
+
+.splide__arrow svg {
+  width: 8rem !important;
+  height: 8rem !important;
+  fill: var(--blue) !important;
+}
+
+.splide__pagination__page {
+  background-color: var(--blue) !important;
+  opacity: 1;
+}
+
+.splide__pagination__page.is-active {
+  border: 2px solid var(--yellow);
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--blue) !important;
+  opacity: 1;
+}
+
+@keyframes slideInOut {
+  0% {
+    margin-left: 100vw;
+  }
+
+  10% {
+    margin-left: -70vw;
+  }
+
+  90% {
+    margin-left: -70vw;
+  }
+
+  100% {
+    margin-left: 100vw;
+  }
+}
+
+@keyframes slideInOut2 {
+  0% {
+    margin-left: -20vw;
+    opacity: 0;
+  }
+
+  10% {
+    margin-left: 0;
+    opacity: 1;
+  }
+
+  90% {
+    margin-left: 0;
+    opacity: 1;
+  }
+
+  100% {
+    margin-left: 20vw;
+    opacity: 0;
+  }
 }

@@ -1,0 +1,62 @@
+.root {
+  width: 38rem;
+  height: 38rem;
+  margin-top: 2rem;
+}
+
+.imgBox1 {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.imgBox2 {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: -1rem;
+}
+
+.imgBox3 {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.details1 {
+  transform: translateX(-1rem);
+}
+
+.details3 {
+  transform: translateX(1rem);
+}
+
+.img1 {
+  transform: translateX(-2rem);
+}
+
+.img2 {
+  transform: translateX(0rem) translateY(-2rem) !important;
+  z-index: 200;
+  position: relative;
+}
+
+.img3 {
+  transform: translateX(2rem);
+}
+
+.name {
+}
+
+.role {
+}
+
+.designer {
+  font-size: 1rem !important;
+}

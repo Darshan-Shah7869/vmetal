@@ -10,7 +10,6 @@ import whImage from "./../../public/assets/images/whatsapp copy.png";
 import axios from "axios";
 import { baseURL } from "config";
 
-
 const Layout = ({ children }: any) => {
   const { popupData, setPopupData } = useContext(popupContext);
   const [link, setLink] = useState<any>(null);
