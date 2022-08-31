@@ -19,15 +19,12 @@ const ProductPage = () => {
         `${baseURL}/api/products?filters[slug][$eq]=${router.query.productID}&populate=*`
       )
       .then((res) => {
-        setProductData(res.data.data[0].attributes);
-        console.log(res.data.data[0].attributes);
-        if (brandData.length === 0) {
-        }
+        setProductData(res?.data?.data[0]?.attributes);
       })
       .catch((err) => {
         console.log(err.message);
       });
-  }, [router.pathname]);
+  }, [router.query.productID, router.asPath, router.pathname]);
 
   useEffect(() => {
     productData?.brands?.data.map((el: any) => {

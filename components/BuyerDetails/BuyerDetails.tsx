@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import classes from "./../SectionInquiryForm/SectionInquiryForm.module.css";
 import clsx from "clsx";
@@ -13,6 +13,34 @@ import { baseURL } from "config";
 const BuyerDetails = () => {
   const { popupData, setPopupData } = useContext(popupContext);
   const { orderData, setOrderData } = useContext(orderContext);
+  const [brandData, setBrandsData] = useState<any>([]);
+  const [code, setCode] = useState("");
+  const [enteredCode, setEnteredCode] = useState("");
+  const [err, setErr] = useState<any>("");
+
+  useEffect(() => {
+    let charString =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const charArr = charString.split("");
+    const output = [];
+    for (let i = 0; i < 7; i++) {
+      let randomChar = charArr[Math.floor(Math.random() * charArr.length)];
+      console.log(randomChar);
+      output.push(randomChar);
+    }
+    const randomCode = output.join("");
+    setCode(randomCode);
+
+    axios
+      .get(`${baseURL}/api/brands`)
+      .then((brandRes) => {
+        setBrandsData((prev: any) => [...prev, ...brandRes?.data?.data]);
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  }, []);
+
   const state = [
     "Andhra Pradesh",
     "Arunachal Pradesh",
@@ -494,6 +522,8 @@ const BuyerDetails = () => {
     "Åland Islands",
   ];
 
+  const [validate, isValidate] = useState(false);
+
   return (
     <div
       style={{ backgroundColor: "transparent" }}
@@ -629,6 +659,20 @@ const BuyerDetails = () => {
             dataArr={countryList}
           />
         </div>
+        <div className="mt-5">
+          <div className={clsx(classes.label, "")}>Brand</div>
+          <DropdownMenu
+            changeHandler={(v: any) => {
+              setOrderData((prev: any) => ({
+                ...prev,
+                brand: v,
+              }));
+            }}
+            label=""
+            pvalue="Brand"
+            dataArr={brandData.map((el: any) => el.attributes.name)}
+          />
+        </div>{" "}
       </div>
       <div className={clsx(classes.inputBox, "mb-5")}>
         <div className={clsx(classes.label, "")}>GST Number</div>
@@ -645,13 +689,11 @@ const BuyerDetails = () => {
         />
       </div>
       <div className="d-flex w-100 align-items-center">
-        <img
-          style={{ height: "4.5rem" }}
-          src={CaptchaImage.src}
-          alt=""
-          className=""
-        />
+        <div className={classes.captchBG}>{code}</div>
         <input
+          onChange={(e) => {
+            setEnteredCode(e.target.value);
+          }}
           type="text"
           className={`${classes.input} ml-3`}
           placeholder="Enter Code"
@@ -687,26 +729,29 @@ const BuyerDetails = () => {
           inv.toFixed(2);
           tv.toFixed(2);
 
-          axios
-            .post(`${baseURL}/api/orders`, {
-              data: { ...orderData, subtotal: subt, tax: inv, total: tv },
-            })
-            .then((res) =>
-              setPopupData((prev: any) => ({
-                ...prev,
-                isVisible: true,
-                childComponent: <ThankYouPopup />,
-              }))
-            )
-            .catch((err) => {
-              console.log(err.message);
-            });
+          if (err.length === 0) {
+            axios
+              .post(`${baseURL}/api/orders`, {
+                data: { ...orderData, subtotal: subt, tax: inv, total: tv },
+              })
+              .then((res) =>
+                setPopupData((prev: any) => ({
+                  ...prev,
+                  isVisible: true,
+                  childComponent: <ThankYouPopup />,
+                }))
+              )
+              .catch((err) => {
+                console.log(err.message);
+              });
+          }
         }}
         className="btn btn-contained mt-5 w-100"
       >
         {/* Continue Buyer’s Details */}
         Book Order Online
       </button>
+      <p className={classes.error}>{err}</p>
     </div>
   );
 };

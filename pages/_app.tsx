@@ -30,6 +30,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     total: 0,
     subtota: 0,
     tax: 0,
+    brand: "",
   });
 
   useEffect(() => {

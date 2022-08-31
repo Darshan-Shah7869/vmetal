@@ -5,20 +5,21 @@
 .root {
   background-color: #f1f1f1;
   padding-bottom: 0 !important;
+  padding-top: 0 !important;
 }
 
 .title {
   position: absolute;
   transform: rotate(90deg);
-  left: 0;
+  left: -10rem;
   top: 50%;
 }
 
 .body {
-  width: 50%;
+  width: 70%;
   margin: 0 auto;
   background-color: var(--white);
-  display: flex;
+  display: flex;  
   padding: 12rem 8rem;
   justify-content: space-between;
 }

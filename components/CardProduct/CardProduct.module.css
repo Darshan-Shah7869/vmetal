@@ -7,7 +7,7 @@
   width: 100%;
   height: 100%;
   background-color: var(--yellow);
-  border-radius: 20px;
+  border-radius: 2rem;
   z-index: 10;
   transform: rotate(7deg) !important;
   transition: all 0.2s;
@@ -17,12 +17,12 @@
   width: 100%;
   height: 100%;
   background-color: var(--dummy-grey);
-  border-radius: 20px;
+  border-radius: 2rem;
   z-index: 20;
 }
 
 .titleBox {
-  border-radius: 20px;
+  border-radius: 2rem;
   position: absolute;
   top: 0;
   left: 0;

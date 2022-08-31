@@ -32,7 +32,7 @@ const SectionUses2 = () => {
             {usesData.length !== 0 &&
               usesData.map((el: any, index: number) => {
                 return (
-                  <li key={index} className={clsx(classes.item, "heading-3")}>
+                  <li key={index} className={clsx(classes.item)}>
                     {el.attributes.use}
                   </li>
                 );

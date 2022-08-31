@@ -4,6 +4,7 @@
 }
 
 .root {
+  position: relative;
 }
 
 .item {
@@ -12,4 +13,18 @@
   font-weight: 600;
   color: #fff;
   cursor: pointer;
+}
+
+.inputBox {
+  position: absolute;
+  right: 10rem;
+  top: 1.5rem;
+}
+
+.input {
+  margin-top: 0.5rem;
+}
+
+.icon {
+  transform: translateY(0.5rem);
 }

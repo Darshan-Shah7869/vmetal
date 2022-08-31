@@ -23,7 +23,7 @@ const ServicePage = () => {
       .catch((err) => {
         console.log(err.message);
       });
-  }, []);
+  }, [router.asPath]);
 
   return (
     <div>

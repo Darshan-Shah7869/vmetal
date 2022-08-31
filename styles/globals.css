@@ -164,8 +164,8 @@ a {
 
 .heading-border {
   font-weight: 900;
-  font-size: 64px;
-  line-height: 64px;
+  font-size: 6.4rem;
+  line-height: 135%;
 
   text-align: center;
 
@@ -599,10 +599,13 @@ input {
   /* identical to box height, or 267% */
   padding: 1rem 2rem;
   letter-spacing: 0.2px;
-
-  color: #b9b3b3 !important;
+  color: #000 !important;
   outline: none;
   border: none;
+}
+
+input::placeholder {
+  color: #b9b3b3 !important;
 }
 
 .input:focus {

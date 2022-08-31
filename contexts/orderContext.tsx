@@ -16,6 +16,7 @@ const orderContext = React.createContext({
     total: 0,
     subtota: 0,
     tax: 0,
+    brand: "",
   },
   setOrderData: (item: any) => {},
 });
