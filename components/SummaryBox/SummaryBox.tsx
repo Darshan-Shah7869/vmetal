@@ -99,11 +99,11 @@ const SummaryBox = () => {
       <div className={clsx(classes.priceBox, "")}>
         <div className={clsx(classes.priceItem, "")}>
           <div className={clsx(classes.priceLabel, "")}>Subtotal</div>
-          <div className={clsx(classes.price, "")}>₹{subTotal}</div>
+          <div className={clsx(classes.price, "")}>₹{subTotal.toFixed(2)}</div>
         </div>
         <div className={clsx(classes.priceItem, "")}>
           <div className={clsx(classes.priceLabel, "")}>Tax</div>
-          <div className={clsx(classes.price, "")}>₹{invoice}</div>
+          <div className={clsx(classes.price, "")}>₹{invoice.toFixed(2)}</div>
         </div>
         {/* <div className={clsx(classes.priceItem, "")}>
           <div className={clsx(classes.priceLabel, "")}>Discount</div>
@@ -117,7 +117,7 @@ const SummaryBox = () => {
         )}
       >
         <div className={clsx(classes.totalLabel, "text-blue bold")}>Total</div>
-        <div className={clsx(classes.total, "text-blue bold")}>₹{total}</div>
+        <div className={clsx(classes.total, "text-blue bold")}>₹{total.toFixed(2)}</div>
       </div>
     </div>
   );

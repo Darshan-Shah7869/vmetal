@@ -34,33 +34,34 @@ const SectionCalculator = ({ price, orderData }: any) => {
         <div className={clsx(classes.label, "mt-5")}>Total Basic Value </div>
         <input
           readOnly
-          value={`₹${orderData.tons * price * 1000}`}
+          value={`₹${(orderData.tons * price * 1000).toFixed(2)}`}
           type="text"
           className={classes.input}
         />
-        <span className={classes.placeholder}>₹</span>
+        {/* <span className={classes.placeholder}>₹</span> */}
       </div>
       <div className={clsx(classes.inputBox, "")}>
         <div className={clsx(classes.label, "mt-5")}>Total Invoice Value </div>
         <input
           readOnly
-          value={`₹${orderData.tons * price * 1000 * 0.18}`}
+          value={`₹${(orderData.tons * price * 1000 * 0.18).toFixed(2)}`}
           type="text"
           className={classes.input}
         />
-        <span className={classes.placeholder}>₹</span>
+        {/* <span className={classes.placeholder}>₹</span> */}
       </div>
       <div className={clsx(classes.inputBox, "")}>
         <div className={clsx(classes.label, "mt-5")}>Total Amount Payable </div>
         <input
           readOnly
-          value={`₹${
-            orderData.tons * price * 1000 + orderData.tons * price * 1000 * 0.18
-          }`}
+          value={`₹${(
+            orderData.tons * price * 1000 +
+            orderData.tons * price * 1000 * 0.18
+          ).toFixed(2)}`}
           type="text"
           className={classes.input}
         />
-        <span className={classes.placeholder}>₹</span>
+        {/* <span className={classes.placeholder}>₹</span> */}
       </div>
     </div>
   );

@@ -10,8 +10,10 @@ import SummaryBox from "components/SummaryBox/SummaryBox";
 import axios from "axios";
 import { baseURL } from "config";
 import orderContext from "contexts/orderContext";
+import useWindowSize from "utils/useWindowSize";
 
 const SectionOrder = () => {
+  const { width } = useWindowSize();
   const [active, setActive] = useState("OrderDetails");
   const { orderData, setOrderData } = useContext<any>(orderContext);
   const [productData, setProductData] = useState<any>([]);
@@ -34,6 +36,7 @@ const SectionOrder = () => {
     totalValue: "",
     packets: "",
     image: "",
+    numOfCoils: "",
   });
 
   const [price, setPrice] = useState(0);
@@ -91,6 +94,7 @@ const SectionOrder = () => {
         totalValue: "",
         packets: "",
         image: "",
+        numOfCoils: "",
       });
       console.log(orderData);
     }
@@ -98,7 +102,13 @@ const SectionOrder = () => {
 
   return (
     <div className={clsx(classes.root, "section")}>
-      <div className={clsx(classes.container, "container d-flex")}>
+      <div
+        className={clsx(
+          classes.container,
+          classes.orderBodyContainer,
+          "container d-flex"
+        )}
+      >
         <div className={clsx(classes.left, "w-50")}>
           <div className={clsx(classes.nav, "d-flex align-items-center")}>
             <div

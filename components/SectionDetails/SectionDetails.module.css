@@ -23,3 +23,9 @@
   color: var(--blue);
   font-weight: bold;
 }
+
+@media (max-width: 768px) {
+  .body {
+    width: 100%;
+  }
+}

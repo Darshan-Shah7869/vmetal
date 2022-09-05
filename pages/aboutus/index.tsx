@@ -7,7 +7,7 @@ import React from "react";
 
 const AboutusPage = () => {
   return (
-    <div>
+    <div style={{ overflowX: "hidden" }}>
       <ProductsHero
         title="About us"
         subtitle=" Metal Solutions Inc’s coil processing service Centre is in Ahmedabad, Gujarat stands on solid foundation of 30 years of association of mild steel."

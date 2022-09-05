@@ -37,22 +37,6 @@ const SectionUses2 = () => {
                   </li>
                 );
               })}
-            {/* <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li>
-            <li className={clsx(classes.item, "heading-3")}>Lorem ipsum</li> */}
           </ul>
         </div>
       </div>

@@ -6,9 +6,11 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { baseURL } from "config";
 import CardReview from "components/CardReview/CardReview";
 import axios from "axios";
+import useWindowSize from "utils/useWindowSize";
 
 const SectionReview = () => {
   const [reviews, setReviews] = useState([]);
+  const { width } = useWindowSize();
 
   useEffect(() => {
     axios
@@ -33,7 +35,11 @@ const SectionReview = () => {
         <div>
           <Splide
             style={{ width: "100%" }}
-            options={{ width: "100%", perPage: 3, perMove: 3 }}
+            options={{
+              width: "100%",
+              perPage: width <= 950 ? (width <= 767 ? 1 : 2) : 3,
+              perMove: width <= 950 ? (width <= 767 ? 1 : 2) : 3,
+            }}
             aria-label="My Favorite Images"
           >
             {reviews.length !== 0 &&

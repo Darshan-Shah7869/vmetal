@@ -50,6 +50,53 @@
   margin-bottom: 2rem;
 }
 
+@media (max-width: 1200px) {
+  .row2,
+  .row3 {
+    grid-column-gap: 3rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .rootCalculator {
+    padding: 4rem !important;
+  }
+
+  .orderBodyContainer {
+    flex-direction: column !important;
+  }
+
+  .orderBodyContainer > div {
+    width: 80% !important;
+    margin: 0 auto !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .row2,
+  .row3 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .root input {
+    max-width: 100%;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .container {
+    width: 500px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 90vw;
+  }
+}
+
 .input::placeholder {
   color: #b9b3b3 !important;
 }

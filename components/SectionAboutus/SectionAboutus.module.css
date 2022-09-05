@@ -8,6 +8,23 @@
   justify-content: center;
 }
 
+@media (max-width: 1024px) {
+  .body {
+    width: 80%;
+  }
+
+  .title {
+    left: -10rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .body {
+    width: 100%;
+    padding-left: 12rem;
+  }
+}
+
 .container {
   height: 100%;
 }

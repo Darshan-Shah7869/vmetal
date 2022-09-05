@@ -39,7 +39,6 @@ const OrderDetails = ({
         <div className="mb-2 w-100">
           <DropdownMenu
             changeHandler={(v: any) => {
-              setActiveProduct(v);
               setOrderData((prev: any) => ({ ...prev, category: v }));
             }}
             label=""
@@ -47,21 +46,24 @@ const OrderDetails = ({
             dataArr={[...category]}
           />
         </div>
-        <div className="p-relative w-100 d-flex align-items-center mb-2">
-          <input
-            value={orderData.length}
-            onChange={(e) => {
-              setOrderData((prev: any) => ({
-                ...prev,
-                length: e.target.value,
-              }));
-            }}
-            type="text"
-            className={classes.input}
-            placeholder="Length"
-          />
-          <span className={classes.placeholder}>MM</span>
-        </div>
+        {orderData.category !== "Coils" &&
+          orderData.category !== "Slitted Coils" && (
+            <div className="p-relative w-100 d-flex align-items-center mb-2">
+              <input
+                value={orderData.length}
+                onChange={(e) => {
+                  setOrderData((prev: any) => ({
+                    ...prev,
+                    length: e.target.value,
+                  }));
+                }}
+                type="text"
+                className={classes.input}
+                placeholder="Length"
+              />
+              <span className={classes.placeholder}>MM</span>
+            </div>
+          )}
         <div className="p-relative w-100 d-flex align-items-center mb-2">
           <input
             value={orderData.width}
@@ -95,6 +97,7 @@ const OrderDetails = ({
       </div>
       <div className={clsx(classes.inputBox, "mb-5")}>
         <div className={clsx(classes.label, "")}>Quantity</div>
+
         <div className="p-relative w-100 d-flex align-items-center mb-2">
           <input
             value={orderData.tons}
@@ -102,6 +105,7 @@ const OrderDetails = ({
               setOrderData((prev: any) => ({
                 ...prev,
                 tons: e.target.value,
+                packets: parseFloat(e.target.value) / 3,
                 sheets: (
                   (1000000000 * parseFloat(e.target.value)) /
                   (prev.width * prev.thickness * prev.length * 7.85)
@@ -114,29 +118,67 @@ const OrderDetails = ({
           />
           <span className={classes.placeholder}>Tons</span>
         </div>
-        <div className="p-relative w-100 d-flex align-items-center mb-2">
-          <input
-            value={orderData.sheets}
-            onChange={(e) => {
-              setOrderData((prev: any) => ({
-                ...prev,
-                sheets: e.target.value,
-                tons: (
-                  ((prev.width *
-                    prev.thickness *
-                    prev.length *
-                    parseFloat(e.target.value)) /
-                    1000000000) *
-                  7.85
-                ).toFixed(2),
-              }));
-            }}
-            type="text"
-            className={classes.input}
-            placeholder=""
-          />
-          <span className={classes.placeholder}>No. of sheets</span>
-        </div>
+        {orderData.category === "Packets" && (
+          <div className="p-relative w-100 d-flex align-items-center mb-2">
+            <input
+              value={orderData.packets}
+              onChange={(e) => {
+                setOrderData((prev: any) => ({
+                  ...prev,
+                  packets: e.target.value,
+                  tons: parseFloat(e.target.value) * 3,
+                }));
+              }}
+              type="text"
+              className={classes.input}
+            />
+            <span className={classes.placeholder}>Packets</span>
+          </div>
+        )}
+        {orderData.category === "Slitted Coils" && (
+          <div className="p-relative w-100 d-flex align-items-center mb-2">
+            <input
+              value={orderData.numOfCoils}
+              onChange={(e) => {
+                setOrderData((prev: any) => ({
+                  ...prev,
+                  numOfCoils: e.target.value,
+                }));
+              }}
+              type="text"
+              className={classes.input}
+            />
+            <span className={classes.placeholder}>No. Of Coils</span>
+          </div>
+        )}
+        {(orderData.category === "Sheets" ||
+          orderData.category === "Roofing Sheets" ||
+          orderData.category === "C Purlin" ||
+          orderData.category === "Z Purlin") && (
+          <div className="p-relative w-100 d-flex align-items-center mb-2">
+            <input
+              value={orderData.sheets}
+              onChange={(e) => {
+                setOrderData((prev: any) => ({
+                  ...prev,
+                  sheets: e.target.value,
+                  tons: (
+                    ((prev.width *
+                      prev.thickness *
+                      prev.length *
+                      parseFloat(e.target.value)) /
+                      1000000000) *
+                    7.85
+                  ).toFixed(2),
+                }));
+              }}
+              type="text"
+              className={classes.input}
+              placeholder=""
+            />
+            <span className={classes.placeholder}>No. of sheets</span>
+          </div>
+        )}
         <div
           onClick={() => {
             setOrderData((prev: any) => ({

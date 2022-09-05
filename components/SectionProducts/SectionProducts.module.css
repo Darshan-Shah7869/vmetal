@@ -6,3 +6,21 @@
   grid-row-gap: 6rem;
   justify-items: center;
 }
+
+@media (max-width: 1200px) {
+  .body {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 800px) {
+  .body {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .body {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

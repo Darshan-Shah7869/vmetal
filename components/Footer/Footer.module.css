@@ -2,6 +2,7 @@
   margin-bottom: 2rem;
   color: #fff;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .root {
@@ -55,6 +56,10 @@
   margin-right: 15rem;
 }
 
+.social {
+  transform: translateX(-3.5rem);
+}
+
 .socialIcon {
   margin-left: 4rem;
   cursor: pointer;
@@ -66,4 +71,75 @@
 
 .data {
   max-width: 35rem;
+}
+
+@media (max-width: 1200px) {
+  .left1 {
+    margin-right: 8rem;
+  }
+
+  .center1 {
+    margin-right: 8rem;
+  }
+
+  .right1 {
+    margin-right: 8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .left1 {
+    margin-right: 4rem;
+  }
+
+  .center1 {
+    margin-right: 4rem;
+  }
+
+  .right1 {
+    margin-right: 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .top {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .bottom {
+    justify-content: center !important;
+  }
+
+  .left > div {
+    text-align: center;
+  }
+
+  .item {
+    flex-direction: column;
+  }
+
+  .icon {
+    margin-bottom: 1rem;
+  }
+
+  .data {
+    margin-top: 0;
+  }
+
+  .dataEmail {
+    margin-top: -2rem !important;
+  }
+
+  .right {
+    margin-top: 6rem;
+  }
+
+  .right1 {
+    margin-right: 0;
+  }
+
+  .social {
+    transform: translateX(-2rem);
+  }
 }

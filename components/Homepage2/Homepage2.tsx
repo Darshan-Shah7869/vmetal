@@ -14,7 +14,10 @@ const Homepage2 = () => {
           to its customers with its products and services.
         </div>
         <div className={clsx(classes.text, "mb-5 pb-5")}>
-        We contribute to Steel manufacturing and merchanting, which highly contribute to different functions by giving their customers mild steel sheets, coils, slitted coils, and corrugated sheets as per their requirements and specifications.
+          We contribute to Steel manufacturing and merchanting, which highly
+          contribute to different functions by giving their customers mild steel
+          sheets, coils, slitted coils, and corrugated sheets as per their
+          requirements and specifications.
         </div>
         <div className={clsx(classes.btnBox, "")}>
           <button className="btn btn-contained">Know More</button>

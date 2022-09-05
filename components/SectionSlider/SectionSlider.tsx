@@ -5,6 +5,7 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import clsx from "clsx";
 import CardProduct from "components/CardProduct/CardProduct";
 import { baseURL } from "config";
+import useWindowSize from "utils/useWindowSize";
 
 const SectionSlider = ({
   title,
@@ -12,12 +13,14 @@ const SectionSlider = ({
   data,
   isBrandSlider = false,
 }: any) => {
+  const { width } = useWindowSize();
+
   return (
     <div
       style={{ backgroundColor: bgColor }}
-      className="root section bg-white-2"
+      className={clsx(classes.root, "root section bg-white-2")}
     >
-      <div className="container">
+      <div className={classes.container}>
         <div
           style={{ marginBottom: "8rem" }}
           className="text-center heading-3 text-blue"
@@ -27,7 +30,11 @@ const SectionSlider = ({
         <div>
           <Splide
             style={{ width: "100%" }}
-            options={{ width: "100%", perPage: 3, perMove: 1 }}
+            options={{
+              width: "100%",
+              perPage: width < 1000 ? (width < 600 ? 1 : 1) : 3,
+              perMove: 1,
+            }}
             aria-label="My Favorite Images"
           >
             {data && isBrandSlider

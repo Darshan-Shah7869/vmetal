@@ -11,7 +11,7 @@
 .title {
   position: absolute;
   transform: rotate(90deg);
-  left: -10rem;
+  left: -10vw;
   top: 50%;
 }
 
@@ -19,7 +19,7 @@
   width: 70%;
   margin: 0 auto;
   background-color: var(--white);
-  display: flex;  
+  display: flex;
   padding: 12rem 8rem;
   justify-content: space-between;
 }
@@ -34,4 +34,26 @@
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 8rem;
   justify-content: space-around;
+}
+
+@media (max-width: 1250px) {
+  .body {
+    width: 80%;
+  }
+
+  .title {
+    left: -160px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .body {
+    padding: 12rem 6rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .items {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }

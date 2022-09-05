@@ -8,4 +8,22 @@
   padding-right: 5vw;
   width: 60%;
   padding-left: 6rem;
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+@media (max-width: 768px) {
+  .root {
+    flex-direction: column !important;
+  }
+
+  .left {
+    width: 100%;
+    min-height: 80vh;
+  }
+
+  .body {
+    width: 100%;
+    text-align: center;
+  }
 }

@@ -1,0 +1,25 @@
+.container {
+  width: 95%;
+  margin: 0 auto;
+}
+
+.root {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 1000px) {
+  .container {
+    width: 80%;
+  }
+
+  .root {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
+  }
+}

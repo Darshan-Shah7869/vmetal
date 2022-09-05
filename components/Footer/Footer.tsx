@@ -37,7 +37,9 @@ const Footer = () => {
                   className={clsx(classes.icon, "")}
                 />
               </div>
-              <div className={clsx(classes.data, "")}>xyz@gmail.com</div>
+              <div className={clsx(classes.data, classes.dataEmail, "")}>
+                xyz@gmail.com
+              </div>
             </div>
             <div className={clsx(classes.item, "d-flex align-items-center")}>
               <div className={clsx(classes.icon, "")}>
@@ -47,7 +49,7 @@ const Footer = () => {
                   className={clsx(classes.icon, "")}
                 />
               </div>
-              <div className={clsx(classes.data, "")}>
+              <div className={clsx(classes.data, classes.dataEmail, "")}>
                 Plot No. 523, Road No.14, Kathwada GIDC, Odhav Industrial
                 Estate, Odhav, Ahmedabad, Gujarat 382415, India
               </div>
@@ -70,10 +72,10 @@ const Footer = () => {
               <div className={clsx(classes.page, "")}>Accessories</div>
             </div>
             <div className={clsx(classes.right1, "text-pink")}>
-              <div className={clsx(classes.page, "")}>Help</div>
-              <div className={clsx(classes.page, "")}>FAQs</div>
+              {/* <div className={clsx(classes.page, "")}>Help</div> */}
+              {/* <div className={clsx(classes.page, "")}>FAQs</div> */}
               <div className={clsx(classes.page, "")}>Contact Us</div>
-              <div className={clsx(classes.page, "")}>Get A Quote</div>
+              {/* <div className={clsx(classes.page, "")}>Get A Quote</div> */}
             </div>
           </div>
         </div>
@@ -83,12 +85,12 @@ const Footer = () => {
             "d-flex align-items-center justify-content-between"
           )}
         >
-          <div className={clsx(classes.left, "d-flex")}>
+          {/* <div className={clsx(classes.left, "d-flex")}>
             <div className={clsx(classes.page, "mr-5 pr-3")}>
               Terms & Conditions
             </div>
             <div className={clsx(classes.page, "")}>Privacy Policy</div>
-          </div>
+          </div> */}
           <div className={clsx(classes.right, "d-flex align-items-center")}>
             <div className={clsx(classes.social, "")}>
               <img

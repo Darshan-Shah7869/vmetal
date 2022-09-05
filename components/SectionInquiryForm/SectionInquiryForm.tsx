@@ -76,7 +76,7 @@ const SectionInquiryForm = () => {
           );
         }
       }),
-      setServiceData(outputService);
+        setServiceData(outputService);
     }
   }, [activeProduct]);
 
@@ -88,7 +88,7 @@ const SectionInquiryForm = () => {
     <>
       {productData && (
         <div className={clsx(classes.root, "section")}>
-          <div className="container">
+          <div className={clsx(classes.container, "container")}>
             <div
               className={clsx(classes.title, "heading-2 text-black mb-5 pb-2")}
             >
@@ -277,8 +277,8 @@ const SectionInquiryForm = () => {
                   onChange={(e) => {
                     setContactData((prev: any) => ({
                       ...prev,
-                      // @ts-ignore
                       attachment:
+                        // @ts-ignore
                         document?.getElementById("file-input")?.files[0],
                     }));
                   }}

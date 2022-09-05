@@ -5,4 +5,36 @@
 .right {
   margin-right: 5vw;
   padding-left: 6.4rem;
+  padding-top: 6.4rem;
+  padding-bottom: 6.4rem;
+}
+
+@media (max-width: 600px) {
+  .root {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .left {
+    width: 100%;
+    min-height: 80vh;
+  }
+
+  .right {
+    min-height: 50vh;
+    width: 100%;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .text {
+    text-align: center;
+  }
+
+  .btnBox {
+    display: flex;
+    justify-content: center;
+  }
 }

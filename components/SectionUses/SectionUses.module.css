@@ -1,8 +1,26 @@
 .body {
-  /* max-width: 60%; */
+  max-width: 60%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-row-gap: 6rem;
   justify-items: center;
+}
+
+@media (max-width: 1200px) {
+  .body {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 800px) {
+  .body {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .body {
+    grid-template-columns: repeat(1, 1fr);
+  }
 }
