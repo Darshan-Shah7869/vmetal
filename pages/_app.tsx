@@ -10,7 +10,7 @@ import "../styles/globals.css";
 import UserPopup from "components/UserPopup/UserPopup";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [popupData, setPopupData] = useState({
+  const [popupData, setPopupData] = useState<any>({
     isVisible: false,
     childComponent: "",
   });
