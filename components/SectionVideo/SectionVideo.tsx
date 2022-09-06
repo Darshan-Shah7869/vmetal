@@ -7,7 +7,9 @@ import VisibilitySensor from "react-visibility-sensor";
 import clsx from "clsx";
 import { baseURL } from "config";
 
-const SectionVideo = ({ video }: any) => {
+const SectionVideo = ({
+  video = "https://res.cloudinary.com/domdsbthb/video/upload/v1662455312/big_buck_bunny_720p_1mb_5fc6f55e89.mp4",
+}: any) => {
   const [visibility, setVisibility] = useState(false);
   return (
     <VisibilitySensor
@@ -27,12 +29,7 @@ const SectionVideo = ({ video }: any) => {
           // controls
           // style={{ PointerEvent: 'none' }}
         >
-          <source
-            src={
-              "http://localhost:1337/uploads/big_buck_bunny_720p_1mb_3903e1583d.mp4"
-            }
-            type="video/mp4"
-          />
+          <source src={video} type="video/mp4" />
           Your browser does not support HTML5 video.
         </video>
       </div>

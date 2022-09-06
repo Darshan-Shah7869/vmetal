@@ -68,7 +68,7 @@ const SectionOrder = () => {
         setPrice(res.data.data[0].attributes.price);
         setOrderDataLocal((prev: any) => ({
           ...prev,
-          image: res.data.data[0].attributes.coverImage.data.attributes.url,
+          image: res.data.data[0].attributes.coverImage.data[0].attributes.url,
         }));
       })
       .catch((err) => console.log(err));

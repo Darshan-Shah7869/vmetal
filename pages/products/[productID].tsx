@@ -19,7 +19,9 @@ const ProductPage = () => {
         `${baseURL}/api/products?filters[slug][$eq]=${router.query.productID}&populate=*`
       )
       .then((res) => {
+        console.log(res);
         setProductData(res?.data?.data[0]?.attributes);
+        console.log(productData);
       })
       .catch((err) => {
         console.log(err.message);
@@ -42,6 +44,8 @@ const ProductPage = () => {
     });
   }, [productData?.brands]);
 
+  console.log(productData?.image?.data[0]?.attributes?.url);
+
   return (
     <div>
       {productData && brandData && (
@@ -49,7 +53,7 @@ const ProductPage = () => {
           <ProductsHero
             title={productData.title1}
             subtitle={productData.subtitle1}
-            image={productData?.image?.data[0]?.attributes?.url}
+            image={productData?.Image?.data[0]?.attributes?.url}
           />
           <SectionAboutus
             title={productData.title2}

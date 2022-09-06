@@ -28,13 +28,12 @@ const SectionProducts = () => {
         <div className="heading-2 pb-5 mb-5 text-center">Our Products</div>
         <div className={clsx(classes.body, "")}>
           {productData.map((el: any, index: number) => {
-            console.log(el.attributes.coverImage.data.attributes.url);
             return (
               <CardProduct
                 isBrandCar={false}
                 name={el.attributes.name}
                 slug={el.attributes.slug}
-                image={`${baseURL}${el.attributes.coverImage.data.attributes.url}`}
+                image={`${el.attributes.coverImage.data[0].attributes.url}`}
                 key={index}
               />
             );

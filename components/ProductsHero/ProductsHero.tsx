@@ -22,9 +22,7 @@ const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
           <div className={clsx(classes.left, "h-100 w-40")}>&nbsp;</div>
           <div
             style={{
-              backgroundImage: isLocal
-                ? `url('${image}')`
-                : `url(${baseURL}${image})`,
+              backgroundImage: isLocal ? `url('${image}')` : `url(${image})`,
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
