@@ -6,6 +6,10 @@
 .root {
 }
 
+.center {
+  transform: translateX(6rem);
+}
+
 .item {
   margin-right: 5rem;
   font-size: 1.4rem;
@@ -44,11 +48,11 @@
   z-index: 1000;
 }
 
-@media (max-width: 1350px) {
+/* @media (max-width: 1350px) {
   .center {
     transform: translateX(4rem);
   }
-}
+} */
 
 @media (max-width: 1200px) {
   .item {
