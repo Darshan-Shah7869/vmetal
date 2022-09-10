@@ -22,7 +22,9 @@
 
   .right {
     min-height: 50vh;
-    width: 100%;
+    width: 80%;
+    padding-left: 0;
+    margin-right: 2rem;
   }
 
   .title {

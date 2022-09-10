@@ -44,4 +44,29 @@
   .left {
     margin-right: 4rem;
   }
+
+  .orderBodyContainer {
+    width: 100%;
+  }
+
+  .item {
+    font-size: 2rem;
+  }
+
+  .nav {
+    margin-bottom: 4rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .root {
+    padding-top: 4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .orderBodyContainer > div {
+    width: 90% !important;
+    margin: 0 auto !important;
+  }
 }

@@ -8,3 +8,9 @@
   justify-content: center;
   padding-right: 15vw !important;
 }
+
+@media (max-width: 768px) {
+  .body {
+    padding-right: 4rem !important;
+  }
+}

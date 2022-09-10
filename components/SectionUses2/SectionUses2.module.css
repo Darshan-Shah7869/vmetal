@@ -42,7 +42,7 @@
   }
 
   .title {
-    left: -160px;
+    left: -16rem;
   }
 }
 
@@ -55,5 +55,11 @@
 @media (max-width: 768px) {
   .items {
     grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .title {
+    left: -18rem;
   }
 }

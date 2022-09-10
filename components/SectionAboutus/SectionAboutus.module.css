@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 8rem 5rem;
   display: flex;
-  height: 80vh;
+  min-height: 80vh;
   flex-direction: column;
   justify-content: center;
 }
@@ -18,10 +18,20 @@
   }
 }
 
+@media (max-width: 768px) {
+  .title {
+    left: -15rem !important;
+  }
+}
+
 @media (max-width: 600px) {
   .body {
     width: 100%;
     padding-left: 12rem;
+  }
+
+  .container {
+    width: 100%;
   }
 }
 

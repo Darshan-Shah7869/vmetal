@@ -25,5 +25,14 @@
   .body {
     width: 100%;
     text-align: center;
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .body {
+    padding-left: 3rem;
+    padding-right: 3rem;
   }
 }
