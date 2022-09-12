@@ -62,7 +62,7 @@
 
 .socialIcon {
   margin-left: 4rem;
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 .left .item {

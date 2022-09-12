@@ -6,7 +6,7 @@ const DropdownMenu = ({
   label,
   pvalue,
   dataArr,
-  changeHandler = () => {},
+  changeHandler = () => { },
   disable = false,
 }: any) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,6 +16,7 @@ const DropdownMenu = ({
     changeHandler(value);
   }, [value]);
 
+
   return (
     <div className={`${classes.root}`}>
       <div
@@ -23,7 +24,7 @@ const DropdownMenu = ({
       >
         <div className={`${classes.left}`}>
           <div
-            style={{ color: "#b9b3b3" }}
+            // style={{ color: "#b9b3b3" }}
             className={`${classes.value} text-black`}
           >
             {value}

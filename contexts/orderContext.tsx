@@ -17,8 +17,12 @@ const orderContext = React.createContext({
     subtota: 0,
     tax: 0,
     brand: "",
+    pincode: "",
+    addressLine1: "",
+    addressLine2: "",
+    city: "",
   },
-  setOrderData: (item: any) => {},
+  setOrderData: (item: any) => { },
 });
 
 export default orderContext;

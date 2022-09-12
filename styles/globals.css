@@ -623,7 +623,7 @@ textarea {
   padding: 1rem 2rem;
   letter-spacing: 0.2px;
 
-  color: #b9b3b3 !important;
+  color: #000;
   outline: none;
   border: none;
   height: 22.7rem;
@@ -742,3 +742,5 @@ input::placeholder {
     opacity: 0;
   }
 }
+
+

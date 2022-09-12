@@ -9,8 +9,15 @@ import ThankYouPopup from "components/ThankYouPopup/ThankYouPopup";
 import orderContext from "contexts/orderContext";
 import axios from "axios";
 import { baseURL } from "config";
+// @ts-ignore
+import validator from "validator";
+import { useRouter } from "next/router";
+
 
 const BuyerDetails = () => {
+
+  const router = useRouter();
+
   const { popupData, setPopupData } = useContext(popupContext);
   const { orderData, setOrderData } = useContext(orderContext);
   const [brandData, setBrandsData] = useState<any>([]);
@@ -607,7 +614,7 @@ const BuyerDetails = () => {
           }}
           type="text"
           className={`${classes.input} mb-2`}
-          placeholder="Line 2"
+          placeholder="Line 2 (Optional)"
         />
         <input
           onChange={(e) => {
@@ -728,8 +735,37 @@ const BuyerDetails = () => {
           subt.toFixed(2);
           inv.toFixed(2);
           tv.toFixed(2);
-
-          if (err.length === 0) {
+          // @ts-ignore
+          if (orderData.name.length === 0) {
+            setErr('Please provide your full name.')
+          } else if (orderData.contactNumber.length === 0) {
+            setErr('Please provide your contact number.')
+          } else if (orderData.email.length === 0) {
+            setErr('Please provide your email.')
+          } else if (!validator.isEmail(orderData.email)) {
+            setErr('Please provide a valid email.');
+          } else if (orderData.companyName.length === 0) {
+            setErr('Please provide your company name.')
+            // @ts-ignore
+          } else if (orderData.addressLine1.length === 0) {
+            setErr('Please provide your address.')
+            // @ts-ignore
+          } else if (orderData.pincode.length === 0) {
+            setErr('Please provide your pin code.')
+            // @ts-ignore
+          } else if (orderData.city.length === 0) {
+            setErr('Please select your city.')
+          } else if (orderData.state.length === 0) {
+            setErr('Please select your state.');
+          } else if (orderData.country.length === 0) {
+            setErr('Please select your country.');
+          } else if (orderData.GSTNumber.length === 0) {
+            setErr('Please provide your GST number.')
+          } else if (orderData.GSTNumber.length !== 15) {
+            setErr('Please provide valid GST number.')
+          } else if (enteredCode !== code) {
+            setErr('Please enter correct captcha code.')
+          } else {
             axios
               .post(`${baseURL}/api/orders`, {
                 data: { ...orderData, subtotal: subt, tax: inv, total: tv },
@@ -744,14 +780,18 @@ const BuyerDetails = () => {
               .catch((err) => {
                 console.log(err.message);
               });
+            setErr("");
+            router.push('/');
           }
+
+
         }}
         className="btn btn-contained mt-5 w-100"
       >
         {/* Continue Buyer’s Details */}
         Book Order Online
       </button>
-      <p className={classes.error}>{err}</p>
+      <p style={{ textAlign: "center", color: 'maroon', marginTop: '2rem' }} className={classes.error}>{err}</p>
     </div>
   );
 };

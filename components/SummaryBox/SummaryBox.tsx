@@ -45,7 +45,7 @@ const SummaryBox = () => {
           <div key={index} className={clsx(classes.card, "d-flex")}>
             <div
               style={{
-                backgroundImage: `url('${baseURL}${el.image}')`,
+                backgroundImage: `url('${el.image}')`,
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",

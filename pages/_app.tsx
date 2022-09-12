@@ -31,6 +31,10 @@ function MyApp({ Component, pageProps }: AppProps) {
     subtota: 0,
     tax: 0,
     brand: "",
+    pincode: "",
+    addressLine1: "",
+    addressLine2: "",
+    city: "",
   });
 
   useEffect(() => {

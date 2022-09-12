@@ -14,6 +14,7 @@ const Navbar = () => {
   const router = useRouter();
   const [search, setSearch] = useState("");
   const [routes, setRoutes] = useState("");
+  const [routes2, setRoutes2] = useState("");
   const [productData, setProductData] = useState<any>([]);
   const [serviceData, setServiceData] = useState<any>([]);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -40,7 +41,11 @@ const Navbar = () => {
         const servicesName = res.data.data.map((el: any) => {
           return el.attributes.name;
         });
+        const routesName = res.data.data.map((el: any) => {
+          return el.attributes.slug;
+        });
         setServiceData(servicesName);
+        setRoutes2(routesName);
       })
       .catch((err) => {
         console.log(err.message);
@@ -232,17 +237,21 @@ const Navbar = () => {
               />
               <img
                 onClick={() => {
-                  if (search.length !== 0 && productData.includes(search)) {
-                    router.push(
-                      `/products/${routes[productData.indexOf(search)]}`
+                  const product = productData.filter((el: string) => el.toLowerCase().includes(search.toLowerCase()));
+                  const service = serviceData.filter((el: string) => el.toLowerCase().includes(search.toLowerCase()));
+                  if (search.length !== 0 && product.length !== 0) {
+                    return router.push(
+                      `/products/${routes[productData.indexOf(product[0])]}`
                     );
                   }
 
-                  if (search.length !== 0 && serviceData.includes(search)) {
-                    router.push(
-                      `/services/${routes[productData.indexOf(search)]}`
+                  if (search.length !== 0 && service.length !== 0) {
+                    return router.push(
+                      `/services/${routes2[serviceData.indexOf(service[0])]}`
                     );
                   }
+
+                  setSearch('No product found');
                 }}
                 style={{ cursor: "pointer" }}
                 src={searchIcon.src}
@@ -362,11 +371,11 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <div  onClick={() => {
-                setIsMenuOpen(false);
-              }}>
+          <div onClick={() => {
+            setIsMenuOpen(false);
+          }}>
             <Link
-             
+
               href="/products"
               passHref
             >
@@ -396,109 +405,109 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <div  onClick={() => {
-              setIsMenuOpen(false);
-            }}>
-          <Link
-           
-            href="/services"
-            passHref
-          >
-            <div className="d-flex align-items-center flex-column">
-              <div
-                className={clsx(
-                  classes.item,
-                  router.pathname === "/services" && "text-yellow"
-                )}
-              >
-                Services
-              </div>
-              {router.pathname === "/services" && (
-                <div
-                  className={classes.dot}
-                  style={{
-                    width: "1rem",
-                    height: "1rem",
-                    backgroundColor: "var(--yellow)",
-                    borderRadius: "50%",
-                    marginLeft: "-5rem",
-                  }}
-                >
-                  &nbsp;
-                </div>
-              )}
-            </div>
-          </Link>
-          </div>
-         <div onClick={() => {
-              setIsMenuOpen(false);
-            }}>
-         <Link
-            
-            href="/uses"
-            passHref
-          >
-            <div className="d-flex align-items-center flex-column">
-              <div
-                className={clsx(
-                  classes.item,
-                  router.pathname === "/uses" && "text-yellow"
-                )}
-              >
-                Uses
-              </div>
-              {router.pathname === "/uses" && (
-                <div
-                  className={classes.dot}
-                  style={{
-                    width: "1rem",
-                    height: "1rem",
-                    backgroundColor: "var(--yellow)",
-                    borderRadius: "50%",
-                    marginLeft: "-5rem",
-                  }}
-                >
-                  &nbsp;
-                </div>
-              )}
-            </div>
-          </Link>
-         </div>
+          <div onClick={() => {
+            setIsMenuOpen(false);
+          }}>
+            <Link
 
-         <div onClick={() => {
-              setIsMenuOpen(false);
-            }}>
-         <Link
-            
-            href="/contactus"
-            passHref
-          >
-            <div className="d-flex align-items-center flex-column">
-              <div
-                className={clsx(
-                  classes.item,
-                  router.pathname === "/contactus" && "text-yellow"
-                )}
-              >
-                Contact Us
-              </div>
-              {router.pathname === "/contactus" && (
+              href="/services"
+              passHref
+            >
+              <div className="d-flex align-items-center flex-column">
                 <div
-                  className={classes.dot}
-                  style={{
-                    width: "1rem",
-                    height: "1rem",
-                    backgroundColor: "var(--yellow)",
-                    borderRadius: "50%",
-                    marginLeft: "-5rem",
-                  }}
+                  className={clsx(
+                    classes.item,
+                    router.pathname === "/services" && "text-yellow"
+                  )}
                 >
-                  &nbsp;
+                  Services
                 </div>
-              )}
-            </div>
-          </Link>
-         </div>
+                {router.pathname === "/services" && (
+                  <div
+                    className={classes.dot}
+                    style={{
+                      width: "1rem",
+                      height: "1rem",
+                      backgroundColor: "var(--yellow)",
+                      borderRadius: "50%",
+                      marginLeft: "-5rem",
+                    }}
+                  >
+                    &nbsp;
+                  </div>
+                )}
+              </div>
+            </Link>
+          </div>
+          <div onClick={() => {
+            setIsMenuOpen(false);
+          }}>
+            <Link
+
+              href="/uses"
+              passHref
+            >
+              <div className="d-flex align-items-center flex-column">
+                <div
+                  className={clsx(
+                    classes.item,
+                    router.pathname === "/uses" && "text-yellow"
+                  )}
+                >
+                  Uses
+                </div>
+                {router.pathname === "/uses" && (
+                  <div
+                    className={classes.dot}
+                    style={{
+                      width: "1rem",
+                      height: "1rem",
+                      backgroundColor: "var(--yellow)",
+                      borderRadius: "50%",
+                      marginLeft: "-5rem",
+                    }}
+                  >
+                    &nbsp;
+                  </div>
+                )}
+              </div>
+            </Link>
+          </div>
+
+          <div onClick={() => {
+            setIsMenuOpen(false);
+          }}>
+            <Link
+
+              href="/contactus"
+              passHref
+            >
+              <div className="d-flex align-items-center flex-column">
+                <div
+                  className={clsx(
+                    classes.item,
+                    router.pathname === "/contactus" && "text-yellow"
+                  )}
+                >
+                  Contact Us
+                </div>
+                {router.pathname === "/contactus" && (
+                  <div
+                    className={classes.dot}
+                    style={{
+                      width: "1rem",
+                      height: "1rem",
+                      backgroundColor: "var(--yellow)",
+                      borderRadius: "50%",
+                      marginLeft: "-5rem",
+                    }}
+                  >
+                    &nbsp;
+                  </div>
+                )}
+              </div>
+            </Link>
+          </div>
         </div>
       )}
     </>

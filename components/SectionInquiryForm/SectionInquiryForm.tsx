@@ -5,6 +5,8 @@ import clsx from "clsx";
 import DropdownMenu from "components/DropdownMenu/DropdownMenu";
 import { baseURL } from "config";
 import axios from "axios";
+// @ts-ignore
+import validator from "validator";
 
 const SectionInquiryForm = () => {
   const [contactData, setContactData] = useState({
@@ -22,10 +24,11 @@ const SectionInquiryForm = () => {
     thickness: "",
     attachment: "",
   });
+  const [err, setErr] = useState<any>(null);
   const [productData, setProductData] = useState<any>(null);
   const [activeProduct, setActiveProduct] = useState<any>(null);
-  const [categoryData, setCategoryData] = useState<any>(null);
-  const [serviceData, setServiceData] = useState<any>(null);
+  const [categoryData, setCategoryData] = useState<any>([]);
+  const [serviceData, setServiceData] = useState<any>([]);
 
   useEffect(() => {
     axios
@@ -55,6 +58,8 @@ const SectionInquiryForm = () => {
     if (productData !== null) {
       let outputCategory;
       let outputService;
+      setCategoryData([]);
+      setServiceData([]);
       productData.forEach((el: any) => {
         if (el.attributes.name === activeProduct) {
           console.log(
@@ -63,7 +68,7 @@ const SectionInquiryForm = () => {
             ),
             activeProduct
           );
-          outputCategory = el.attributes.categories?.data.map(
+          outputCategory = el.attributes?.categories?.data.map(
             (category: any) => category.attributes.name
           );
         }
@@ -79,10 +84,6 @@ const SectionInquiryForm = () => {
         setServiceData(outputService);
     }
   }, [activeProduct]);
-
-  useEffect(() => {
-    console.log(categoryData, serviceData);
-  }, [categoryData, serviceData]);
 
   return (
     <>
@@ -309,7 +310,7 @@ const SectionInquiryForm = () => {
             Attach
           </button> */}
               <a
-                href={`${baseURL}/uploads/Brochure_cda3aec44e.pdf`}
+                href={`https://res.cloudinary.com/domdsbthb/image/upload/v1662455312/Brochure_114a29cd18.pdf`}
                 download
                 target="_blank"
                 rel="noreferrer"
@@ -335,21 +336,50 @@ const SectionInquiryForm = () => {
 
               <button
                 onClick={() => {
-                  let formData = new FormData();
-                  formData.append("files", contactData.attachment);
+                  if (contactData.firstName.length === 0) {
+                    setErr('Please fill your first name.');
+                  } else if (contactData.lastName.length === 0) {
+                    setErr('Please fill your last name.')
+                  } else if (contactData.email.length === 0) {
+                    console.log(contactData.email);
+                    setErr('Please provide your email.')
+                  } else if (!validator.isEmail(contactData.email)) {
+                    setErr('Please provide valid email.')
+                  } else if (contactData.product.length === 0) {
+                    setErr('Please Select a Product.')
+                  } else {
+                    let formData = new FormData();
+                    formData.append("files", contactData.attachment);
 
-                  axios
-                    .post(`${baseURL}/api/upload`, formData)
-                    .then((res) => {
-                      const fileID = res.data[0].id;
-                      console.log(fileID);
-                      setContactData((prev: any) => ({
-                        ...contactData,
-                        attachment: fileID,
-                      }));
+                    if (contactData.attachment.length !== 0) {
+                      axios
+                        .post(`${baseURL}/api/upload`, formData)
+                        .then((res) => {
+                          const fileID = res.data[0].id;
+                          console.log(fileID);
+                          setContactData((prev: any) => ({
+                            ...contactData,
+                            attachment: fileID,
+                          }));
+                          axios
+                            .post(`${baseURL}/api/inquiries`, {
+                              data: { ...contactData, attachment: fileID },
+                            })
+                            .then((res) => {
+                              console.log(contactData);
+                              console.log(res.data);
+                            })
+                            .catch((err) => {
+                              console.log(err.message);
+                            });
+                        })
+                        .catch((err) => {
+                          console.log(err.message);
+                        });
+                    } else {
                       axios
                         .post(`${baseURL}/api/inquiries`, {
-                          data: { ...contactData, attachment: fileID },
+                          data: { ...contactData },
                         })
                         .then((res) => {
                           console.log(contactData);
@@ -358,15 +388,17 @@ const SectionInquiryForm = () => {
                         .catch((err) => {
                           console.log(err.message);
                         });
-                    })
-                    .catch((err) => {
-                      console.log(err.message);
-                    });
+                    }
+
+                    setErr("");
+
+                  }
                 }}
                 className={clsx(classes.btn, "btn btn-contained")}
               >
                 Submit
               </button>
+              {err && <p style={{ color: 'maroon' }} className="ml-3">{err}</p>}
             </div>
           </div>
         </div>

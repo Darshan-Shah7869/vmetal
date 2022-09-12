@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import classes from "./Footer.module.css";
 import clsx from "clsx";
@@ -11,8 +11,30 @@ import twitter from "public/assets/icons/twitter.svg";
 import location from "public/assets/icons/location.svg";
 
 import logo from "public/assets/images/logo.png";
+import { useRouter } from "next/router";
+import { baseURL } from "config";
+import axios from "axios";
+
 
 const Footer = () => {
+  const [data, setData] = useState<any>({
+    WhatsAppLink: "",
+    InstagramLink: "",
+    LinkedInLink: "",
+  });
+
+  useEffect(() => {
+    axios
+      .get(`${baseURL}/api/links`)
+      .then((response) => {
+        setData(response.data.data[0].attributes);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, []);
+
+  const router = useRouter();
   return (
     <div className={clsx("bg-blue", classes.root)}>
       <div className="container">
@@ -27,7 +49,7 @@ const Footer = () => {
                 alt="call"
                 className={clsx(classes.icon, "")}
               />
-              <div className={clsx(classes.data, "")}>+91 9999 9999 11</div>
+              <div className={clsx(classes.data, "")}>+91 95102 15623</div>
             </div>
             <div className={clsx(classes.item, "d-flex align-items-center")}>
               <div className={clsx(classes.icon, "")}>
@@ -38,7 +60,7 @@ const Footer = () => {
                 />
               </div>
               <div className={clsx(classes.data, classes.dataEmail, "")}>
-                xyz@gmail.com
+                vinal@vmetalsolutions.com
               </div>
             </div>
             <div className={clsx(classes.item, "d-flex align-items-center")}>
@@ -57,24 +79,22 @@ const Footer = () => {
           </div>
           <div className={clsx(classes.right, "d-flex")}>
             <div className={clsx(classes.left1, "")}>
-              <div className={clsx(classes.page, "text-pink")}>Home</div>
-              <div className={clsx(classes.page, "text-pink")}>About Us</div>
-              <div className={clsx(classes.page, "text-pink")}>Services</div>
-              <div className={clsx(classes.page, "text-pink")}>Uses</div>
+              <div onClick={() => { router.push('/') }} className={clsx(classes.page, "text-pink")}>Home</div>
+              <div onClick={() => { router.push('/aboutus') }} className={clsx(classes.page, "text-pink")}>About Us</div>
+              <div onClick={() => { router.push('/services') }} className={clsx(classes.page, "text-pink")}>Services</div>
+              <div onClick={() => { router.push('/uses') }} className={clsx(classes.page, "text-pink")}>Uses</div>
             </div>
             <div className={clsx(classes.center1, "")}>
-              <div className={clsx(classes.page, "text-pink")}>Products</div>
-              <div className={clsx(classes.page, "")}>HR/HRPO</div>
-              <div className={clsx(classes.page, "")}>CR/CRCA</div>
-              <div className={clsx(classes.page, "")}>GP/GI</div>
-              <div className={clsx(classes.page, "")}>PPGI/PPGL</div>
-              <div className={clsx(classes.page, "")}>C/Z Purlin</div>
-              <div className={clsx(classes.page, "")}>Accessories</div>
+              <div onClick={() => { router.push('/products') }} className={clsx(classes.page, "text-pink")}>Products</div>
+              <div onClick={() => { router.push('/products/hr-hrpo') }} className={clsx(classes.page, "")}>HR/HRPO</div>
+              <div onClick={() => { router.push('/products/cr-crca') }} className={clsx(classes.page, "")}>CR/CRCA</div>
+              <div onClick={() => { router.push('/products/gi') }} className={clsx(classes.page, "")}>GI</div>
+              <div onClick={() => { router.push('/products/ppgi') }} className={clsx(classes.page, "")}>PPGI</div>
             </div>
             <div className={clsx(classes.right1, "text-pink")}>
               {/* <div className={clsx(classes.page, "")}>Help</div> */}
               {/* <div className={clsx(classes.page, "")}>FAQs</div> */}
-              <div className={clsx(classes.page, "")}>Contact Us</div>
+              <div onClick={() => { router.push('/contactus') }} className={clsx(classes.page, "")}>Contact Us</div>
               {/* <div className={clsx(classes.page, "")}>Get A Quote</div> */}
             </div>
           </div>
@@ -93,25 +113,38 @@ const Footer = () => {
           </div> */}
           <div className={clsx(classes.right, "d-flex align-items-center")}>
             <div className={clsx(classes.social, "")}>
-              <img
-                src={facebook.src}
-                alt="facebook"
-                className={clsx(classes.socialIcon, "")}
-              />
+              <a href={data["WhatsappLink"]} target="_blank" rel="noreferrer">
+                <img
+                  src={facebook.src}
+                  alt="facebook"
+                  className={clsx(classes.socialIcon, "")}
+                />
+              </a>
+
             </div>
             <div className={clsx(classes.social, "")}>
-              <img
-                src={twitter.src}
-                alt="twitter"
-                className={clsx(classes.socialIcon, "")}
-              />
+              <a href={data["LinkedInLink"]} target="_blank" rel="noreferrer">
+                <img
+                  src={twitter.src}
+                  alt="twitter"
+                  className={clsx(classes.socialIcon, "")}
+                />
+              </a>
+
             </div>
             <div className={clsx(classes.social, "")}>
-              <img
-                src={instagram.src}
-                alt="instagram"
-                className={clsx(classes.socialIcon, "")}
-              />
+              <a
+                href={data["InstagramLink"]}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <img
+                  src={instagram.src}
+                  alt="instagram"
+                  className={clsx(classes.socialIcon, "")}
+                />
+              </a>
+
             </div>
           </div>
         </div>

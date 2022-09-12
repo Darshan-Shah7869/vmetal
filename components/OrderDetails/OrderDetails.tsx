@@ -17,6 +17,8 @@ const OrderDetails = ({
   orderData,
   price,
 }: any) => {
+  const [err, setErr] = useState("");
+  const { orderData: orderDetails, } = useContext<any>(orderContext);
   return (
     <div
       style={{ backgroundColor: "transparent" }}
@@ -121,7 +123,7 @@ const OrderDetails = ({
         {orderData.category === "Packets" && (
           <div className="p-relative w-100 d-flex align-items-center mb-2">
             <input
-              value={orderData.packets}
+              value={parseFloat(orderData.packets).toFixed(2)}
               onChange={(e) => {
                 setOrderData((prev: any) => ({
                   ...prev,
@@ -155,31 +157,31 @@ const OrderDetails = ({
           orderData.category === "Roofing Sheets" ||
           orderData.category === "C Purlin" ||
           orderData.category === "Z Purlin") && (
-          <div className="p-relative w-100 d-flex align-items-center mb-2">
-            <input
-              value={orderData.sheets}
-              onChange={(e) => {
-                setOrderData((prev: any) => ({
-                  ...prev,
-                  sheets: e.target.value,
-                  tons: (
-                    ((prev.width *
-                      prev.thickness *
-                      prev.length *
-                      parseFloat(e.target.value)) /
-                      1000000000) *
-                    7.85
-                  ).toFixed(2),
-                }));
-              }}
-              type="text"
-              className={classes.input}
-              placeholder=""
-            />
-            <span className={classes.placeholder}>No. of sheets</span>
-          </div>
-        )}
-        <div
+            <div className="p-relative w-100 d-flex align-items-center mb-2">
+              <input
+                value={orderData.sheets}
+                onChange={(e) => {
+                  setOrderData((prev: any) => ({
+                    ...prev,
+                    sheets: e.target.value,
+                    tons: (
+                      ((prev.width *
+                        prev.thickness *
+                        prev.length *
+                        parseFloat(e.target.value)) /
+                        1000000000) *
+                      7.85
+                    ).toFixed(2),
+                  }));
+                }}
+                type="text"
+                className={classes.input}
+                placeholder=""
+              />
+              <span className={classes.placeholder}>No. of sheets</span>
+            </div>
+          )}
+        {/* <div
           onClick={() => {
             setOrderData((prev: any) => ({
               ...prev,
@@ -197,16 +199,48 @@ const OrderDetails = ({
         >
           <div className={`${classes.addText} text-black`}>+Add</div>
           <div className={classes.lorem}>Lorem ipsum dolor sit amet</div>
-        </div>
+        </div> */}
+
       </div>
+      {err.length > 0 && <p style={{ color: 'maroon', textAlign: 'center' }}>{err}</p>}
       <button
+        onClick={() => {
+
+          if (orderData.product.length === 0) {
+            setErr('Please select a product.');
+          } else if (orderData.category.length === 0) {
+            setErr('Please select a category.');
+          } else if (orderData.tons.length === 0) {
+            setErr('Please enter tons you want to buy.')
+          }
+
+          if (orderData.product.length > 0 && orderData.category.length > 0 && orderData.tons > 0) {
+            setErr("");
+            setOrderData((prev: any) => ({
+              ...prev,
+              packets: parseFloat(prev.tons) * 3,
+              basicValue: parseFloat(prev.tons) * price * 1000,
+              invoiceValue: parseFloat(prev.tons) * price * 1000 * 0.18,
+              totalValue:
+                parseFloat(prev.tons) * price * 1000 +
+                parseFloat(prev.tons) * price * 1000 * 0.18,
+              quantity: 1,
+              addToCart: true,
+            }));
+          }
+        }}
+        className="btn btn-contained mt-5 w-100"
+      >
+        Add to cart
+      </button>
+      {(orderDetails.order.length > 0) && <button
         onClick={() => {
           clicked();
         }}
         className="btn btn-contained mt-5 w-100"
       >
         Continue Buyer’s Details
-      </button>
+      </button>}
     </div>
   );
 };

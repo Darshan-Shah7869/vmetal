@@ -52,18 +52,20 @@ const CardProduct = ({
                   Know More
                 </button>
               </Link>
+              <Link href="/contactus">
               <button style={{ fontSize: "1rem" }} className="btn btn-outline">
                 Send Inquiry
               </button>
+              </Link>
             </div>
-            <Link
+            {/* <Link
               href={`/${toService ? "services" : "products"}/${slug}`}
               passHref
             >
               <div className="text-small text-underline text-yellow pointer align-self-end">
                 More Info
               </div>
-            </Link>
+            </Link> */}
           </>
         )}
       </div>
