@@ -398,8 +398,8 @@ const SectionInquiryForm = () => {
               >
                 Submit
               </button>
-              {err && <p style={{ color: 'maroon' }} className="ml-3">{err}</p>}
             </div>
+            {err && <p style={{ color: 'maroon' }} className="mt-3">{err}</p>}
           </div>
         </div>
       )}
