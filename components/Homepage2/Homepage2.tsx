@@ -3,8 +3,10 @@ import React from "react";
 import classes from "./Homepage2.module.css";
 
 import clsx from "clsx";
+import { useRouter } from "next/router";
 
 const Homepage2 = () => {
+  const router = useRouter();
   return (
     <div className={clsx(classes.root, "root d-flex")}>
       <div className={clsx(classes.left, "w-50")}>&nbsp;</div>
@@ -20,7 +22,7 @@ const Homepage2 = () => {
           requirements and specifications.
         </div>
         <div className={clsx(classes.btnBox, "")}>
-          <button className="btn btn-contained">Know More</button>
+          <button onClick={() => { router.push('/aboutus') }} className="btn btn-contained">Know More</button>
         </div>
       </div>
     </div>
