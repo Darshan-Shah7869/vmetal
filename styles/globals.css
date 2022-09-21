@@ -61,6 +61,7 @@ body {
   letter-spacing: 0.3px !important;
   overflow-x: hidden !important;
   color: var(--black) !important;
+  text-align: justify;
 }
 
 .root {

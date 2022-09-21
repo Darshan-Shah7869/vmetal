@@ -310,7 +310,7 @@ const SectionInquiryForm = () => {
             Attach
           </button> */}
               <a
-                href={`https://res.cloudinary.com/domdsbthb/image/upload/v1662455312/Brochure_114a29cd18.pdf`}
+                href={`https://res.cloudinary.com/domdsbthb/image/upload/v1663735499/V_Metal_Solutions_Inc_3d5e6a4f6c.pdf`}
                 download
                 target="_blank"
                 rel="noreferrer"
