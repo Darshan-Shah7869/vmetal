@@ -28,7 +28,7 @@ const UserPopup = () => {
     <div className={clsx(classes.root, "d-flex flex-column")}>
       <div className={clsx(classes.imageBox, "heading-2 text-center")}>👋</div>
       <div className={clsx(classes.title, "text-center mt-5 mb-5")}>
-        Lorem ipsum
+        Hi there ! <span style={{ fontSize: '1.6rem', lineHeight: '120% !important' }}> <br /> Would you like to know more about products?</span>
       </div>
 
       <div className="mb-2">
@@ -92,7 +92,7 @@ const UserPopup = () => {
       >
         Submit
       </button>
-    </div>
+    </div >
   );
 };
 

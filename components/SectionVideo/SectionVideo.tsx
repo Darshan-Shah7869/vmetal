@@ -13,6 +13,8 @@ const SectionVideo = ({
   const [visibility, setVisibility] = useState(false);
   return (
     <VisibilitySensor
+      minTopValue={500}
+      partialVisibility={true}
       onChange={(value: boolean) => {
         setVisibility(value);
       }}
@@ -26,8 +28,8 @@ const SectionVideo = ({
           autoPlay
           loop
           muted
-          // controls
-          // style={{ PointerEvent: 'none' }}
+        // controls
+        // style={{ PointerEvent: 'none' }}
         >
           <source src={video} type="video/mp4" />
           Your browser does not support HTML5 video.

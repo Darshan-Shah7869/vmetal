@@ -41,7 +41,7 @@ const SectionAboutus2 = () => {
           >
             V Metal Solutions Inc’s coil processing service Centre is in
             Ahmedabad, Gujarat stands on solid foundation of 30 years of
-            association of mild steel. V Metal Solutions Inc is fully geared to
+            association of mild steel. Ackroll Steel Group is fully geared to
             process 6,000 tones on its Cut-To-Length line, Corrugation line and
             Slitting line to the minimum.
           </div>

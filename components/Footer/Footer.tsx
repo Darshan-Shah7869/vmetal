@@ -60,7 +60,7 @@ const Footer = () => {
                 />
               </div>
               <div className={clsx(classes.data, classes.dataEmail, "")}>
-                vinal@vmetalsolutions.com
+                info@vmetalsolutions.com
               </div>
             </div>
             <div className={clsx(classes.item, "d-flex align-items-center")}>
@@ -72,8 +72,7 @@ const Footer = () => {
                 />
               </div>
               <div className={clsx(classes.data, classes.dataEmail, "")}>
-                Plot No. 523, Road No.14, Kathwada GIDC, Odhav Industrial
-                Estate, Odhav, Ahmedabad, Gujarat 382415, India
+                221, Second Floor, Vishala Supreme, Nr. Torrent Power Sub-Station, S.P. Ring Road, Nikol, Ahmedabad - 382350
               </div>
             </div>
           </div>
@@ -90,6 +89,8 @@ const Footer = () => {
               <div onClick={() => { router.push('/products/cr-crca') }} className={clsx(classes.page, "")}>CR/CRCA</div>
               <div onClick={() => { router.push('/products/gi') }} className={clsx(classes.page, "")}>GI</div>
               <div onClick={() => { router.push('/products/ppgi') }} className={clsx(classes.page, "")}>PPGI</div>
+              <div className={clsx(classes.page, "")}>PMP Plates</div>
+              <div className={clsx(classes.page, "")}>M.S. Structure</div>
             </div>
             <div className={clsx(classes.right1, "text-pink")}>
               {/* <div className={clsx(classes.page, "")}>Help</div> */}

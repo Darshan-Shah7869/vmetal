@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import classes from "./SectionInquiryForm.module.css";
 import clsx from "clsx";
@@ -7,8 +7,12 @@ import { baseURL } from "config";
 import axios from "axios";
 // @ts-ignore
 import validator from "validator";
+import ThankYouPopup from "components/ThankYouPopup/ThankYouPopup";
+import popupContext from "contexts/popupContext";
 
 const SectionInquiryForm = () => {
+
+  const { popupData, setPopupData } = useContext(popupContext)
   const [contactData, setContactData] = useState({
     firstName: "",
     lastName: "",
@@ -160,9 +164,9 @@ const SectionInquiryForm = () => {
                     }}
                     label=""
                     pvalue={activeProduct}
-                    dataArr={productData.map((el: any) => {
+                    dataArr={productData ? productData.map((el: any) => {
                       return el.attributes.name;
-                    })}
+                    }) : []}
                   />
                 </div>
               </div>
@@ -202,7 +206,7 @@ const SectionInquiryForm = () => {
                     }}
                     label=""
                     pvalue={serviceData[0]}
-                    dataArr={serviceData}
+                    dataArr={[...serviceData, "Other service"]}
                   />
                 </div>
               </div>
@@ -351,7 +355,7 @@ const SectionInquiryForm = () => {
                     let formData = new FormData();
                     formData.append("files", contactData.attachment);
 
-                    if (contactData.attachment.length !== 0) {
+                    if (contactData?.attachment?.length !== 0) {
                       axios
                         .post(`${baseURL}/api/upload`, formData)
                         .then((res) => {
@@ -368,9 +372,11 @@ const SectionInquiryForm = () => {
                             .then((res) => {
                               console.log(contactData);
                               console.log(res.data);
+                              setPopupData((prev: any) => ({ isVisible: true, childComponent: <ThankYouPopup isFromType2={true} /> }))
                             })
                             .catch((err) => {
                               console.log(err.message);
+                              setErr('Cant submit data now please try again!');
                             });
                         })
                         .catch((err) => {
@@ -386,7 +392,11 @@ const SectionInquiryForm = () => {
                           console.log(res.data);
                         })
                         .catch((err) => {
+                          if (contactData?.attachment?.length === 0) {
+                            return setPopupData((prev: any) => ({ isVisible: true, childComponent: <ThankYouPopup isFromType2={true} /> }))
+                          }
                           console.log(err.message);
+                          setErr('Cant submit data now please try again!');
                         });
                     }
 

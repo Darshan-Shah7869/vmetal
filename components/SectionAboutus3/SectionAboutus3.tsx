@@ -57,7 +57,7 @@ const SectionAboutus3 = () => {
             highly contributes to various processes by giving their customers
             mild steel sheets, coils, slitted coils and corrugated sheets as per
             their requirements and specifications. Mainly the mild steel
-            products (CRCA/HRPO/GP/GI/PPGI) are manufactured in various forms
+            products (CR/CRCA, HR/HRPO, GP/GI, PPGI/PPGL, PMP, Z/C Purlin) are manufactured in various forms
             and are delivered to various companies.
           </div>
         </div>
