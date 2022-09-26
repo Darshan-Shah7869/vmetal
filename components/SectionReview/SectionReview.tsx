@@ -38,7 +38,7 @@ const SectionReview = () => {
             options={{
               width: "100%",
               perPage: width <= 950 ? (width <= 767 ? 1 : 2) : 3,
-              perMove: width <= 950 ? (width <= 767 ? 1 : 2) : 3,
+              perMove: 1,
             }}
             aria-label="My Favorite Images"
           >
