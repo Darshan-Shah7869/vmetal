@@ -6,22 +6,19 @@ import DropdownMenu from "components/DropdownMenu/DropdownMenu";
 
 const SectionContact = () => {
   return (
-    <div className={clsx(classes.root, "section")}>
+    <div className={clsx(classes.root, "section bg-blue")}>
       <div
         className={clsx(
           classes.container,
-          "container d-flex align-items-center"
+          "container d-flex align-items-center "
         )}
       >
         <div className={clsx(classes.left, "w-50")}>
-          <div className={clsx(classes.leftBody, "w-100")}>
-            <div className={clsx(classes.label, "heading-3 text-black mb-5")}>
-              Address
-            </div>
-
-            <div
-              className={clsx(classes.input, classes.fullRow, classes.greyBox)}
-            >
+          <div className={clsx(classes.label, "heading-3 text-black mb-5")}>
+            Address
+          </div>
+          <div className={clsx(classes.leftBody, "w-100 bg-white")}>
+            <div className={clsx(classes.input, classes.fullRow, "")}>
               523, Rd Number 14, Kathwada GIDC, Odhav Industrial Estate, Odhav
             </div>
             <input

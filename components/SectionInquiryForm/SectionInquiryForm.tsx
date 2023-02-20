@@ -11,8 +11,7 @@ import ThankYouPopup from "components/ThankYouPopup/ThankYouPopup";
 import popupContext from "contexts/popupContext";
 
 const SectionInquiryForm = () => {
-
-  const { popupData, setPopupData } = useContext(popupContext)
+  const { popupData, setPopupData } = useContext(popupContext);
   const [contactData, setContactData] = useState({
     firstName: "",
     lastName: "",
@@ -164,9 +163,13 @@ const SectionInquiryForm = () => {
                     }}
                     label=""
                     pvalue={activeProduct}
-                    dataArr={productData ? productData.map((el: any) => {
-                      return el.attributes.name;
-                    }) : []}
+                    dataArr={
+                      productData
+                        ? productData.map((el: any) => {
+                            return el.attributes.name;
+                          })
+                        : []
+                    }
                   />
                 </div>
               </div>
@@ -334,23 +337,23 @@ const SectionInquiryForm = () => {
                       fill="#B9B3B3"
                     />
                   </svg>
-                  Download
+                  <span className="d-inline-block ml-1">E Brochure</span>
                 </button>
               </a>
 
               <button
                 onClick={() => {
                   if (contactData.firstName.length === 0) {
-                    setErr('Please fill your first name.');
+                    setErr("Please fill your first name.");
                   } else if (contactData.lastName.length === 0) {
-                    setErr('Please fill your last name.')
+                    setErr("Please fill your last name.");
                   } else if (contactData.email.length === 0) {
                     console.log(contactData.email);
-                    setErr('Please provide your email.')
+                    setErr("Please provide your email.");
                   } else if (!validator.isEmail(contactData.email)) {
-                    setErr('Please provide valid email.')
+                    setErr("Please provide valid email.");
                   } else if (contactData.product.length === 0) {
-                    setErr('Please Select a Product.')
+                    setErr("Please Select a Product.");
                   } else {
                     let formData = new FormData();
                     formData.append("files", contactData.attachment);
@@ -372,11 +375,16 @@ const SectionInquiryForm = () => {
                             .then((res) => {
                               console.log(contactData);
                               console.log(res.data);
-                              setPopupData((prev: any) => ({ isVisible: true, childComponent: <ThankYouPopup isFromType2={true} /> }))
+                              setPopupData((prev: any) => ({
+                                isVisible: true,
+                                childComponent: (
+                                  <ThankYouPopup isFromType2={true} />
+                                ),
+                              }));
                             })
                             .catch((err) => {
                               console.log(err.message);
-                              setErr('Cant submit data now please try again!');
+                              setErr("Cant submit data now please try again!");
                             });
                         })
                         .catch((err) => {
@@ -393,15 +401,19 @@ const SectionInquiryForm = () => {
                         })
                         .catch((err) => {
                           if (contactData?.attachment?.length === 0) {
-                            return setPopupData((prev: any) => ({ isVisible: true, childComponent: <ThankYouPopup isFromType2={true} /> }))
+                            return setPopupData((prev: any) => ({
+                              isVisible: true,
+                              childComponent: (
+                                <ThankYouPopup isFromType2={true} />
+                              ),
+                            }));
                           }
                           console.log(err.message);
-                          setErr('Cant submit data now please try again!');
+                          setErr("Cant submit data now please try again!");
                         });
                     }
 
                     setErr("");
-
                   }
                 }}
                 className={clsx(classes.btn, "btn btn-contained")}
@@ -409,7 +421,11 @@ const SectionInquiryForm = () => {
                 Submit
               </button>
             </div>
-            {err && <p style={{ color: 'maroon' }} className="mt-3">{err}</p>}
+            {err && (
+              <p style={{ color: "maroon" }} className="mt-3">
+                {err}
+              </p>
+            )}
           </div>
         </div>
       )}

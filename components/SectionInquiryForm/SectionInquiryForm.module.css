@@ -127,6 +127,7 @@
 }
 
 .btn {
+  white-space: nowrap;
   max-width: 17rem !important;
   font-weight: 700;
   font-size: 2.1rem;

@@ -10,16 +10,16 @@ const AboutusPage = () => {
     <div style={{ overflowX: "hidden" }}>
       <ProductsHero
         title="About us"
-        subtitle=" Metal Solutions Inc’s coil processing service Centre is in Ahmedabad, Gujarat stands on solid foundation of 30 years of association of mild steel."
+        subtitle="V Metal Solutions Inc’s coil processing service Centre is in Ahmedabad, Gujarat stands on solid foundation of 30 years of association of mild steel."
       />
       <SectionAboutus
-        title="Lorem ipsum dolor sit"
+        title="Why Us ?"
         subtitle="V Metal Solutions Inc was established in 2020 and successfully caters to its customers with its products and services."
         description="We contribute to Steel manufacturing and merchanting, which highly contribute to different functions by giving their customers mild steel sheets, coils, slitted coils, and corrugated sheets as per their requirements and specifications."
       />
       <SectionAboutus2 />
-      <SectionVideo />
-      <SectionAboutus3 />
+      {/* <SectionVideo /> */}
+      {/* <SectionAboutus3 /> */}
     </div>
   );
 };

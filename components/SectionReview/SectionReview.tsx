@@ -50,7 +50,7 @@ const SectionReview = () => {
                     className="d-flex justify-content-center"
                   >
                     <CardReview
-                      image={el.attributes.image.data[0].attributes.url}
+                      image={baseURL + el.attributes.image.data.attributes.url}
                       name={el.attributes.name}
                       role={el.attributes.role}
                       description={el.attributes.description}

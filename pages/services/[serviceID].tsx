@@ -30,14 +30,16 @@ const ServicePage = () => {
       <ProductsHero
         title={serviceData?.attributes?.title1}
         subtitle={serviceData?.attributes?.subtitle1}
-        image={serviceData?.attributes?.image?.data[0]?.attributes?.url}
+        image={
+          baseURL + serviceData?.attributes?.image?.data[0]?.attributes?.url
+        }
       />
       <SectionAboutus
         title={serviceData?.attributes?.title2}
         subtitle={serviceData?.attributes?.title3}
         description={serviceData?.attributes?.description}
       />
-      <SectionVideo />
+      {/* <SectionVideo /> */}
       <SectionDetails
         material={serviceData?.attributes?.material}
         thickness={serviceData?.attributes?.thickness}

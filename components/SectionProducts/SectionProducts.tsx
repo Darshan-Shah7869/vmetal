@@ -33,7 +33,7 @@ const SectionProducts = () => {
                 isBrandCar={false}
                 name={el.attributes.name}
                 slug={el.attributes.slug}
-                image={`${el.attributes.coverImage.data[0].attributes.url}`}
+                image={`${baseURL}${el.attributes.coverImage.data?.attributes.url}`}
                 key={index}
               />
             );

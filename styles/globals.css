@@ -79,8 +79,14 @@ body {
 }
 
 .btn-contained {
+  transition: all 0.2s;
   background-color: var(--yellow);
   color: var(--blue);
+}
+
+.btn-contained:hover {
+  background-color: var(--blue);
+  color: var(--white);
 }
 
 .btn-outline {
@@ -743,5 +749,3 @@ input::placeholder {
     opacity: 0;
   }
 }
-
-

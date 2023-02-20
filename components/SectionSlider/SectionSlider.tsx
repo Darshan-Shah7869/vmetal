@@ -14,7 +14,7 @@ const SectionSlider = ({
   isBrandSlider = false,
 }: any) => {
   const { width } = useWindowSize();
-
+  console.log(data);
   return (
     <div
       style={{ backgroundColor: bgColor }}
@@ -48,7 +48,7 @@ const SectionSlider = ({
                       <CardProduct
                         isBrandCard={true}
                         name={el?.attributes?.name}
-                        image={`${el.attributes.image.data[0].attributes.url}`}
+                        image={`${baseURL}${el.attributes.image.data[0].attributes.url}`}
                       />
                     </SplideSlide>
                   );
@@ -62,7 +62,7 @@ const SectionSlider = ({
                       <CardProduct
                         name={el.attributes.name}
                         slug={el.attributes.slug}
-                        image={`${el.attributes.coverImage.data[0].attributes.url}`}
+                        image={`${baseURL}${el.attributes.coverImage.data.attributes.url}`}
                       />
                     </SplideSlide>
                   );

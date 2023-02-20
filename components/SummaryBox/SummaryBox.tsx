@@ -45,7 +45,7 @@ const SummaryBox = () => {
           <div key={index} className={clsx(classes.card, "d-flex")}>
             <div
               style={{
-                backgroundImage: `url('${el.image}')`,
+                backgroundImage: `url('${baseURL}${el.image}')`,
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
@@ -117,7 +117,9 @@ const SummaryBox = () => {
         )}
       >
         <div className={clsx(classes.totalLabel, "text-blue bold")}>Total</div>
-        <div className={clsx(classes.total, "text-blue bold")}>₹{total.toFixed(2)}</div>
+        <div className={clsx(classes.total, "text-blue bold")}>
+          ₹{total.toFixed(2)}
+        </div>
       </div>
     </div>
   );

@@ -27,7 +27,7 @@ const SectionUses = ({ data, isUse }: any) => {
                   name={el.attributes.name}
                   slug={el.attributes.slug}
                   toService={true}
-                  image={`${el?.attributes?.coverImage?.data[0]?.attributes?.url}`}
+                  image={`${baseURL}${el?.attributes?.coverImage?.data[0]?.attributes?.url}`}
                   key={index}
                 />
               );

@@ -25,7 +25,7 @@ const ServicesPage = () => {
         title="Our Services"
         subtitle="We provide customised Mild Steel Flat Products as customers’ necessities, such as Cut-To-Length (CTL), Slitting Service, Profiling and Corrugation services and C/Z Purlin."
       />
-      <SectionVideo />
+      {/* <SectionVideo /> */}
       <SectionUses data={servicesData} />
     </div>
   );

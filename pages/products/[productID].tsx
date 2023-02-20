@@ -35,7 +35,7 @@ const ProductPage = () => {
           `${baseURL}/api/brands?filters[name][$eq]=${el.attributes.name}&populate=*`
         )
         .then((brandRes) => {
-          console.log(brandData);
+          console.log(brandRes);
           setBrandsData((prev: any) => [...prev, ...brandRes?.data?.data]);
         })
         .catch((err) => {
@@ -53,14 +53,14 @@ const ProductPage = () => {
           <ProductsHero
             title={productData.title1}
             subtitle={productData.subtitle1}
-            image={productData?.Image?.data[0]?.attributes?.url}
+            image={baseURL + productData?.image?.data[0]?.attributes?.url}
           />
           <SectionAboutus
             title={productData.title2}
             subtitle={productData.title3}
             description={productData.description}
           />
-          <SectionVideo video={productData?.video?.data[0]?.attributes?.url} />
+          {/* <SectionVideo video={productData?.video?.data[0]?.attributes?.url} /> */}
           <SectionSlider
             title="Brands Supplied"
             bgColor="#f1f1f1"

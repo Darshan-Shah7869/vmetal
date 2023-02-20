@@ -1,1 +1,1 @@
-export const baseURL = "https://stormy-reaches-06617.herokuapp.com";
+export const baseURL = "http://localhost:1337";

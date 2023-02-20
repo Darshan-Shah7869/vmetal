@@ -14,13 +14,13 @@
   }
 
   .title {
-    left: -10rem !important;
+    left: -2rem !important;
   }
 }
 
 @media (max-width: 768px) {
   .title {
-    left: -15rem !important;
+    left: -4rem !important;
   }
 }
 
@@ -46,7 +46,7 @@
 .title {
   position: absolute;
   transform: rotate(90deg) !important;
-  left: 0;
+  left: 6rem;
   top: 50%;
   animation-fill-mode: backwards;
 }

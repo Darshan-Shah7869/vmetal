@@ -20,11 +20,11 @@ const ThankYouPopup = ({ isFromType2 = false }: any) => {
       .catch((error) => {
         console.log(error);
       });
-  });
+  }, []);
 
   return (
     <div>
-      { data && 
+      {data && (
         <div
           className={clsx(
             classes.root,
@@ -122,7 +122,7 @@ const ThankYouPopup = ({ isFromType2 = false }: any) => {
             </div>
           </div>
         </div>
-      }
+      )}
     </div>
   );
 };
