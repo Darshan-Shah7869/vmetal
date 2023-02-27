@@ -43,11 +43,24 @@
   margin-bottom: 2rem;
 }
 
-.row2 {
+.row2,
+.row4 {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 6rem;
   margin-bottom: 2rem;
+}
+
+.row1 {
+  width: 100%;
+}
+
+.row4 input:not(:first-of-type) {
+  max-width: 100%;
+}
+
+.row1 input {
+  max-width: 100%;
 }
 
 @media (max-width: 1200px) {
@@ -74,7 +87,8 @@
 
 @media (max-width: 768px) {
   .row2,
-  .row3 {
+  .row3,
+  .row4 {
     grid-template-columns: repeat(1, 1fr);
   }
 

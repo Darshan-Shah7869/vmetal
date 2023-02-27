@@ -66,6 +66,7 @@ body {
 
 .root {
   min-height: 80vh;
+  overflow-x: hidden !important;
 }
 
 .btn {

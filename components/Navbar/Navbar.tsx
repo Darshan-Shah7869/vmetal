@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 
 import clsx from "clsx";
 import classes from "./Navbar.module.css";
-
 import logo from "public/assets/images/logo.png";
 import searchIcon from "public/assets/icons/search.svg";
 import Link from "next/link";
@@ -54,238 +53,269 @@ const Navbar = () => {
 
   return (
     <>
-      <div className={clsx(classes.root, "bg-blue")}>
-        <div
-          className={clsx(
-            classes.container,
-            "container d-flex align-items-center justify-content-between"
-          )}
-        >
-          <div className={clsx(classes.left, "")}>
-            <Link href="/" passHref={true}>
-              <img
-                style={{ cursor: "pointer" }}
-                className={classes.logo}
-                src={logo.src}
-                alt="logo"
-              />
-            </Link>
-          </div>
-          <div className={clsx(classes.center, "d-flex")}>
-            <Link href="/" passHref>
-              <div className="d-flex align-items-center flex-column">
-                <div
-                  className={clsx(
-                    classes.item,
-                    router.pathname === "/" && "text-yellow"
-                  )}
-                >
-                  Home
-                </div>
-                {router.pathname === "/" && (
+      {!isMenuOpen && (
+        <div className={clsx(classes.root, "bg-blue")}>
+          <div
+            className={clsx(
+              classes.container,
+              "container d-flex align-items-center justify-content-between"
+            )}
+          >
+            <div className={clsx(classes.left, "")}>
+              <Link href="/" passHref={true}>
+                <img
+                  style={{ cursor: "pointer" }}
+                  className={classes.logo}
+                  src={logo.src}
+                  alt="logo"
+                />
+              </Link>
+            </div>
+            <div className={clsx(classes.center, "d-flex")}>
+              <Link href="/" passHref>
+                <div className="d-flex align-items-center flex-column">
                   <div
-                    style={{
-                      width: "1rem",
-                      height: "1rem",
-                      backgroundColor: "var(--yellow)",
-                      borderRadius: "50%",
-                      marginLeft: "-5rem",
-                    }}
+                    className={clsx(
+                      classes.item,
+                      router.pathname === "/" && "text-yellow"
+                    )}
                   >
-                    &nbsp;
+                    Home
                   </div>
-                )}
-              </div>
-            </Link>
-            <Link href="/aboutus" passHref>
-              <div className="d-flex align-items-center flex-column">
-                <div
-                  className={clsx(
-                    classes.item,
-                    router.pathname === "/aboutus" && "text-yellow"
+                  {router.pathname === "/" && (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
                   )}
-                >
-                  About Us
                 </div>
-                {router.pathname === "/aboutus" && (
+              </Link>
+              <Link href="/aboutus" passHref>
+                <div className="d-flex align-items-center flex-column">
                   <div
-                    style={{
-                      width: "1rem",
-                      height: "1rem",
-                      backgroundColor: "var(--yellow)",
-                      borderRadius: "50%",
-                      marginLeft: "-5rem",
-                    }}
+                    className={clsx(
+                      classes.item,
+                      router.pathname === "/aboutus" && "text-yellow"
+                    )}
                   >
-                    &nbsp;
+                    About Us
                   </div>
-                )}
-              </div>
-            </Link>
-            <Link href="/products" passHref>
-              <div className="d-flex align-items-center flex-column">
-                <div
-                  className={clsx(
-                    classes.item,
-                    router.pathname === "/products" && "text-yellow"
+                  {router.pathname === "/aboutus" && (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
                   )}
-                >
-                  Products
                 </div>
-                {router.pathname === "/products" && (
+              </Link>
+              <Link href="/products" passHref>
+                <div className="d-flex align-items-center flex-column">
                   <div
-                    style={{
-                      width: "1rem",
-                      height: "1rem",
-                      backgroundColor: "var(--yellow)",
-                      borderRadius: "50%",
-                      marginLeft: "-5rem",
-                    }}
+                    className={clsx(
+                      classes.item,
+                      router.pathname === "/products" && "text-yellow"
+                    )}
                   >
-                    &nbsp;
+                    Products
                   </div>
-                )}
-              </div>
-            </Link>
-            <Link href="/services" passHref>
-              <div className="d-flex align-items-center flex-column">
-                <div
-                  className={clsx(
-                    classes.item,
-                    router.pathname === "/services" && "text-yellow"
+                  {router.pathname === "/products" && (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
                   )}
-                >
-                  Services
                 </div>
-                {router.pathname === "/services" && (
+              </Link>
+              <Link href="/services" passHref>
+                <div className="d-flex align-items-center flex-column">
                   <div
-                    style={{
-                      width: "1rem",
-                      height: "1rem",
-                      backgroundColor: "var(--yellow)",
-                      borderRadius: "50%",
-                      marginLeft: "-5rem",
-                    }}
+                    className={clsx(
+                      classes.item,
+                      router.pathname === "/services" && "text-yellow"
+                    )}
                   >
-                    &nbsp;
+                    Services
                   </div>
-                )}
-              </div>
-            </Link>
-            <Link href="/uses" passHref>
-              <div className="d-flex align-items-center flex-column">
-                <div
-                  className={clsx(
-                    classes.item,
-                    router.pathname === "/uses" && "text-yellow"
+                  {router.pathname === "/services" && (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
                   )}
-                >
-                  Uses
                 </div>
-                {router.pathname === "/uses" && (
+              </Link>
+              <Link href="/uses" passHref>
+                <div className="d-flex align-items-center flex-column">
                   <div
-                    style={{
-                      width: "1rem",
-                      height: "1rem",
-                      backgroundColor: "var(--yellow)",
-                      borderRadius: "50%",
-                      marginLeft: "-5rem",
-                    }}
+                    className={clsx(
+                      classes.item,
+                      router.pathname === "/uses" && "text-yellow"
+                    )}
                   >
-                    &nbsp;
+                    Uses
                   </div>
-                )}
-              </div>
-            </Link>
-            <Link href="/contactus" passHref>
-              <div className="d-flex align-items-center flex-column">
-                <div
-                  className={clsx(
-                    classes.item,
-                    router.pathname === "/contactus" && "text-yellow"
+                  {router.pathname === "/uses" && (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
                   )}
-                >
-                  Contact Us
                 </div>
-                {router.pathname === "/contactus" && (
+              </Link>
+              <Link href="/contactus" passHref>
+                <div className="d-flex align-items-center flex-column">
                   <div
-                    style={{
-                      width: "1rem",
-                      height: "1rem",
-                      backgroundColor: "var(--yellow)",
-                      borderRadius: "50%",
-                      marginLeft: "-5rem",
-                    }}
+                    className={clsx(
+                      classes.item,
+                      router.pathname === "/contactus" && "text-yellow"
+                    )}
                   >
-                    &nbsp;
+                    Contact Us
                   </div>
-                )}
-              </div>
-            </Link>
-          </div>
-          <div className={clsx(classes.right, "")}>
-            <div className={classes.inputBox}>
-              <input
-                placeholder="Search..."
-                value={search}
-                onChange={(e) => {
-                  setSearch(e.target.value);
-                }}
-                type="text"
-                style={{ maxWidth: "20rem", fontSize: "1.4rem" }}
-                className={clsx("mr-5", classes.input)}
-              />
-              <img
-                onClick={() => {
-                  const product = productData.filter((el: string) => el.toLowerCase().includes(search.toLowerCase()));
-                  const service = serviceData.filter((el: string) => el.toLowerCase().includes(search.toLowerCase()));
-                  if (search.length !== 0 && product.length !== 0) {
-                    return router.push(
-                      `/products/${routes[productData.indexOf(product[0])]}`
+                  {router.pathname === "/contactus" && (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
+                  )}
+                </div>
+              </Link>
+              <Link href="/order" passHref>
+                <div className="d-flex align-items-center flex-column">
+                  <div
+                    className={clsx(
+                      classes.item,
+                      router.pathname === "/order" && "text-yellow"
+                    )}
+                  >
+                    Order
+                  </div>
+                  {router.pathname === "/order" && (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
+                  )}
+                </div>
+              </Link>
+            </div>
+            <div className={clsx(classes.right, "")}>
+              <div className={classes.inputBox}>
+                <input
+                  placeholder="Search..."
+                  value={search}
+                  onChange={(e) => {
+                    setSearch(e.target.value);
+                  }}
+                  type="text"
+                  style={{ maxWidth: "20rem", fontSize: "1.4rem" }}
+                  className={clsx("mr-5", classes.input)}
+                />
+                <img
+                  onClick={() => {
+                    const product = productData.filter((el: string) =>
+                      el.toLowerCase().includes(search.toLowerCase())
                     );
-                  }
-
-                  if (search.length !== 0 && service.length !== 0) {
-                    return router.push(
-                      `/services/${routes2[serviceData.indexOf(service[0])]}`
+                    const service = serviceData.filter((el: string) =>
+                      el.toLowerCase().includes(search.toLowerCase())
                     );
-                  }
+                    if (search.length !== 0 && product.length !== 0) {
+                      return router.push(
+                        `/products/${routes[productData.indexOf(product[0])]}`
+                      );
+                    }
 
-                  setSearch('No product found');
-                }}
-                style={{ cursor: "pointer" }}
-                src={searchIcon.src}
-                alt="search-icon"
-                className={classes.icon}
-              />
-              <svg
-                onClick={() => {
-                  setIsMenuOpen(true);
-                }}
-                className={clsx(classes.menuIcon, "ml-4")}
-                width="18"
-                height="12"
-                viewBox="0 0 18 12"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M17.05 5H0.95C0.42533 5 0 5.42533 0 5.95V6.05C0 6.57467 0.42533 7 0.95 7H17.05C17.5747 7 18 6.57467 18 6.05V5.95C18 5.42533 17.5747 5 17.05 5Z"
-                  fill="white"
+                    if (search.length !== 0 && service.length !== 0) {
+                      return router.push(
+                        `/services/${routes2[serviceData.indexOf(service[0])]}`
+                      );
+                    }
+
+                    setSearch("No product found");
+                  }}
+                  style={{ cursor: "pointer" }}
+                  src={searchIcon.src}
+                  alt="search-icon"
+                  className={classes.icon}
                 />
-                <path
-                  d="M17.05 10H0.95C0.42533 10 0 10.4253 0 10.95V11.05C0 11.5747 0.42533 12 0.95 12H17.05C17.5747 12 18 11.5747 18 11.05V10.95C18 10.4253 17.5747 10 17.05 10Z"
-                  fill="white"
-                />
-                <path
-                  d="M17.05 0H0.95C0.42533 0 0 0.425329 0 0.95V1.05C0 1.57467 0.42533 2 0.95 2H17.05C17.5747 2 18 1.57467 18 1.05V0.95C18 0.425329 17.5747 0 17.05 0Z"
-                  fill="white"
-                />
-              </svg>
+                <svg
+                  onClick={() => {
+                    setIsMenuOpen(true);
+                  }}
+                  className={clsx(classes.menuIcon, "ml-4")}
+                  width="18"
+                  height="12"
+                  viewBox="0 0 18 12"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M17.05 5H0.95C0.42533 5 0 5.42533 0 5.95V6.05C0 6.57467 0.42533 7 0.95 7H17.05C17.5747 7 18 6.57467 18 6.05V5.95C18 5.42533 17.5747 5 17.05 5Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M17.05 10H0.95C0.42533 10 0 10.4253 0 10.95V11.05C0 11.5747 0.42533 12 0.95 12H17.05C17.5747 12 18 11.5747 18 11.05V10.95C18 10.4253 17.5747 10 17.05 10Z"
+                    fill="white"
+                  />
+                  <path
+                    d="M17.05 0H0.95C0.42533 0 0 0.425329 0 0.95V1.05C0 1.57467 0.42533 2 0.95 2H17.05C17.5747 2 18 1.57467 18 1.05V0.95C18 0.425329 17.5747 0 17.05 0Z"
+                    fill="white"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
       {isMenuOpen && (
         <div className={clsx(classes.menu)}>
           <svg
@@ -371,14 +401,12 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <div onClick={() => {
-            setIsMenuOpen(false);
-          }}>
-            <Link
-
-              href="/products"
-              passHref
-            >
+          <div
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
+          >
+            <Link href="/products" passHref>
               <div className="d-flex align-items-center flex-column">
                 <div
                   className={clsx(
@@ -405,14 +433,12 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <div onClick={() => {
-            setIsMenuOpen(false);
-          }}>
-            <Link
-
-              href="/services"
-              passHref
-            >
+          <div
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
+          >
+            <Link href="/services" passHref>
               <div className="d-flex align-items-center flex-column">
                 <div
                   className={clsx(
@@ -439,14 +465,12 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
-          <div onClick={() => {
-            setIsMenuOpen(false);
-          }}>
-            <Link
-
-              href="/uses"
-              passHref
-            >
+          <div
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
+          >
+            <Link href="/uses" passHref>
               <div className="d-flex align-items-center flex-column">
                 <div
                   className={clsx(
@@ -474,14 +498,12 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div onClick={() => {
-            setIsMenuOpen(false);
-          }}>
-            <Link
-
-              href="/contactus"
-              passHref
-            >
+          <div
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
+          >
+            <Link href="/contactus" passHref>
               <div className="d-flex align-items-center flex-column">
                 <div
                   className={clsx(
@@ -492,6 +514,39 @@ const Navbar = () => {
                   Contact Us
                 </div>
                 {router.pathname === "/contactus" && (
+                  <div
+                    className={classes.dot}
+                    style={{
+                      width: "1rem",
+                      height: "1rem",
+                      backgroundColor: "var(--yellow)",
+                      borderRadius: "50%",
+                      marginLeft: "-5rem",
+                    }}
+                  >
+                    &nbsp;
+                  </div>
+                )}
+              </div>
+            </Link>
+          </div>
+
+          <div
+            onClick={() => {
+              setIsMenuOpen(false);
+            }}
+          >
+            <Link href="/order" passHref>
+              <div className="d-flex align-items-center flex-column">
+                <div
+                  className={clsx(
+                    classes.item,
+                    router.pathname === "/order" && "text-yellow"
+                  )}
+                >
+                  Order
+                </div>
+                {router.pathname === "/order" && (
                   <div
                     className={classes.dot}
                     style={{

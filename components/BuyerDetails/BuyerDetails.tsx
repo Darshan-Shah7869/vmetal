@@ -13,9 +13,7 @@ import { baseURL } from "config";
 import validator from "validator";
 import { useRouter } from "next/router";
 
-
 const BuyerDetails = () => {
-
   const router = useRouter();
 
   const { popupData, setPopupData } = useContext(popupContext);
@@ -737,34 +735,34 @@ const BuyerDetails = () => {
           tv.toFixed(2);
           // @ts-ignore
           if (orderData.name.length === 0) {
-            setErr('Please provide your full name.')
+            setErr("Please provide your full name.");
           } else if (orderData.contactNumber.length === 0) {
-            setErr('Please provide your contact number.')
+            setErr("Please provide your contact number.");
           } else if (orderData.email.length === 0) {
-            setErr('Please provide your email.')
+            setErr("Please provide your email.");
           } else if (!validator.isEmail(orderData.email)) {
-            setErr('Please provide a valid email.');
+            setErr("Please provide a valid email.");
           } else if (orderData.companyName.length === 0) {
-            setErr('Please provide your company name.')
+            setErr("Please provide your company name.");
             // @ts-ignore
           } else if (orderData.addressLine1.length === 0) {
-            setErr('Please provide your address.')
+            setErr("Please provide your address.");
             // @ts-ignore
           } else if (orderData.pincode.length === 0) {
-            setErr('Please provide your pin code.')
+            setErr("Please provide your pin code.");
             // @ts-ignore
           } else if (orderData.city.length === 0) {
-            setErr('Please select your city.')
+            setErr("Please select your city.");
           } else if (orderData.state.length === 0) {
-            setErr('Please select your state.');
+            setErr("Please select your state.");
           } else if (orderData.country.length === 0) {
-            setErr('Please select your country.');
+            setErr("Please select your country.");
           } else if (orderData.GSTNumber.length === 0) {
-            setErr('Please provide your GST number.')
+            setErr("Please provide your GST number.");
           } else if (orderData.GSTNumber.length !== 15) {
-            setErr('Please provide valid GST number.')
+            setErr("Please provide valid GST number.");
           } else if (enteredCode !== code) {
-            setErr('Please enter correct captcha code.')
+            setErr("Please enter correct captcha code.");
           } else {
             axios
               .post(`${baseURL}/api/orders`, {
@@ -781,17 +779,20 @@ const BuyerDetails = () => {
                 console.log(err.message);
               });
             setErr("");
-            router.push('/');
+            router.push("/");
           }
-
-
         }}
         className="btn btn-contained mt-5 w-100"
       >
         {/* Continue Buyer’s Details */}
         Book Order Online
       </button>
-      <p style={{ textAlign: "center", color: 'maroon', marginTop: '2rem' }} className={classes.error}>{err}</p>
+      <p
+        style={{ textAlign: "center", color: "maroon", marginTop: "2rem" }}
+        className={classes.error}
+      >
+        {err}
+      </p>
     </div>
   );
 };
