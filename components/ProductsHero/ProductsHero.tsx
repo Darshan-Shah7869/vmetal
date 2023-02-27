@@ -10,6 +10,7 @@ import { useRouter } from "next/router";
 const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
   const [visibility, setVisibility] = useState(false);
   const router = useRouter();
+
   return (
     <VisibilitySensor
       partialVisibility={true}
