@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import classes from "./Homepage1.module.css";
 import clsx from "clsx";
 
-import img1 from "public/assets/images/dummyProduct.png";
+import img1 from "public/assets/images/Home1.jpg";
 import img2 from "public/assets/images/dummyProduct.png";
 import img3 from "public/assets/images/dummyProduct.png";
 import { useRouter } from "next/router";
@@ -39,12 +39,13 @@ const Homepage1 = () => {
         </div>
         <div
           style={{
-            backgroundImage: `url('${activeSlide % 2 === 0
-              ? img2.src
-              : activeSlide % 3 === 0
+            backgroundImage: `url('${
+              activeSlide % 2 === 0
+                ? img2.src
+                : activeSlide % 3 === 0
                 ? img3.src
                 : img1.src
-              }')`,
+            }')`,
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
@@ -68,18 +69,23 @@ const Homepage1 = () => {
             {activeSlide % 2 === 0
               ? "CUTTING-EDGE TECHNOLOGY"
               : activeSlide % 3 === 0
-                ? "DELIVERY ON-TIME"
-                : "RELIABILITY: GUARANTEED"}
+              ? "DELIVERY ON-TIME"
+              : "RELIABILITY: GUARANTEED"}
           </div>
           <div className={clsx(classes.text, "mb-5 pb-5")}>
             {activeSlide % 2 === 0
               ? "Cutting-edge technology at V Metal Solutions Inc forms the basis of all its services. Whether cutting to length, profiling, corrugation, slitting, or roll development at V Metal Solutions Inc, we ensure the highest standards are adhered to at every level."
               : activeSlide % 3 === 0
-                ? "We deliver to our customers as per the commitment which helps them to grow with us."
-                : "We respond to any production need with great speed. At V Metal Solutions Inc, just-in-time delivery is integral to our philosophy."}
+              ? "We deliver to our customers as per the commitment which helps them to grow with us."
+              : "We respond to any production need with great speed. At V Metal Solutions Inc, just-in-time delivery is integral to our philosophy."}
           </div>
           <div className={clsx(classes.btnBox, "")}>
-            <button onClick={() => { router.push('/aboutus') }} className={clsx(classes.btn, "btn btn-contained mr-5")}>
+            <button
+              onClick={() => {
+                router.push("/aboutus");
+              }}
+              className={clsx(classes.btn, "btn btn-contained mr-5")}
+            >
               Know more
             </button>
             <button className={clsx(classes.btn, "btn btn-outline")}>
