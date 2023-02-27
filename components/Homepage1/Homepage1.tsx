@@ -4,7 +4,7 @@ import classes from "./Homepage1.module.css";
 import clsx from "clsx";
 
 import img1 from "public/assets/images/Home1.jpg";
-import img2 from "public/assets/images/dummyProduct.png";
+import img2 from "public/assets/images/cuttingEdge.jpg";
 import img3 from "public/assets/images/dummyProduct.png";
 import { useRouter } from "next/router";
 

@@ -4,11 +4,13 @@ import SectionAboutus2 from "components/SectionAboutus2/SectionAboutus2";
 import SectionAboutus3 from "components/SectionAboutus3/SectionAboutus3";
 import SectionVideo from "components/SectionVideo/SectionVideo";
 import React from "react";
+import image from "public/assets/images/aboutus1.jpg";
 
 const AboutusPage = () => {
   return (
     <div style={{ overflowX: "hidden" }}>
       <ProductsHero
+        image={image.src}
         title="About us"
         subtitle="V Metal Solutions Inc’s coil processing service Centre is in Ahmedabad, Gujarat stands on solid foundation of 30 years of association of mild steel."
       />
