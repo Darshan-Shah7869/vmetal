@@ -8,7 +8,7 @@ const ProductsPage = () => {
       <ProductsHero
         image={image.src}
         title="Our Products"
-        subtitle="V Metal Solutions Inc of Steel is manufacturing and merchanting highly contributes to various processes by giving their customers mild steel sheets, coils, slitted coils and corrugated sheets as per their requirements and specifications. Mainly the mild steel products (CRCA/HRPO/GP/GI/PPGI) are manufactured in various forms and are delivered to various companies."
+        subtitle="V Metal Solutions Inc of Steel is manufacturing and merchanting highly contributes to various processes by giving their customers mild steel sheets, coils, slitted coils and corrugated sheets as per their requirements and specifications. Mainly the mild steel products (CR/CRCA, HR/HRPO, GP/GI, PPGI/PPGL, PMP, Z/C Purlin) are manufactured in various forms and are delivered to various companies."
       />
       <SectionProducts />
     </div>

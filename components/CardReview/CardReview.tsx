@@ -31,6 +31,7 @@ const CardReview = ({ type, name, role, description, image }: any) => {
         )}
       >
         <img
+          style={{ borderRadius: "50%", width: "80px", height: "80px" }}
           src={`${image}`}
           className={clsx(
             type === 1 ? classes.img1 : type === 2 ? classes.img2 : classes.img3
