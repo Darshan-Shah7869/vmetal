@@ -141,13 +141,18 @@ const PrivacyPage = () => {
       <p className={clsx(classes.para)}>
         We may update this Privacy Policy from time to time. Any changes will be
         effective upon posting the revised Privacy Policy on this page, and the
-        "Effective Date" at the top will indicate the most recent revision date.
+        &quot;Effective Date&quot; at the top will indicate the most recent
+        revision date.
       </p>
       <div className={clsx(classes.heading3)}>8. Contact Us:</div>
       <p className={clsx(classes.para)}>
         If you have any questions, concerns, or requests regarding this Privacy
         Policy or our data practices, please get in touch with us at:{" "}
-        <a href="mailto:info@vmetalsolutions.com" target="_blank">
+        <a
+          href="mailto:info@vmetalsolutions.com"
+          target="_blank"
+          rel="noreferrer"
+        >
           <b>info@vmetalsolutions.com</b>
         </a>
       </p>
