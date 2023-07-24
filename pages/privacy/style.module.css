@@ -1,0 +1,30 @@
+.root {
+  padding: 8rem 0;
+}
+
+.title {
+  margin-bottom: 2rem;
+}
+
+.subtitle {
+  margin-bottom: 3rem;
+}
+
+.para {
+  margin-bottom: 2rem;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.root a {
+  color: blue;
+  display: inline-block;
+  margin: 0 5px;
+  font-style: bold;
+}
+
+.heading3 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}

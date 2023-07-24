@@ -166,6 +166,14 @@ const Footer = () => {
               >
                 Contact Us
               </div>
+              <div
+                onClick={() => {
+                  router.push("/privacy");
+                }}
+                className={clsx(classes.page, "")}
+              >
+                Privacy Policy
+              </div>
               {/* <div className={clsx(classes.page, "")}>Get A Quote</div> */}
             </div>
           </div>
