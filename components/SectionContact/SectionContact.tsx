@@ -19,7 +19,8 @@ const SectionContact = () => {
           </div>
           <div className={clsx(classes.leftBody, "w-100 bg-white")}>
             <div className={clsx(classes.input, classes.fullRow, "")}>
-              523, Rd Number 14, Kathwada GIDC, Odhav Industrial Estate, Odhav
+              523, First Floor, Road No. 14, Kathwada G.I.D.C., Kathwada,
+              Ahmedabad- 382430
             </div>
             <input
               type="text"

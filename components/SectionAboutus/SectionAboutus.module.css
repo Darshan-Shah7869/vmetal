@@ -45,7 +45,7 @@
 
 .title {
   position: absolute;
-  transform: rotate(90deg) !important;
+  transform: rotate(-90deg) !important;
   left: 6rem;
   top: 50%;
   animation-fill-mode: backwards;

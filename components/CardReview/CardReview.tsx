@@ -5,6 +5,7 @@ import classes from "./CardReview.module.css";
 import bg1 from "public/assets/images/card1.png";
 import bg2 from "public/assets/images/card2.png";
 import bg3 from "public/assets/images/card3.png";
+
 import user from "public/assets/images/avatar.png";
 import { baseURL } from "config";
 
@@ -55,10 +56,11 @@ const CardReview = ({ type, name, role, description, image }: any) => {
         <div
           className={clsx(
             classes.role,
-            "mt-1 mb-3 text-white text-small text-center"
+            "mt-1 mb-1 text-white text-small text-center"
           )}
         >
-          {role}
+          {/* {role} */}
+          &nbsp;
         </div>
         <div
           style={{ width: "60%" }}

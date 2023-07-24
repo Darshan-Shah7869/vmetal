@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import img1 from "public/assets/images/Home1.jpg";
 import img2 from "public/assets/images/cuttingEdge.jpg";
-import img3 from "public/assets/images/dummyProduct.png";
+import img3 from "public/assets/images/4.png";
 import { useRouter } from "next/router";
 
 const Homepage1 = () => {
@@ -26,14 +26,14 @@ const Homepage1 = () => {
       <div className={clsx(classes.container, "d-flex p-relative")}>
         <div
           style={{
-            width: "100vw",
+            width: "120vw",
             marginLeft: "100vw",
             animationName: "slideInOut",
             animationDuration: "10s",
             animationTimingFunction: "ease-out",
             animationIterationCount: "infinite",
           }}
-          className={clsx(classes.left, "h-100")}
+          className={clsx(classes.left, "h-100 w-50")}
         >
           &nbsp;
         </div>
@@ -50,7 +50,7 @@ const Homepage1 = () => {
             backgroundRepeat: "no-repeat",
             backgroundSize: "cover",
           }}
-          className={clsx(classes.right, "w-70 bg-dummy-grey")}
+          className={clsx(classes.right, "w-60 bg-dummy-grey")}
         >
           &nbsp;
         </div>

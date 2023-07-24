@@ -38,7 +38,7 @@ const SectionProducts = () => {
               />
             );
           })}
-          <CardProduct
+          {/* <CardProduct
             isBrandCar={false}
             name={"PMP Plates"}
             slug={""}
@@ -49,7 +49,7 @@ const SectionProducts = () => {
             isBrandCar={false}
             name={"M.S. Structure"}
             image={`https://res.cloudinary.com/domdsbthb/image/upload/v1662455309/dummy_Image2_1_44fb0ecf61.jpg`}
-          />
+          /> */}
         </div>
       </div>
     </div>

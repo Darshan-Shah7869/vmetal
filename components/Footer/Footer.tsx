@@ -71,8 +71,8 @@ const Footer = () => {
                 />
               </div>
               <div className={clsx(classes.data, classes.dataEmail, "")}>
-                221, Second Floor, Vishala Supreme, Nr. Torrent Power
-                Sub-Station, S.P. Ring Road, Nikol, Ahmedabad - 382350
+                523, First Floor, Road No. 14, Kathwada G.I.D.C., Kathwada,
+                Ahmedabad- 382430
               </div>
             </div>
           </div>

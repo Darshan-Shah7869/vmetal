@@ -322,7 +322,7 @@ const SectionInquiryForm = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <button className={clsx(classes.btn, "btn btn-white mr-4")}>
+                <button className={clsx(classes.btn, "btn btn-yellow mr-4")}>
                   <svg
                     style={{ transform: "translateY(-0.3rem)" }}
                     className="mr-1"

@@ -5,7 +5,7 @@ import classes from "./Homepage2.module.css";
 import clsx from "clsx";
 import { useRouter } from "next/router";
 import VisibilitySensor from "react-visibility-sensor";
-import image from "../../public/assets/images/dummyHome.jpg";
+import image from "../../public/assets/images/services.jpg";
 const Homepage2 = () => {
   const router = useRouter();
   const [visibility, setVisibility] = useState(false);

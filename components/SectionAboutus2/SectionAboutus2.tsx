@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import classes from "./SectionAboutus2.module.css";
 import clsx from "clsx";
+import image3 from "public/assets/images/Compress_About Us_Last image.png";
 
 import VisibilitySensor from "react-visibility-sensor";
 
@@ -16,7 +17,17 @@ const SectionAboutus2 = () => {
       }}
     >
       <div className={clsx(classes.root, "bg-white-2 d-flex root")}>
-        <div className={clsx(classes.left, "")}>&nbsp;</div>
+        <div
+          style={{
+            backgroundImage: `url('${image3.src}')`,
+            backgroundPosition: "center",
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+          }}
+          className={clsx(classes.left, "")}
+        >
+          &nbsp;
+        </div>
         <div
           className={clsx(
             classes.body,

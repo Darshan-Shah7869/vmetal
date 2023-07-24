@@ -25,7 +25,7 @@ const SectionUses2 = () => {
     <div className={clsx(classes.root, "section")}>
       <div className={clsx(classes.container, "container")}>
         <div className={clsx(classes.title, "heading-1")}>
-          Lorem ipsum dolor
+          Applications of Mild Steel
         </div>
         <div className={clsx(classes.body, "")}>
           <ul className={clsx(classes.items, "")}>

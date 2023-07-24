@@ -10,7 +10,7 @@
 
 .title {
   position: absolute;
-  transform: rotate(90deg);
+  transform: rotate(-90deg);
   left: -10vw;
   top: 50%;
 }

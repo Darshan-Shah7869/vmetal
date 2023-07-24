@@ -4,11 +4,15 @@
 .titleBox {
   top: 50%;
   left: 5vw;
-  transform: translateY(-50%);
+  transform: translateY(-50%) translateX(-20px);
+}
+
+.title {
+  font-size: 36px;
 }
 
 .text {
-  max-width: 50%;
+  max-width: 40%;
 }
 
 .container {

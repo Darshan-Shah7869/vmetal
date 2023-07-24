@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import classes from "./../SectionAboutus/SectionAboutus.module.css";
 import clsx from "clsx";
 import styles from "./SectionAboutus3.module.css";
+import image3 from "public/assets/images/Compress_About Us_Last image.png";
 
 import VisibilitySensor from "react-visibility-sensor";
 
@@ -57,8 +58,9 @@ const SectionAboutus3 = () => {
             highly contributes to various processes by giving their customers
             mild steel sheets, coils, slitted coils and corrugated sheets as per
             their requirements and specifications. Mainly the mild steel
-            products (CR/CRCA, HR/HRPO, GP/GI, PPGI/PPGL, PMP, Z/C Purlin) are manufactured in various forms
-            and are delivered to various companies.
+            products (CR/CRCA, HR/HRPO, GP/GI, PPGI/PPGL, PMP, Z/C Purlin) are
+            manufactured in various forms and are delivered to various
+            companies.
           </div>
         </div>
       </div>

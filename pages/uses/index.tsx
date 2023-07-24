@@ -9,8 +9,8 @@ const UsesPage = () => {
     <div>
       <ProductsHero
         image={image.src}
-        title="Uses Page Title 1"
-        subtitle="Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum ad amet unde corporis, at ab repellendus illum voluptate sint ipsa."
+        title="Uses of Mild Steel"
+        subtitle="The major application of mild steel is in the following industries."
       />
       {/* <SectionUses /> */}
       <SectionUses2 />
