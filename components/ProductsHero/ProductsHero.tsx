@@ -53,7 +53,7 @@ const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
             >
               {subtitle}
             </div>
-            {/* <div className={clsx(classes.btnBox, "")}>
+            <div className={clsx(classes.btnBox, "")}>
               {router.pathname.includes("/products/") && (
                 <button
                   onClick={() => {
@@ -64,7 +64,7 @@ const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
                   Order now
                 </button>
               )}
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
