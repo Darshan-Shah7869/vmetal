@@ -57,7 +57,7 @@ const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
               {router.pathname.includes("/products/") && (
                 <button
                   onClick={() => {
-                    router.push("/orderDetails");
+                    router.push("/order");
                   }}
                   className={clsx(classes.btn, "btn btn-contained mr-5")}
                 >
