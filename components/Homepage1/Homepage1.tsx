@@ -88,7 +88,12 @@ const Homepage1 = () => {
             >
               Know more
             </button>
-            <button className={clsx(classes.btn, "btn btn-outline")}>
+            <button
+              onClick={() => {
+                router.push("/contactus");
+              }}
+              className={clsx(classes.btn, "btn btn-outline")}
+            >
               Send inquiry
             </button>
           </div>
