@@ -37,6 +37,7 @@ const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
           <div className={clsx(classes.titleBox, "p-absolute")}>
             <div
               style={{
+                // @ts-ignore
                 maxWidth: router.pathname === "/uses" && width > 600 && "100%",
               }}
               className={clsx(
@@ -50,6 +51,7 @@ const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
             </div>
             <div
               style={{
+                // @ts-ignore
                 maxWidth: router.pathname === "/uses" && width > 600 && "70%",
               }}
               className={clsx(
