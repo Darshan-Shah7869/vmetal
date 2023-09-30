@@ -17,7 +17,7 @@ const SectionContact = () => {
           <div className={clsx(classes.label, "heading-3 text-black mb-5")}>
             Address
           </div>
-          <div className={clsx(classes.leftBody, "w-100 bg-white")}>
+          <div className={clsx(classes.leftBody, "w-100")}>
             <div className={clsx(classes.input, classes.fullRow, "")}>
               523, First Floor, Road No. 14, Kathwada G.I.D.C., Kathwada,
               Ahmedabad- 382430

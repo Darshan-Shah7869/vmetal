@@ -35,8 +35,8 @@ const ServicePage = () => {
         }
       />
       <SectionAboutus
-        title={serviceData?.attributes?.title2}
-        subtitle={serviceData?.attributes?.title3}
+        title={serviceData?.attributes?.title3}
+        subtitle={serviceData?.attributes?.title2}
         description={serviceData?.attributes?.description}
       />
       {/* <SectionVideo /> */}

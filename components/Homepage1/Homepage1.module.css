@@ -12,7 +12,7 @@
 }
 
 .text {
-  max-width: 40%;
+  max-width: 35%;
 }
 
 .container {
@@ -40,10 +40,15 @@
 @media (max-width: 600px) {
   .right {
     width: 100vw;
+    opacity: 0.2;
   }
 
   .left {
     display: none;
+  }
+
+  .container {
+    width: 100%;
   }
 
   .titleBox {
@@ -51,6 +56,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100% !important;
+    transform: translateX(0) translateY(-50%);
   }
 
   .title {

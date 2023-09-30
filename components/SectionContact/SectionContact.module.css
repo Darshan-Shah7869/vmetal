@@ -8,6 +8,8 @@
   grid-template-columns: repeat(2, 1fr);
   overflow-x: hidden;
   padding-bottom: 1rem;
+  border: 1px solid #fff;
+  padding: 20px;
 }
 
 .leftBox input {
@@ -36,12 +38,13 @@
 
 .input {
   width: 100% !important;
-  color: #000 !important;
-  background-color: #fff;
+  color: #fff !important;
+  background-color: transparent;
+  padding: 10px 0;
 }
 
 .input::placeholder {
-  color: #000 !important;
+  color: #fff !important;
 }
 
 .greyBox {

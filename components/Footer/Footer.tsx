@@ -152,8 +152,22 @@ const Footer = () => {
               >
                 PPGI
               </div>
-              <div className={clsx(classes.page, "")}>PMP Plates</div>
-              <div className={clsx(classes.page, "")}>M.S. Structure</div>
+              <div
+                onClick={() => {
+                  router.push("/products/pmp");
+                }}
+                className={clsx(classes.page, "")}
+              >
+                PMP Plates
+              </div>
+              <div
+                onClick={() => {
+                  router.push("/products/ms");
+                }}
+                className={clsx(classes.page, "")}
+              >
+                M.S. Structure
+              </div>
             </div>
             <div className={clsx(classes.right1, "text-pink")}>
               {/* <div className={clsx(classes.page, "")}>Help</div> */}
@@ -168,11 +182,11 @@ const Footer = () => {
               </div>
               <div
                 onClick={() => {
-                  router.push("/privacy");
+                  router.push("/order");
                 }}
                 className={clsx(classes.page, "")}
               >
-                Privacy Policy
+                Order
               </div>
               {/* <div className={clsx(classes.page, "")}>Get A Quote</div> */}
             </div>

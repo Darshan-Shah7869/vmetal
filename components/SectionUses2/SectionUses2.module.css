@@ -60,6 +60,29 @@
 
 @media (max-width: 600px) {
   .title {
-    left: -18rem;
+    /* left: -25rem; */
+    position: relative;
+    transform: rotate(0);
+    left: 0;
+    top: 0;
+    padding: 6rem 2rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .body {
+    width: 100%;
+    padding-top: 0;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .root {
+    background-color: #fafafa;
+    width: 100%;
+    padding-left: 0 !important;
+    padding-bottom: 0 !important;
   }
 }
