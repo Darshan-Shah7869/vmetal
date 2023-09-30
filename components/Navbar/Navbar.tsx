@@ -51,6 +51,33 @@ const Navbar = () => {
       });
   }, []);
 
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  // Function to disable scrolling and store the scroll position
+  const disableScroll = () => {
+    setScrollPosition(window.scrollY || window.pageYOffset);
+    document.body.style.overflow = "hidden";
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollPosition}px`;
+  };
+
+  // Function to enable scrolling and restore the scroll position
+  const enableScroll = () => {
+    document.body.style.overflow = "";
+    document.body.style.position = "";
+    document.body.style.top = "";
+    window.scrollTo(0, scrollPosition);
+  };
+
+  // Listen to changes in isMenuOpen and apply scroll logic
+  useEffect(() => {
+    if (isMenuOpen) {
+      disableScroll();
+    } else {
+      enableScroll();
+    }
+  }, [isMenuOpen]);
+
   return (
     <>
       {!isMenuOpen && (
