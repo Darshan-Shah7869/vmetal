@@ -6,10 +6,12 @@ import clsx from "clsx";
 import VisibilitySensor from "react-visibility-sensor";
 import { baseURL } from "config";
 import { useRouter } from "next/router";
+import useWindowSize from "utils/useWindowSize";
 
 const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
   const [visibility, setVisibility] = useState(false);
   const router = useRouter();
+  const { width, height } = useWindowSize();
 
   return (
     <VisibilitySensor
@@ -34,6 +36,9 @@ const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
           </div>
           <div className={clsx(classes.titleBox, "p-absolute")}>
             <div
+              style={{
+                maxWidth: router.pathname === "/uses" && width > 600 && "100%",
+              }}
               className={clsx(
                 classes.title,
                 "mb-5 pb-4 heading-1 ",
@@ -44,6 +49,9 @@ const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
               {title}
             </div>
             <div
+              style={{
+                maxWidth: router.pathname === "/uses" && width > 600 && "70%",
+              }}
               className={clsx(
                 classes.text,
                 "mb-5 pb-5 ",

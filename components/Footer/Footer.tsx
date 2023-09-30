@@ -58,9 +58,24 @@ const Footer = () => {
                   className={clsx(classes.icon, "")}
                 />
               </div>
-              <div className={clsx(classes.data, classes.dataEmail, "")}>
+              <a
+                href="mailto:info@vmetalsolutions.com"
+                className={clsx(classes.data, classes.dataEmail, "")}
+              >
                 info@vmetalsolutions.com
-              </div>
+              </a>
+              <a
+                style={{ paddingLeft: "20px", borderLeft: "2px solid #fff" }}
+                href="mailto:sales@vmetalsolutions.com"
+                className={clsx(
+                  classes.data,
+                  classes.dataEmail,
+                  classes.dataEmail2,
+                  "ml-5"
+                )}
+              >
+                sales@vmetalsolutions.com
+              </a>
             </div>
             <div className={clsx(classes.item, "d-flex align-items-center")}>
               <div className={clsx(classes.icon, "")}>

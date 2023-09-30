@@ -101,7 +101,9 @@ const SectionInquiryForm = () => {
             <div className={clsx(classes.body, "")}>
               <div className={clsx(classes.row3, "")}>
                 <div className={clsx(classes.inputBox, "")}>
-                  <div className={clsx(classes.label, "")}>First Name</div>
+                  <div className={clsx(classes.label, "")}>
+                    First Name <span style={{ color: "maroon" }}>*</span>
+                  </div>
                   <input
                     onChange={(e) => {
                       setContactData((prev: any) => ({
@@ -114,7 +116,9 @@ const SectionInquiryForm = () => {
                   />
                 </div>
                 <div className={clsx(classes.inputBox, "")}>
-                  <div className={clsx(classes.label, "")}>Last Name</div>
+                  <div className={clsx(classes.label, "")}>
+                    Last Name <span style={{ color: "maroon" }}>*</span>
+                  </div>
                   <input
                     onChange={(e) => {
                       setContactData((prev: any) => ({
@@ -127,7 +131,9 @@ const SectionInquiryForm = () => {
                   />
                 </div>
                 <div className={clsx(classes.inputBox, "")}>
-                  <div className={clsx(classes.label, "")}>Email Address</div>
+                  <div className={clsx(classes.label, "")}>
+                    Email Address <span style={{ color: "maroon" }}>*</span>
+                  </div>
                   <input
                     onChange={(e) => {
                       setContactData((prev: any) => ({
@@ -155,7 +161,9 @@ const SectionInquiryForm = () => {
                   />
                 </div>
                 <div className={clsx(classes.inputBox, "")}>
-                  <div className={clsx(classes.label, "")}>Products</div>
+                  <div className={clsx(classes.label, "")}>
+                    Products <span style={{ color: "maroon" }}>*</span>
+                  </div>
                   <DropdownMenu
                     changeHandler={(v: any) => {
                       setContactData((prev: any) => ({ ...prev, product: v }));

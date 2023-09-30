@@ -143,3 +143,12 @@
     transform: translateX(-2rem);
   }
 }
+
+@media (max-width: 600px) {
+  .dataEmail2 {
+    margin-left: 0 !important;
+    margin-top: 0.5rem !important;
+    padding-left: 0 !important;
+    border-left: 0px solid #fff !important;
+  }
+}

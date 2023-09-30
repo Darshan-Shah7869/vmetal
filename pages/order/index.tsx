@@ -623,7 +623,9 @@ const SectionInquiryForm = () => {
             <div className={clsx(classes.body, "")}>
               <div className={clsx(classes.row3, "")}>
                 <div className={clsx(classes.inputBox, "")}>
-                  <div className={clsx(classes.label, "")}>First Name</div>
+                  <div className={clsx(classes.label, "")}>
+                    First Name <span style={{ color: "maroon" }}>*</span>
+                  </div>
                   <input
                     onChange={(e) => {
                       setOrderData((prev: any) => ({
@@ -636,7 +638,9 @@ const SectionInquiryForm = () => {
                   />
                 </div>
                 <div className={clsx(classes.inputBox, "")}>
-                  <div className={clsx(classes.label, "")}>Last Name</div>
+                  <div className={clsx(classes.label, "")}>
+                    Last Name <span style={{ color: "maroon" }}>*</span>
+                  </div>
                   <input
                     onChange={(e) => {
                       setOrderData((prev: any) => ({
@@ -649,7 +653,9 @@ const SectionInquiryForm = () => {
                   />
                 </div>
                 <div className={clsx(classes.inputBox, "")}>
-                  <div className={clsx(classes.label, "")}>Email Address</div>
+                  <div className={clsx(classes.label, "")}>
+                    Email Address <span style={{ color: "maroon" }}>*</span>
+                  </div>
                   <input
                     onChange={(e) => {
                       setOrderData((prev: any) => ({
@@ -677,7 +683,9 @@ const SectionInquiryForm = () => {
                   />
                 </div>
                 <div className={clsx(classes.inputBox, "")}>
-                  <div className={clsx(classes.label, "")}>Products</div>
+                  <div className={clsx(classes.label, "")}>
+                    Products <span style={{ color: "maroon" }}>*</span>
+                  </div>
                   <DropdownMenu
                     changeHandler={(v: any) => {
                       setOrderData((prev: any) => ({ ...prev, product: v }));
@@ -791,7 +799,9 @@ const SectionInquiryForm = () => {
             </div>
             <div className={clsx(classes.row3, "")}>
               <div className={clsx(classes.inputBox, "")}>
-                <div className={clsx(classes.label, "")}>Company Name</div>
+                <div className={clsx(classes.label, "")}>
+                  Company Name <span style={{ color: "maroon" }}>*</span>
+                </div>
                 <input
                   onChange={(e) => {
                     setOrderData((prev: any) => ({
@@ -804,7 +814,9 @@ const SectionInquiryForm = () => {
                 />
               </div>
               <div className={clsx(classes.inputBox, "")}>
-                <div className={clsx(classes.label, "")}>GST Number</div>
+                <div className={clsx(classes.label, "")}>
+                  GST Number <span style={{ color: "maroon" }}>*</span>
+                </div>
                 <input
                   onChange={(e) => {
                     setOrderData((prev: any) => ({
@@ -830,7 +842,9 @@ const SectionInquiryForm = () => {
             </div>
             <div className={clsx(classes.row1)}>
               <div className={clsx(classes.inputBox, "")}>
-                <div className={clsx(classes.label, "")}>Billing Address</div>
+                <div className={clsx(classes.label, "")}>
+                  Billing Address <span style={{ color: "maroon" }}>*</span>
+                </div>
                 <input
                   onChange={(e) => {
                     setOrderData((prev: any) => ({
@@ -857,7 +871,9 @@ const SectionInquiryForm = () => {
             </div>
             <div className={clsx(classes.row3)}>
               <div className={clsx(classes.inputBox, "")}>
-                <div className={clsx(classes.label, "")}>City</div>
+                <div className={clsx(classes.label, "")}>
+                  City <span style={{ color: "maroon" }}>*</span>
+                </div>
                 <DropdownMenu
                   changeHandler={(v: any) => {
                     setOrderData((prev: any) => ({ ...prev, city: v }));
@@ -868,7 +884,9 @@ const SectionInquiryForm = () => {
                 />
               </div>
               <div className={clsx(classes.inputBox, "")}>
-                <div className={clsx(classes.label, "")}>State</div>
+                <div className={clsx(classes.label, "")}>
+                  State <span style={{ color: "maroon" }}>*</span>
+                </div>
                 <DropdownMenu
                   changeHandler={(v: any) => {
                     setOrderData((prev: any) => ({ ...prev, state: v }));
@@ -879,7 +897,9 @@ const SectionInquiryForm = () => {
                 />
               </div>
               <div className={clsx(classes.inputBox, "")}>
-                <div className={clsx(classes.label, "")}>Country</div>
+                <div className={clsx(classes.label, "")}>
+                  Country <span style={{ color: "maroon" }}>*</span>
+                </div>
                 <DropdownMenu
                   changeHandler={(v: any) => {
                     setOrderData((prev: any) => ({ ...prev, country: v }));
@@ -892,7 +912,9 @@ const SectionInquiryForm = () => {
             </div>
             <div className={clsx(classes.row4, "align-items-start")}>
               <div className={clsx(classes.inputBox)}>
-                <div className={clsx(classes.label, "")}>Pincode</div>
+                <div className={clsx(classes.label, "")}>
+                  Pincode <span style={{ color: "maroon" }}>*</span>
+                </div>
                 <input
                   onChange={(e) => {
                     setOrderData((prev: any) => ({
@@ -905,7 +927,9 @@ const SectionInquiryForm = () => {
                 />
               </div>
               <div className={clsx("flex-column d-flex")}>
-                <div className={clsx(classes.label, "")}>Clear Captcha</div>
+                <div className={clsx(classes.label, "")}>
+                  Captcha <span style={{ color: "maroon" }}>*</span>
+                </div>
                 <div className="d-flex w-100 align-items-center mt-3">
                   <div className={classes.captchBG}>{captchaCode}</div>
                   <input
@@ -945,7 +969,10 @@ const SectionInquiryForm = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <button className={clsx(classes.btn, "btn btn-white mr-4")}>
+                <button
+                  style={{ backgroundColor: "#072854" }}
+                  className={clsx(classes.btn, "btn btn-white mr-4")}
+                >
                   <svg
                     style={{ transform: "translateY(-0.3rem)" }}
                     className="mr-1"
@@ -957,10 +984,12 @@ const SectionInquiryForm = () => {
                   >
                     <path
                       d="M16.4773 6.85714H10.8636V15.0734L13.7077 12.2513C13.871 12.0973 14.0884 12.0127 14.3136 12.0156C14.5388 12.0184 14.754 12.1085 14.9132 12.2666C15.0725 12.4246 15.1632 12.6382 15.1661 12.8617C15.169 13.0852 15.0838 13.301 14.9287 13.463L10.6105 17.7488C10.4485 17.9094 10.229 17.9996 10 17.9996C9.77105 17.9996 9.55146 17.9094 9.38952 17.7488L5.07134 13.463C4.91621 13.301 4.831 13.0852 4.83389 12.8617C4.83677 12.6382 4.92751 12.4246 5.08677 12.2666C5.24603 12.1085 5.46119 12.0184 5.6864 12.0156C5.9116 12.0127 6.12902 12.0973 6.2923 12.2513L9.13636 15.0734V6.85714H3.52273C2.72131 6.85799 1.95297 7.17434 1.38628 7.73676C0.819598 8.29919 0.500857 9.06175 0.5 9.85714V21C0.500857 21.7954 0.819598 22.558 1.38628 23.1204C1.95297 23.6828 2.72131 23.9991 3.52273 24H16.4773C17.2787 23.9991 18.047 23.6828 18.6137 23.1204C19.1804 22.558 19.4991 21.7954 19.5 21V9.85714C19.4991 9.06175 19.1804 8.29919 18.6137 7.73676C18.047 7.17434 17.2787 6.85799 16.4773 6.85714ZM10.8636 0.857143C10.8636 0.629814 10.7726 0.411797 10.6107 0.251051C10.4487 0.0903058 10.2291 0 10 0C9.77095 0 9.55128 0.0903058 9.38932 0.251051C9.22735 0.411797 9.13636 0.629814 9.13636 0.857143V6.85714H10.8636V0.857143Z"
-                      fill="#B9B3B3"
+                      fill="#fff"
                     />
                   </svg>
-                  <span className="d-inline-block ml-1">E Brochure</span>
+                  <span className="d-inline-block ml-1 text-white">
+                    E Brochure
+                  </span>
                 </button>
               </a>
 

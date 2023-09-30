@@ -53,15 +53,15 @@ const CardReview = ({ type, name, role, description, image }: any) => {
         <div className={clsx(classes.name, "bold text-white text-center")}>
           {name}
         </div>
-        <div
+        {/* <div
           className={clsx(
             classes.role,
             "mt-1 mb-1 text-white text-small text-center"
           )}
         >
-          {/* {role} */}
+          {role}
           &nbsp;
-        </div>
+        </div> */}
         <div
           style={{ width: "60%" }}
           className={clsx(
