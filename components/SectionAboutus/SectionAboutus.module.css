@@ -24,6 +24,10 @@
   }
 }
 
+.text li {
+  margin-bottom: 15px;
+}
+
 .container {
   height: 100%;
 }
