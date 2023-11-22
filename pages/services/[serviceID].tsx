@@ -37,7 +37,8 @@ const ServicePage = () => {
       <SectionAboutus
         title={serviceData?.attributes?.title3}
         subtitle={serviceData?.attributes?.title2}
-        description={serviceData?.attributes?.description}
+        description={serviceData?.attributes?.newDescription}
+        type="rich"
       />
       {/* <SectionVideo /> */}
       <SectionDetails

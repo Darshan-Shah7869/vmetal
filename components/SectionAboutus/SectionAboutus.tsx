@@ -5,8 +5,9 @@ import classes from "./SectionAboutus.module.css";
 import clsx from "clsx";
 
 import VisibilitySensor from "react-visibility-sensor";
+import Markdown from "react-markdown";
 
-const SectionAboutus = ({ title, subtitle, description }: any) => {
+const SectionAboutus = ({ title, subtitle, description, type }: any) => {
   const [visibility, setVisibility] = useState(false);
   return (
     <VisibilitySensor
@@ -18,7 +19,10 @@ const SectionAboutus = ({ title, subtitle, description }: any) => {
       <div className={clsx(classes.root, "bg-white-2 root")}>
         <div className={clsx(classes.container, "container")}>
           <div
-            style={{ animationDuration: "5s !important", animationDelay: "0.5s !important" }}
+            style={{
+              animationDuration: "5s !important",
+              animationDelay: "0.5s !important",
+            }}
             className={clsx(
               classes.title,
               "heading-1 ",
@@ -30,7 +34,10 @@ const SectionAboutus = ({ title, subtitle, description }: any) => {
 
           <div className={clsx(classes.body, "bg-white")}>
             <div
-              style={{ animationDuration: "5s !important", animationDelay: "0.5s !important" }}
+              style={{
+                animationDuration: "5s !important",
+                animationDelay: "0.5s !important",
+              }}
               className={clsx(
                 classes.subtitle,
                 "heading-3 mb-5 pb-5 ",
@@ -40,14 +47,21 @@ const SectionAboutus = ({ title, subtitle, description }: any) => {
               {subtitle}
             </div>
             <div
-              style={{ animationDuration: "5s !important", animationDelay: "0.5s !important" }}
+              style={{
+                animationDuration: "5s !important",
+                animationDelay: "0.5s !important",
+              }}
               className={clsx(
                 classes.text,
                 "",
                 visibility && "animate__animated animate__fadeIn"
               )}
             >
-              {description}
+              {type !== "rich" ? (
+                description
+              ) : (
+                <Markdown>{description}</Markdown>
+              )}
             </div>
           </div>
         </div>

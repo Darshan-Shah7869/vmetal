@@ -189,7 +189,7 @@ const SectionInquiryForm = () => {
                       setContactData((prev: any) => ({ ...prev, category: v }));
                     }}
                     label=""
-                    pvalue={categoryData[0]}
+                    pvalue={""}
                     dataArr={categoryData}
                   />
                 </div>
@@ -213,10 +213,13 @@ const SectionInquiryForm = () => {
                   <div className={clsx(classes.label, "")}>Service</div>
                   <DropdownMenu
                     changeHandler={(v: any) => {
-                      setContactData((prev: any) => ({ ...prev, service: v }));
+                      setContactData((prev: any) => ({
+                        ...prev,
+                        service: v,
+                      }));
                     }}
                     label=""
-                    pvalue={serviceData[0]}
+                    pvalue={""}
                     dataArr={[...serviceData, "Other service"]}
                   />
                 </div>

@@ -58,7 +58,8 @@ const ProductPage = () => {
           <SectionAboutus
             title={productData.title2}
             subtitle={productData.title3}
-            description={productData.description}
+            description={productData.newDescription}
+            type="rich"
           />
           {/* <SectionVideo video={productData?.video?.data[0]?.attributes?.url} /> */}
           <SectionSlider

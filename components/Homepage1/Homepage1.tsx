@@ -5,7 +5,7 @@ import clsx from "clsx";
 
 import img1 from "public/assets/images/Home1.jpg";
 import img2 from "public/assets/images/cuttingEdge.jpg";
-import img3 from "public/assets/images/4.png";
+import img3 from "public/assets/images/onTime.jpg";
 import { useRouter } from "next/router";
 
 const Homepage1 = () => {
