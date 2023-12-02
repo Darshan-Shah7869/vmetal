@@ -12,7 +12,7 @@ const AboutusPage = () => {
       <ProductsHero
         image={image.src}
         title="About us"
-        subtitle="V Metal Solutions Inc’s coil processing service Centre is in Ahmedabad, Gujarat stands on solid foundation of 30 years of association of mild steel."
+        subtitle="V Metal Solutions Inc. is committed to providing our customers with the highest quality steel products and services. We are a leading steel supplying company in Ahmedabad, Gujarat, and we are proud to serve customers throughout Gujarat, Rajasthan, and Madhya Pradesh."
       />
       <SectionAboutus
         title="Why Us ?"
