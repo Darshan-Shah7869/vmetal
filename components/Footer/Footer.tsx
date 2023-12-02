@@ -203,6 +203,14 @@ const Footer = () => {
               >
                 Order
               </div>
+              <div
+                onClick={() => {
+                  router.push("/privacy");
+                }}
+                className={clsx(classes.page, "")}
+              >
+                Privacy
+              </div>
               {/* <div className={clsx(classes.page, "")}>Get A Quote</div> */}
             </div>
           </div>

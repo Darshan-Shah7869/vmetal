@@ -41,7 +41,7 @@ const SectionAboutus2 = () => {
               visibility && "animate__animated animate__fadeInRight"
             )}
           >
-            Our company believes in Quality with Excellency. V Metal Solutions
+            Our company believes in Quality with Excellence. V Metal Solutions
             Inc is the sister company of Ackroll Group.
           </div>
           <div
