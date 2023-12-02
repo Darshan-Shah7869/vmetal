@@ -17,10 +17,10 @@ const SectionInquiryForm = () => {
     lastName: "",
     email: "",
     contactNumber: "",
-    category: "",
+    category: "N / A",
     product: "",
     weight: "",
-    service: "",
+    service: "N / A",
     message: "",
     length: "",
     width: "",
@@ -104,6 +104,15 @@ const SectionInquiryForm = () => {
       let outputService;
       setCategoryData([]);
       setServiceData([]);
+      setOrderData((prev) => ({
+        ...prev,
+        category: "N / A",
+        service: "N / A",
+        length: "",
+        width: "",
+        weight: "",
+        thickness: "",
+      }));
       productData.forEach((el: any) => {
         if (el.attributes.name === activeProduct) {
           console.log(
@@ -127,7 +136,26 @@ const SectionInquiryForm = () => {
       }),
         setServiceData(outputService);
     }
+
+    if (activeProduct === "M. S. Structure") {
+      setOrderData((prev) => ({
+        ...prev,
+        length: "N / A",
+        width: "N / A",
+        thickness: "N / A",
+        category: "N / A",
+        service: "N / A",
+      }));
+    }
   }, [activeProduct]);
+
+  // When user has selected slitting service N / A should be displayed in length field
+
+  useEffect(() => {
+    if (orderData.service === "Slitting") {
+      setOrderData((prev) => ({ ...prev, length: "N / A" }));
+    }
+  }, [orderData.service]);
 
   const state = [
     "Andhra Pradesh",
@@ -706,19 +734,23 @@ const SectionInquiryForm = () => {
               <div className={clsx(classes.row3, "")}>
                 <div className={clsx(classes.inputBox, "")}>
                   <div className={clsx(classes.label, "")}>Category</div>
-                  <DropdownMenu
-                    changeHandler={(v: any) => {
-                      setOrderData((prev: any) => ({ ...prev, category: v }));
-                    }}
-                    label=""
-                    pvalue={categoryData[0]}
-                    dataArr={categoryData}
-                  />
+                  {categoryData && (
+                    <DropdownMenu
+                      changeHandler={(v: any) => {
+                        setOrderData((prev: any) => ({ ...prev, category: v }));
+                      }}
+                      label=""
+                      pvalue={orderData.category}
+                      dataArr={[...categoryData, "N / A"]}
+                    />
+                  )}
                 </div>
                 <div className={clsx(classes.inputBox, "")}>
                   <div className={clsx(classes.label, "")}>Weight</div>
                   <div className="p-relative w-100 d-flex align-items-center">
                     <input
+                      disabled={orderData.width === "N / A"}
+                      value={orderData.weight}
                       onChange={(e) => {
                         setOrderData((prev: any) => ({
                           ...prev,
@@ -733,21 +765,25 @@ const SectionInquiryForm = () => {
                 </div>
                 <div className={clsx(classes.inputBox, "")}>
                   <div className={clsx(classes.label, "")}>Service</div>
-                  <DropdownMenu
-                    changeHandler={(v: any) => {
-                      setOrderData((prev: any) => ({ ...prev, service: v }));
-                    }}
-                    label=""
-                    pvalue={serviceData[0]}
-                    dataArr={[...serviceData, "Other service"]}
-                  />
+                  {serviceData && (
+                    <DropdownMenu
+                      changeHandler={(v: any) => {
+                        setOrderData((prev: any) => ({ ...prev, service: v }));
+                      }}
+                      label=""
+                      pvalue={orderData.service}
+                      dataArr={[...serviceData, "Other service", "N / A"]}
+                    />
+                  )}
                 </div>
               </div>
               <div className={clsx(classes.row3, "")}>
                 <div className={clsx(classes.inputBox, "")}>
-                  <div className={clsx(classes.label, "")}>Cut-To-Length</div>
+                  <div className={clsx(classes.label, "")}>Dimensions</div>
                   <div className="p-relative w-100 d-flex align-items-center">
                     <input
+                      disabled={orderData.length === "N / A"}
+                      value={orderData.length}
                       onChange={(e) => {
                         setOrderData((prev: any) => ({
                           ...prev,
@@ -765,6 +801,8 @@ const SectionInquiryForm = () => {
                   <div className={clsx(classes.label, "")}>&nbsp;</div>
                   <div className="p-relative w-100 d-flex align-items-center">
                     <input
+                      disabled={orderData.width === "N / A"}
+                      value={orderData.width}
                       onChange={(e) => {
                         setOrderData((prev: any) => ({
                           ...prev,
@@ -782,6 +820,8 @@ const SectionInquiryForm = () => {
                   <div className={clsx(classes.label, "")}>&nbsp;</div>
                   <div className="p-relative w-100 d-flex align-items-center">
                     <input
+                      disabled={orderData.thickness === "N / A"}
+                      value={orderData.thickness}
                       onChange={(e) => {
                         setOrderData((prev: any) => ({
                           ...prev,

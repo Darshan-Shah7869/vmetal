@@ -17,10 +17,10 @@ const SectionInquiryForm = () => {
     lastName: "",
     email: "",
     contactNumber: "",
-    category: "",
+    category: "N / A",
     product: "",
     weight: "",
-    service: "",
+    service: "N / A",
     message: "",
     length: "",
     width: "",
@@ -63,6 +63,15 @@ const SectionInquiryForm = () => {
       let outputService;
       setCategoryData([]);
       setServiceData([]);
+      setContactData((prev) => ({
+        ...prev,
+        category: "N / A",
+        service: "N / A",
+        length: "",
+        width: "",
+        weight: "",
+        thickness: "",
+      }));
       productData.forEach((el: any) => {
         if (el.attributes.name === activeProduct) {
           console.log(
@@ -86,7 +95,26 @@ const SectionInquiryForm = () => {
       }),
         setServiceData(outputService);
     }
+
+    if (activeProduct === "M. S. Structure") {
+      setContactData((prev) => ({
+        ...prev,
+        length: "N / A",
+        width: "N / A",
+        thickness: "N / A",
+        category: "N / A",
+        service: "N / A",
+      }));
+    }
   }, [activeProduct]);
+
+  // When user has selected slitting service N / A should be displayed in length field
+
+  useEffect(() => {
+    if (contactData.service === "Slitting") {
+      setContactData((prev) => ({ ...prev, length: "N / A" }));
+    }
+  }, [contactData.service]);
 
   return (
     <>
@@ -184,19 +212,26 @@ const SectionInquiryForm = () => {
               <div className={clsx(classes.row3, "")}>
                 <div className={clsx(classes.inputBox, "")}>
                   <div className={clsx(classes.label, "")}>Category</div>
-                  <DropdownMenu
-                    changeHandler={(v: any) => {
-                      setContactData((prev: any) => ({ ...prev, category: v }));
-                    }}
-                    label=""
-                    pvalue={""}
-                    dataArr={categoryData}
-                  />
+                  {categoryData && (
+                    <DropdownMenu
+                      changeHandler={(v: any) => {
+                        setContactData((prev: any) => ({
+                          ...prev,
+                          category: v,
+                        }));
+                      }}
+                      label=""
+                      pvalue={contactData.category}
+                      dataArr={[...categoryData, "N / A"]}
+                    />
+                  )}
                 </div>
                 <div className={clsx(classes.inputBox, "")}>
                   <div className={clsx(classes.label, "")}>Weight</div>
                   <div className="p-relative w-100 d-flex align-items-center">
                     <input
+                      disabled={contactData.width === "N / A"}
+                      value={contactData.weight}
                       onChange={(e) => {
                         setContactData((prev: any) => ({
                           ...prev,
@@ -211,24 +246,28 @@ const SectionInquiryForm = () => {
                 </div>
                 <div className={clsx(classes.inputBox, "")}>
                   <div className={clsx(classes.label, "")}>Service</div>
-                  <DropdownMenu
-                    changeHandler={(v: any) => {
-                      setContactData((prev: any) => ({
-                        ...prev,
-                        service: v,
-                      }));
-                    }}
-                    label=""
-                    pvalue={""}
-                    dataArr={[...serviceData, "Other service"]}
-                  />
+                  {serviceData && (
+                    <DropdownMenu
+                      changeHandler={(v: any) => {
+                        setContactData((prev: any) => ({
+                          ...prev,
+                          service: v,
+                        }));
+                      }}
+                      label=""
+                      pvalue={contactData.service}
+                      dataArr={[...serviceData, "Other service", "N / A"]}
+                    />
+                  )}
                 </div>
               </div>
               <div className={clsx(classes.row3, "")}>
                 <div className={clsx(classes.inputBox, "")}>
-                  <div className={clsx(classes.label, "")}>Cut-To-Length</div>
+                  <div className={clsx(classes.label, "")}>Dimensions</div>
                   <div className="p-relative w-100 d-flex align-items-center">
                     <input
+                      disabled={contactData.length === "N / A"}
+                      value={contactData.length}
                       onChange={(e) => {
                         setContactData((prev: any) => ({
                           ...prev,
@@ -242,10 +281,13 @@ const SectionInquiryForm = () => {
                     <span className={classes.placeholder}>MM</span>
                   </div>
                 </div>
+
                 <div className={clsx(classes.inputBox, "")}>
                   <div className={clsx(classes.label, "")}>&nbsp;</div>
                   <div className="p-relative w-100 d-flex align-items-center">
                     <input
+                      disabled={contactData.width === "N / A"}
+                      value={contactData.width}
                       onChange={(e) => {
                         setContactData((prev: any) => ({
                           ...prev,
@@ -263,6 +305,8 @@ const SectionInquiryForm = () => {
                   <div className={clsx(classes.label, "")}>&nbsp;</div>
                   <div className="p-relative w-100 d-flex align-items-center">
                     <input
+                      disabled={contactData.thickness === "N / A"}
+                      value={contactData.thickness}
                       onChange={(e) => {
                         setContactData((prev: any) => ({
                           ...prev,
@@ -277,6 +321,17 @@ const SectionInquiryForm = () => {
                   </div>
                 </div>
               </div>
+              <p
+                style={{
+                  margin: "10px 0",
+                  color: "maroon",
+                  fontSize: "16px",
+                  fontWeight: 500,
+                }}
+              >
+                Note: Give all the required specifications and detailed
+                requirements in Message field or attach a file.
+              </p>
               <div className={clsx(classes.row1, "")}>
                 <div className={clsx(classes.label, "")}>Message</div>
                 <textarea

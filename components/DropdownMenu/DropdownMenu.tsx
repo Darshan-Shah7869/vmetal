@@ -6,16 +6,21 @@ const DropdownMenu = ({
   label,
   pvalue,
   dataArr,
-  changeHandler = () => { },
+  changeHandler = () => {},
   disable = false,
 }: any) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [value, setValue] = useState(pvalue);
+  const [value, setValue] = useState("");
+
+  useEffect(() => {
+    if (pvalue) {
+      setValue(pvalue);
+    }
+  }, [pvalue]);
 
   useEffect(() => {
     changeHandler(value);
   }, [value]);
-
 
   return (
     <div className={`${classes.root}`}>
@@ -27,6 +32,7 @@ const DropdownMenu = ({
             // style={{ color: "#b9b3b3" }}
             className={`${classes.value} text-black`}
           >
+            {/* {value.length === 0 ? "N / A" : value} */}
             {value}
           </div>
         </div>
