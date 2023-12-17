@@ -1,44 +1,19 @@
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import classes from "./homepage.module.css";
-import ComingSoon from "../components/ComingSoon/ComingSoon";
+
 import Homepage1 from "components/Homepage1/Homepage1";
 import Homepage2 from "components/Homepage2/Homepage2";
-import SectionSlider from "components/SectionSlider/SectionSlider";
-import { useEffect, useState } from "react";
 import axios from "axios";
-import { baseURL } from "config";
-import SectionReview from "components/SectionReview/SectionReview";
+import { REVALIDATE, baseURL } from "config";
+import dynamic from "next/dynamic";
 
-const Home: NextPage = () => {
-  const [productsData, setProductsData] = useState([]);
-  const [brandsData, setBrandsData] = useState([]);
+const SectionSlider = dynamic(
+  () => import("components/SectionSlider/SectionSlider")
+);
+const SectionReview = dynamic(
+  () => import("components/SectionReview/SectionReview")
+);
 
-  useEffect(() => {
-    if (productsData.length === 0) {
-      axios
-        .get(`${baseURL}/api/products?populate=*`)
-        .then((res) => {
-          setProductsData(res.data.data);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    }
-
-    if (brandsData.length === 0) {
-      axios
-        .get(`${baseURL}/api/brands?populate=*`)
-        .then((res) => {
-          setBrandsData(res.data.data);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    }
-  }, []);
-
+const Home: NextPage = ({ productsData, brandsData }: any) => {
   return (
     <div className="root">
       <Homepage1 />
@@ -58,5 +33,18 @@ const Home: NextPage = () => {
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const res1 = await axios.get(`${baseURL}/api/products?populate=*`);
+  const res2 = await axios.get(`${baseURL}/api/brands?populate=*`);
+
+  return {
+    props: {
+      productsData: res1.data.data,
+      brandsData: res2.data.data,
+    },
+    revalidate: REVALIDATE,
+  };
+}
 
 export default Home;
