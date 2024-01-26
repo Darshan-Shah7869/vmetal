@@ -1,28 +1,16 @@
 import clsx from "clsx";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import classes from "./SectionReview.module.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import { baseURL } from "config";
 import CardReview from "components/CardReview/CardReview";
-import axios from "axios";
 import useWindowSize from "utils/useWindowSize";
 
-const SectionReview = () => {
-  const [reviews, setReviews] = useState([]);
+const SectionReview = ({ data }: any) => {
+  const reviews = data;
   const { width } = useWindowSize();
 
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/reviews/?populate=*`)
-      .then((res) => {
-        console.log(res);
-        setReviews(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
   return (
     <div className={clsx(classes.root, "section")}>
       <div className="container">
