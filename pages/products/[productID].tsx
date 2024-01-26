@@ -1,32 +1,19 @@
 import axios from "axios";
 import ProductsHero from "components/ProductsHero/ProductsHero";
-import SectionAboutus from "components/SectionAboutus/SectionAboutus";
-import SectionDetails from "components/SectionDetails/SectionDetails";
-import SectionSlider from "components/SectionSlider/SectionSlider";
-import SectionVideo from "components/SectionVideo/SectionVideo";
+// import SectionVideo from "components/SectionVideo/SectionVideo";
 import { baseURL } from "config";
-import { useRouter } from "next/router";
+import { NextPage } from "next";
+import dynamic from "next/dynamic";
 import React, { useEffect, useState } from "react";
+const SectionAboutus = dynamic(
+  () => import("components/SectionAboutus/SectionAboutus")
+);
+const SectionSlider = dynamic(
+  () => import("components/SectionSlider/SectionSlider")
+);
 
-const ProductPage = () => {
-  const router = useRouter();
-  const [productData, setProductData] = useState<any>(null);
+const ProductPage: NextPage = ({ productData }: any) => {
   const [brandData, setBrandsData] = useState<any>([]);
-
-  useEffect(() => {
-    axios
-      .get(
-        `${baseURL}/api/products?filters[slug][$eq]=${router.query.productID}&populate=*`
-      )
-      .then((res) => {
-        console.log(res);
-        setProductData(res?.data?.data[0]?.attributes);
-        console.log(productData);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, [router.query.productID, router.asPath, router.pathname]);
 
   useEffect(() => {
     productData?.brands?.data.map((el: any) => {
@@ -43,8 +30,6 @@ const ProductPage = () => {
         });
     });
   }, [productData?.brands]);
-
-  console.log(productData?.image?.data[0]?.attributes?.url);
 
   return (
     <div>
@@ -72,6 +57,45 @@ const ProductPage = () => {
       )}
     </div>
   );
+};
+
+export const getStaticPaths = async () => {
+  try {
+    const res: any = await axios.get(`${baseURL}/api/products?populate=*`);
+
+    const paths = res.data.data.map((el: any) => {
+      return {
+        params: {
+          productID: el.attributes.slug,
+        },
+      };
+    });
+
+    return { paths, fallback: false };
+  } catch {
+    return { paths: [], fallback: false };
+  }
+};
+
+export const getStaticProps = async (context: any) => {
+  try {
+    const id = context.params.productID;
+    const res: any = await axios.get(
+      `${baseURL}/api/products?populate=*&filters[slug][$eq]=${id}`
+    );
+
+    return {
+      props: {
+        productData: res.data.data[0]?.attributes,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        productData: null,
+      },
+    };
+  }
 };
 
 export default ProductPage;

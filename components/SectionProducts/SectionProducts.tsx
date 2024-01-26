@@ -6,22 +6,7 @@ import CardProduct from "components/CardProduct/CardProduct";
 import axios from "axios";
 import { baseURL } from "config";
 
-const SectionProducts = () => {
-  const [productData, setProductData] = useState<any>([]);
-  useEffect(() => {
-    if (productData.length === 0) {
-      axios
-        .get(`${baseURL}/api/products?populate=*`)
-        .then((res) => {
-          console.log(res.data.data);
-          setProductData(res.data.data);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    }
-  }, []);
-
+const SectionProducts = ({ productData }: any) => {
   return (
     <div className="section">
       <div className="container">
@@ -38,18 +23,6 @@ const SectionProducts = () => {
               />
             );
           })}
-          {/* <CardProduct
-            isBrandCar={false}
-            name={"PMP Plates"}
-            slug={""}
-            image={`https://res.cloudinary.com/domdsbthb/image/upload/v1662455309/dummy_Image2_1_44fb0ecf61.jpg`}
-          />
-          <CardProduct
-            slug={""}
-            isBrandCar={false}
-            name={"M.S. Structure"}
-            image={`https://res.cloudinary.com/domdsbthb/image/upload/v1662455309/dummy_Image2_1_44fb0ecf61.jpg`}
-          /> */}
         </div>
       </div>
     </div>
