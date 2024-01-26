@@ -10,10 +10,8 @@ import SummaryBox from "components/SummaryBox/SummaryBox";
 import axios from "axios";
 import { baseURL } from "config";
 import orderContext from "contexts/orderContext";
-import useWindowSize from "utils/useWindowSize";
 
 const SectionOrder = () => {
-  const { width } = useWindowSize();
   const [active, setActive] = useState("OrderDetails");
   const { orderData, setOrderData } = useContext<any>(orderContext);
   const [productData, setProductData] = useState<any>([]);

@@ -4,7 +4,7 @@ import classes from "./style.module.css";
 
 const PrivacyPage = () => {
   return (
-    <section className={clsx(classes.root, "container")}>
+    <main className={clsx(classes.root, "container")}>
       <h1 className={clsx(classes.title)}>
         Privacy Policy for V Metal Solutions INC
       </h1>
@@ -164,7 +164,7 @@ const PrivacyPage = () => {
       <p className={clsx(classes.para)}>
         Thank you for visiting V Metal Solutions INC.
       </p>
-    </section>
+    </main>
   );
 };
 
