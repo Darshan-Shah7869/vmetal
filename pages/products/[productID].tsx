@@ -4,7 +4,7 @@ import ProductsHero from "components/ProductsHero/ProductsHero";
 import { baseURL } from "config";
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
-import React, { useEffect, useState } from "react";
+import React from "react";
 const SectionAboutus = dynamic(
   () => import("components/SectionAboutus/SectionAboutus")
 );
@@ -12,25 +12,7 @@ const SectionSlider = dynamic(
   () => import("components/SectionSlider/SectionSlider")
 );
 
-const ProductPage: NextPage = ({ productData }: any) => {
-  const [brandData, setBrandsData] = useState<any>([]);
-
-  useEffect(() => {
-    productData?.brands?.data.map((el: any) => {
-      axios
-        .get(
-          `${baseURL}/api/brands?filters[name][$eq]=${el.attributes.name}&populate=*`
-        )
-        .then((brandRes) => {
-          console.log(brandRes);
-          setBrandsData((prev: any) => [...prev, ...brandRes?.data?.data]);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
-    });
-  }, [productData?.brands]);
-
+const ProductPage: NextPage = ({ productData, brandData }: any) => {
   return (
     <div>
       {productData && brandData && (
@@ -80,13 +62,16 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: any) => {
   try {
     const id = context.params.productID;
-    const res: any = await axios.get(
-      `${baseURL}/api/products?populate=*&filters[slug][$eq]=${id}`
-    );
+
+    const [res1, res2] = await Promise.all([
+      axios.get(`${baseURL}/api/products?populate=*&filters[slug][$eq]=${id}`),
+      axios.get(`${baseURL}/api/brands?populate=*`),
+    ]);
 
     return {
       props: {
-        productData: res.data.data[0]?.attributes,
+        productData: res1.data.data[0]?.attributes,
+        brandData: res2.data.data,
       },
     };
   } catch (error) {
