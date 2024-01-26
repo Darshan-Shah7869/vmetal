@@ -3,15 +3,16 @@ import React, { useState, useEffect, useContext } from "react";
 import classes from "../../components/SectionInquiryForm/SectionInquiryForm.module.css";
 import clsx from "clsx";
 import DropdownMenu from "components/DropdownMenu/DropdownMenu";
-import { baseURL } from "config";
+import { REVALIDATE, baseURL } from "config";
 import axios from "axios";
 // @ts-ignore
 import validator from "validator";
 import ThankYouPopup from "components/ThankYouPopup/ThankYouPopup";
 import popupContext from "contexts/popupContext";
+import { NextPage } from "next";
 
-const SectionInquiryForm = () => {
-  const { popupData, setPopupData } = useContext(popupContext);
+const SectionInquiryForm: NextPage = ({ productData, brandData }: any) => {
+  const { setPopupData } = useContext(popupContext);
   const [orderData, setOrderData] = useState({
     firstName: "",
     lastName: "",
@@ -36,11 +37,9 @@ const SectionInquiryForm = () => {
     pincode: "",
   });
   const [err, setErr] = useState<any>(null);
-  const [productData, setProductData] = useState<any>(null);
   const [activeProduct, setActiveProduct] = useState<any>(null);
   const [categoryData, setCategoryData] = useState<any>([]);
   const [serviceData, setServiceData] = useState<any>([]);
-  const [brandData, setBrandData] = useState<any>([]);
   const [captchaCode, setCaptchaCode] = useState<any>("");
   const [enteredCode, setEnteredCode] = useState<any>("");
 
@@ -59,41 +58,18 @@ const SectionInquiryForm = () => {
   };
 
   useEffect(() => {
-    axios
-      .get(`${baseURL}/api/products?populate=*`)
-      .then((res) => {
-        console.log(res.data.data);
-        setProductData(res.data.data);
-        setActiveProduct(res.data.data[0].attributes.name);
+    setActiveProduct(productData[0].attributes.name);
 
-        setCategoryData(
-          res.data.data[0].attributes.categories.data.map((el: any) => {
-            return el.attributes.name;
-          })
-        );
-        setServiceData(
-          res.data.data[0].attributes.services.data.map((el: any) => {
-            return el.attributes.name;
-          })
-        );
+    setCategoryData(
+      productData[0].attributes.categories.data.map((el: any) => {
+        return el.attributes.name;
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
-
-    axios
-      .get(`${baseURL}/api/brands?populate=*`)
-      .then((res) => {
-        console.log(res.data.data);
-        setBrandData(
-          res.data.data.map((el: any) => {
-            return el.attributes.name;
-          })
-        );
+    );
+    setServiceData(
+      productData[0].attributes.services.data.map((el: any) => {
+        return el.attributes.name;
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    );
 
     generateCode();
   }, []);
@@ -1100,5 +1076,22 @@ const SectionInquiryForm = () => {
     </>
   );
 };
+
+export async function getStaticProps() {
+  const [res1, res2] = await Promise.all([
+    axios.get(`${baseURL}/api/products?populate=*`),
+    axios.get(`${baseURL}/api/brands?populate=*`),
+  ]);
+
+  return {
+    props: {
+      productData: res1.data.data,
+      brandData: res2.data.data.map((el: any) => {
+        return el.attributes.name;
+      }),
+    },
+    revalidate: REVALIDATE,
+  };
+}
 
 export default SectionInquiryForm;
