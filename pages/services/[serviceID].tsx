@@ -1,6 +1,6 @@
 import axios from "axios";
 import ProductsHero from "components/ProductsHero/ProductsHero";
-import { baseURL } from "config";
+import { REVALIDATE, baseURL } from "config";
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import React from "react";
@@ -74,12 +74,14 @@ export const getStaticProps = async (context: any) => {
       props: {
         serviceData: res.data.data[0],
       },
+      revalidate: REVALIDATE,
     };
   } catch (error) {
     return {
       props: {
         serviceData: null,
       },
+      revalidate: REVALIDATE,
     };
   }
 };

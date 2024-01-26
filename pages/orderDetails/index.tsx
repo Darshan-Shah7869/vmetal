@@ -1,12 +1,26 @@
+import axios from "axios";
 import SectionOrder from "components/SectionOrder/SectionOrder";
+import { baseURL, REVALIDATE } from "config";
+import { NextPage } from "next";
 import React from "react";
 
-const OrderDetailsPage = () => {
+const OrderDetailsPage: NextPage = ({ productData }: any) => {
   return (
     <div>
-      <SectionOrder />
+      <SectionOrder productData={productData} />
     </div>
   );
 };
+
+export async function getStaticProps() {
+  const res1 = await axios.get(`${baseURL}/api/products?populate=*`);
+
+  return {
+    props: {
+      productData: res1.data.data,
+    },
+    revalidate: REVALIDATE,
+  };
+}
 
 export default OrderDetailsPage;

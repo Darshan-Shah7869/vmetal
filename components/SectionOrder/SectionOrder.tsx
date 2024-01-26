@@ -7,14 +7,11 @@ import OrderDetails from "components/OrderDetails/OrderDetails";
 import SectionCalculator from "components/SectionCalculator/SectionCalculator";
 import BuyerDetails from "components/BuyerDetails/BuyerDetails";
 import SummaryBox from "components/SummaryBox/SummaryBox";
-import axios from "axios";
-import { baseURL } from "config";
 import orderContext from "contexts/orderContext";
 
-const SectionOrder = () => {
+const SectionOrder = ({ productData }: any) => {
   const [active, setActive] = useState("OrderDetails");
-  const { orderData, setOrderData } = useContext<any>(orderContext);
-  const [productData, setProductData] = useState<any>([]);
+  const { setOrderData } = useContext<any>(orderContext);
 
   const [activeProduct, setActiveProduct] = useState<any>(
     productData[0]?.attributes?.name
@@ -40,36 +37,21 @@ const SectionOrder = () => {
   const [price, setPrice] = useState(0);
 
   useEffect(() => {
-    axios
-      .get(`${baseURL}/api/products?populate=*`)
-      .then((res) => {
-        setProductData(res.data.data);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
-
-  useEffect(() => {
     setCategory([]);
-    axios
-      .get(
-        `${baseURL}/api/products?populate=*&filters[name][$eq]=${activeProduct}`
-      )
-      .then((res) => {
-        const arr = res.data.data[0].attributes.categories.data.map(
-          (el: any) => {
-            return el.attributes.name;
-          }
-        );
-        setCategory(arr);
-        setPrice(res.data.data[0].attributes.price);
-        setOrderDataLocal((prev: any) => ({
-          ...prev,
-          image: res.data.data[0].attributes.coverImage.data[0]?.attributes.url,
-        }));
-      })
-      .catch((err) => console.log(err));
+    const target = productData.filter(
+      (el: any) => el.attributes.name === activeProduct
+    )[0];
+    if (target) {
+      const arr = target.attributes.categories.data.map((el: any) => {
+        return el.attributes.name;
+      });
+      setCategory(arr);
+      setPrice(target.attributes.price);
+      setOrderDataLocal((prev: any) => ({
+        ...prev,
+        image: target.attributes.coverImage.data[0]?.attributes.url,
+      }));
+    }
   }, [activeProduct]);
 
   useEffect(() => {
@@ -94,7 +76,6 @@ const SectionOrder = () => {
         image: "",
         numOfCoils: "",
       });
-      console.log(orderData);
     }
   }, [orderDataLocal]);
 

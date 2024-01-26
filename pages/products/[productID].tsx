@@ -1,7 +1,7 @@
 import axios from "axios";
 import ProductsHero from "components/ProductsHero/ProductsHero";
 // import SectionVideo from "components/SectionVideo/SectionVideo";
-import { baseURL } from "config";
+import { REVALIDATE, baseURL } from "config";
 import { NextPage } from "next";
 import dynamic from "next/dynamic";
 import React from "react";
@@ -73,12 +73,14 @@ export const getStaticProps = async (context: any) => {
         productData: res1.data.data[0]?.attributes,
         brandData: res2.data.data,
       },
+      revalidate: REVALIDATE,
     };
   } catch (error) {
     return {
       props: {
         productData: null,
       },
+      revalidate: REVALIDATE,
     };
   }
 };
