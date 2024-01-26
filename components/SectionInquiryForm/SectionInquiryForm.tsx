@@ -10,8 +10,8 @@ import validator from "validator";
 import ThankYouPopup from "components/ThankYouPopup/ThankYouPopup";
 import popupContext from "contexts/popupContext";
 
-const SectionInquiryForm = () => {
-  const { popupData, setPopupData } = useContext(popupContext);
+const SectionInquiryForm = ({ productsData }: any) => {
+  const { setPopupData } = useContext(popupContext);
   const [contactData, setContactData] = useState({
     firstName: "",
     lastName: "",
@@ -34,27 +34,19 @@ const SectionInquiryForm = () => {
   const [serviceData, setServiceData] = useState<any>([]);
 
   useEffect(() => {
-    axios
-      .get(`${baseURL}/api/products?populate=*`)
-      .then((res) => {
-        console.log(res.data.data);
-        setProductData(res.data.data);
-        setActiveProduct(res.data.data[0].attributes.name);
+    setProductData(productsData);
+    setActiveProduct(productsData[0].attributes.name);
 
-        setCategoryData(
-          res.data.data[0].attributes.categories.data.map((el: any) => {
-            return el.attributes.name;
-          })
-        );
-        setServiceData(
-          res.data.data[0].attributes.services.data.map((el: any) => {
-            return el.attributes.name;
-          })
-        );
+    setCategoryData(
+      productsData[0].attributes.categories.data.map((el: any) => {
+        return el.attributes.name;
       })
-      .catch((err) => {
-        console.log(err.message);
-      });
+    );
+    setServiceData(
+      productsData[0].attributes.services.data.map((el: any) => {
+        return el.attributes.name;
+      })
+    );
   }, []);
 
   useEffect(() => {
