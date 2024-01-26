@@ -1,30 +1,18 @@
 import axios from "axios";
 import ProductsHero from "components/ProductsHero/ProductsHero";
-import SectionAboutus from "components/SectionAboutus/SectionAboutus";
-import SectionDetails from "components/SectionDetails/SectionDetails";
-import SectionVideo from "components/SectionVideo/SectionVideo";
 import { baseURL } from "config";
-import { useRouter } from "next/router";
-import AboutusPage from "pages/aboutus";
-import React, { useEffect, useState } from "react";
+import { NextPage } from "next";
+import dynamic from "next/dynamic";
+import React from "react";
 
-const ServicePage = () => {
-  const [serviceData, setServiceData] = useState<any>([]);
-  const router = useRouter();
-  useEffect(() => {
-    axios
-      .get(
-        `${baseURL}/api/services?populate=*&filters[slug][$eq]=${router.query.serviceID}`
-      )
-      .then((res) => {
-        console.log(res.data);
-        setServiceData(res.data.data[0]);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, [router.asPath]);
+const SectionAboutus = dynamic(
+  () => import("components/SectionAboutus/SectionAboutus")
+);
+const SectionDetails = dynamic(
+  () => import("components/SectionDetails/SectionDetails")
+);
 
+const ServicePage: NextPage = ({ serviceData }: any) => {
   return (
     <div>
       <ProductsHero
@@ -55,6 +43,45 @@ const ServicePage = () => {
       />
     </div>
   );
+};
+
+export const getStaticPaths = async () => {
+  try {
+    const res: any = await axios.get(`${baseURL}/api/services?populate=*`);
+
+    const paths = res.data.data.map((el: any) => {
+      return {
+        params: {
+          serviceID: el.attributes.slug,
+        },
+      };
+    });
+
+    return { paths, fallback: false };
+  } catch {
+    return { paths: [], fallback: false };
+  }
+};
+
+export const getStaticProps = async (context: any) => {
+  try {
+    const id = context.params.serviceID;
+    const res: any = await axios.get(
+      `${baseURL}/api/services?populate=*&filters[slug][$eq]=${id}`
+    );
+
+    return {
+      props: {
+        serviceData: res.data.data[0],
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        serviceData: null,
+      },
+    };
+  }
 };
 
 export default ServicePage;
