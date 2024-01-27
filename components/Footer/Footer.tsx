@@ -5,15 +5,14 @@ import clsx from "clsx";
 
 import call from "public/assets/icons/call.svg";
 import email from "public/assets/icons/email.svg";
-import facebook from "public/assets/icons/facebook.svg";
 import instagram from "public/assets/icons/instagram.svg";
-import twitter from "public/assets/icons/twitter.svg";
 import location from "public/assets/icons/location.svg";
 
 import logo from "public/assets/images/logo.png";
 import { useRouter } from "next/router";
 import { baseURL } from "config";
 import axios from "axios";
+import Image from "next/image";
 
 const Footer = () => {
   const [data, setData] = useState<any>({
@@ -40,10 +39,22 @@ const Footer = () => {
         <div className={clsx(classes.top, "d-flex justify-content-between")}>
           <div className={clsx(classes.left, "")}>
             <div className={clsx(classes.logoBox, "")}>
-              <img src={logo.src} alt="logo" className={classes.logo} />
+              <div
+                style={{ position: "relative", height: "170px" }}
+                className={classes.logo}
+              >
+                <Image
+                  layout="fill"
+                  objectFit="cover"
+                  src={logo.src}
+                  alt="logo"
+                />
+              </div>
             </div>
             <div className={clsx(classes.item, "d-flex align-items-center")}>
-              <img
+              <Image
+                width={30}
+                height={30}
                 src={call.src}
                 alt="call"
                 className={clsx(classes.icon, "")}
@@ -52,7 +63,9 @@ const Footer = () => {
             </div>
             <div className={clsx(classes.item, "d-flex align-items-center")}>
               <div className={clsx(classes.icon, "")}>
-                <img
+                <Image
+                  width={30}
+                  height={30}
                   src={email.src}
                   alt="email"
                   className={clsx(classes.icon, "")}
@@ -79,7 +92,9 @@ const Footer = () => {
             </div>
             <div className={clsx(classes.item, "d-flex align-items-center")}>
               <div className={clsx(classes.icon, "")}>
-                <img
+                <Image
+                  width={30}
+                  height={30}
                   src={location.src}
                   alt="location"
                   className={clsx(classes.icon, "")}
@@ -277,7 +292,9 @@ const Footer = () => {
             </div>
             <div className={clsx(classes.social, "")}>
               <a href={data["InstagramLink"]} target="_blank" rel="noreferrer">
-                <img
+                <Image
+                  width={24}
+                  height={24}
                   src={instagram.src}
                   alt="instagram"
                   className={clsx(classes.socialIcon, "")}

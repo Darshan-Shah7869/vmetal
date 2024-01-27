@@ -4,9 +4,9 @@ import classes from "./../Homepage1/Homepage1.module.css";
 import clsx from "clsx";
 
 import VisibilitySensor from "react-visibility-sensor";
-import { baseURL } from "config";
 import { useRouter } from "next/router";
 import useWindowSize from "utils/useWindowSize";
+import Image from "next/image";
 
 const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
   const [visibility, setVisibility] = useState(false);
@@ -23,16 +23,15 @@ const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
       <div className={clsx(classes.root, "root")}>
         <div className={clsx(classes.container, "d-flex p-relative")}>
           <div className={clsx(classes.left, "h-100 w-40")}>&nbsp;</div>
-          <div
-            style={{
-              backgroundImage: isLocal ? `url('${image}')` : `url(${image})`,
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "cover",
-            }}
-            className={clsx(classes.right, "bg-dummy-grey w-60")}
-          >
+          <div className={clsx(classes.right, "bg-dummy-grey w-60 p-relative")}>
             &nbsp;
+            <Image
+              src={image}
+              alt="cover"
+              fill={true}
+              className={clsx(classes.right, "bg-dummy-grey w-60")}
+              objectFit="cover"
+            />
           </div>
           <div className={clsx(classes.titleBox, "p-absolute")}>
             <div

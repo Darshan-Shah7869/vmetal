@@ -8,6 +8,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import axios from "axios";
 import { baseURL } from "config";
+import Image from "next/image";
 
 const Navbar = () => {
   const router = useRouter();
@@ -90,12 +91,18 @@ const Navbar = () => {
           >
             <div className={clsx(classes.left, "")}>
               <Link href="/" passHref={true}>
-                <img
-                  style={{ cursor: "pointer" }}
-                  className={classes.logo}
-                  src={logo.src}
-                  alt="logo"
-                />
+                <div
+                  style={{ height: "7rem" }}
+                  className={clsx(classes.logo, "p-relative")}
+                >
+                  <Image
+                    fill={true}
+                    style={{ cursor: "pointer" }}
+                    src={logo.src}
+                    alt="logo"
+                    className={clsx(classes.logo, "")}
+                  />
+                </div>
               </Link>
             </div>
             <div className={clsx(classes.center, "d-flex")}>
@@ -287,7 +294,9 @@ const Navbar = () => {
                   style={{ maxWidth: "20rem", fontSize: "1.4rem" }}
                   className={clsx("mr-5", classes.input)}
                 />
-                <img
+                <Image
+                  width={24}
+                  height={24}
                   onClick={() => {
                     const product = productData.filter((el: string) =>
                       el.toLowerCase().includes(search.toLowerCase())

@@ -1,9 +1,9 @@
 import React from "react";
 
 import classes from "./CardProduct.module.css";
-import dummyImage from "public/assets/images/dummyProduct.png";
 import clsx from "clsx";
 import Link from "next/link";
+import Image from "next/image";
 
 const CardProduct = ({
   name,
@@ -15,16 +15,14 @@ const CardProduct = ({
   console.log(name);
   return (
     <div className={clsx(classes.root, "p-relative")}>
-      <div
-        style={{
-          backgroundImage: `url('${image}')`,
-          backgroundPosition: "center",
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-        }}
-        className={clsx(classes.front, "p-absolute")}
-      >
-        &nbsp;
+      <div className={clsx(classes.front, "p-absolute")}>
+        <Image
+          src={image}
+          alt="card-cover"
+          fill={true}
+          className={clsx(classes.front, "p-absolute")}
+          objectFit="cover"
+        />
       </div>
       <div
         className={clsx(
@@ -53,19 +51,14 @@ const CardProduct = ({
                 </button>
               </Link>
               <Link href="/contactus">
-              <button style={{ fontSize: "1rem" }} className="btn btn-outline">
-                Send Inquiry
-              </button>
+                <button
+                  style={{ fontSize: "1rem" }}
+                  className="btn btn-outline"
+                >
+                  Send Inquiry
+                </button>
               </Link>
             </div>
-            {/* <Link
-              href={`/${toService ? "services" : "products"}/${slug}`}
-              passHref
-            >
-              <div className="text-small text-underline text-yellow pointer align-self-end">
-                More Info
-              </div>
-            </Link> */}
           </>
         )}
       </div>

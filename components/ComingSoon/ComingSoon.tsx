@@ -10,7 +10,7 @@ const ComingSoon = () => {
         className={`${classes.container} container d-flex align-items-center bg-blue justify-content-center`}
       >
         <div className="w-50 d-flex align-items-center justify-content-center">
-          <img src={logo.src} className={`${classes.logo}`} alt="logo-img" />
+          {/* <img src={logo.src} className={`${classes.logo}`} alt="logo-img" /> */}
         </div>
         <div className={`w-50 ${classes.right}`}>
           <div className={`${classes.title} heading-1 text-white-2`}>

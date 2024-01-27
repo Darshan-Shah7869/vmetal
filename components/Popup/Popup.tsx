@@ -1,19 +1,21 @@
-import { collectAssets } from "next/dist/build/webpack/plugins/middleware-plugin";
 import React, { useContext } from "react";
 import popupContext from "../../contexts/popupContext";
 import popupCloseIcon from "public/assets/icons/popupClose.svg";
 import useWindowSize from "../../utils/useWindowSize";
 
 import classes from "./Popup.module.css";
+import Image from "next/image";
 const Popup = ({ children, width }: any) => {
-  const { popupData, setPopupData } = useContext(popupContext);
+  const { setPopupData } = useContext(popupContext);
   const screenData = useWindowSize();
 
   return (
     <div className={classes.popupBox}>
       <div style={{ width }} className={classes.popup}>
         {children}
-        <img
+        <Image
+          width={80}
+          height={80}
           onClick={() => {
             setPopupData((prev: any) => ({
               ...prev,
@@ -38,7 +40,7 @@ const Popup = ({ children, width }: any) => {
             padding: "1rem",
           }}
           src={popupCloseIcon.src}
-          alt=""
+          alt="close"
         />
       </div>
     </div>

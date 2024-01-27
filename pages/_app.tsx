@@ -1,6 +1,6 @@
 import type { AppProps } from "next/app";
 import Layout from "components/Layout/Layout";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import PopupContext from "contexts/popupContext";
 import OrderContext from "contexts/orderContext";
 import "animate.css";

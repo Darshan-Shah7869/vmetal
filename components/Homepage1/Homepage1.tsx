@@ -7,6 +7,7 @@ import img1 from "public/assets/images/Home1.jpg";
 import img2 from "public/assets/images/cuttingEdge.jpg";
 import img3 from "public/assets/images/onTime.jpg";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const Homepage1 = () => {
   const router = useRouter();
@@ -22,7 +23,7 @@ const Homepage1 = () => {
   }, []);
 
   return (
-    <div className={clsx(classes.root, "")}>
+    <div className={clsx(classes.root, "bg")}>
       <div className={clsx(classes.container, "d-flex p-relative")}>
         <div
           style={{
@@ -32,27 +33,26 @@ const Homepage1 = () => {
             animationDuration: "10s",
             animationTimingFunction: "ease-out",
             animationIterationCount: "infinite",
+            zIndex: 200,
           }}
           className={clsx(classes.left, "h-100 w-50")}
         >
           &nbsp;
         </div>
-        <div
-          style={{
-            backgroundImage: `url('${
+        <div className={clsx(classes.right, "w-60 bg-dummy-grey p-relative")}>
+          &nbsp;
+          <Image
+            src={
               activeSlide % 2 === 0
                 ? img2.src
                 : activeSlide % 3 === 0
                 ? img3.src
                 : img1.src
-            }')`,
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-          }}
-          className={clsx(classes.right, "w-60 bg-dummy-grey")}
-        >
-          &nbsp;
+            }
+            fill={true}
+            alt="slider-cover"
+            objectFit="cover"
+          />
         </div>
         <div
           style={{

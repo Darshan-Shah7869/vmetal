@@ -5,6 +5,7 @@ import clsx from "clsx";
 import image3 from "public/assets/images/Compress_About Us_Last image.png";
 
 import VisibilitySensor from "react-visibility-sensor";
+import Image from "next/image";
 
 const SectionAboutus2 = () => {
   const [visibility, setVisibility] = useState(false);
@@ -17,16 +18,15 @@ const SectionAboutus2 = () => {
       }}
     >
       <div className={clsx(classes.root, "bg-white-2 d-flex root")}>
-        <div
-          style={{
-            backgroundImage: `url('${image3.src}')`,
-            backgroundPosition: "center",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
-          className={clsx(classes.left, "")}
-        >
+        <div className={clsx(classes.left, "p-relative w-100")}>
           &nbsp;
+          <Image
+            src={image3.src}
+            alt="cover"
+            fill={true}
+            className={clsx(classes.left, "")}
+            objectFit="cover"
+          />
         </div>
         <div
           className={clsx(

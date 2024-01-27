@@ -14,9 +14,10 @@
 }
 
 .logo {
-  width: 15rem;
+  width: 15rem !important;
   height: auto;
   margin-left: -1rem;
+  position: relative;
 }
 
 .item:not(:last-of-type) {
@@ -122,6 +123,10 @@
 @media (max-width: 850px) {
   .right {
     margin-left: 0px;
+  }
+
+  .logo {
+    margin: 0 auto;
   }
 
   .top {

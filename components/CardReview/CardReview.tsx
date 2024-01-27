@@ -5,10 +5,7 @@ import classes from "./CardReview.module.css";
 import bg1 from "public/assets/images/card1.png";
 import bg2 from "public/assets/images/card2.png";
 import bg3 from "public/assets/images/card3.png";
-
-import user from "public/assets/images/avatar.png";
-import { baseURL } from "config";
-
+import Image from "next/image";
 const CardReview = ({ type, name, role, description, image }: any) => {
   return (
     <div
@@ -31,13 +28,16 @@ const CardReview = ({ type, name, role, description, image }: any) => {
             : classes.imgBox3
         )}
       >
-        <img
-          style={{ borderRadius: "50%", width: "80px", height: "80px" }}
-          src={`${image}`}
+        <Image
+          width={80}
+          height={80}
           className={clsx(
             type === 1 ? classes.img1 : type === 2 ? classes.img2 : classes.img3
           )}
-          alt=""
+          alt="review-profile"
+          src={image}
+          style={{ borderRadius: "80px" }}
+          objectFit="cover"
         />
       </div>
       <div

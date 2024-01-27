@@ -1,7 +1,19 @@
 // @ts-ignore
-const withVideos = require("next-videos");
 
 module.exports = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "api.vmetalsolutions.com",
+      },
+    ],
+    domains: ["api.vmetalsolutions.com"],
+  },
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({
@@ -12,5 +24,3 @@ module.exports = {
     return config;
   },
 };
-
-module.exports = withVideos();

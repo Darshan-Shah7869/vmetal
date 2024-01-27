@@ -1,17 +1,17 @@
 import Footer from "components/Footer/Footer";
 import Navbar from "components/Navbar/Navbar";
 import Popup from "components/Popup/Popup";
-import ThankYouPopup from "components/ThankYouPopup/ThankYouPopup";
-import UserPopup from "components/UserPopup/UserPopup";
 import popupContext from "contexts/popupContext";
 import React, { useContext, useEffect, useState } from "react";
 import classes from "./Layout.module.css";
 import whImage from "./../../public/assets/images/whatsapp copy.png";
 import axios from "axios";
 import { baseURL } from "config";
+import Image from "next/image";
+import clsx from "clsx";
 
 const Layout = ({ children }: any) => {
-  const { popupData, setPopupData } = useContext(popupContext);
+  const { popupData } = useContext(popupContext);
   const [link, setLink] = useState<any>(null);
 
   useEffect(() => {
@@ -32,9 +32,16 @@ const Layout = ({ children }: any) => {
       <div className={classes.children}>{children}</div>
       <Footer />
       {link && (
-        <div className={classes.whBox}>
+        <div className={clsx(classes.whBox)}>
           <a href={link} target="_blank" rel="noreferrer">
-            <img src={whImage.src} alt="" className={classes.whImage} />
+            <Image
+              className={classes.whImage}
+              src={whImage.src}
+              alt=""
+              width={50}
+              height={50}
+              objectFit="cover"
+            />
           </a>
         </div>
       )}

@@ -6,6 +6,7 @@ import clsx from "clsx";
 import { useRouter } from "next/router";
 import VisibilitySensor from "react-visibility-sensor";
 import image from "../../public/assets/images/services.jpg";
+import Image from "next/image";
 const Homepage2 = () => {
   const router = useRouter();
   const [visibility, setVisibility] = useState(false);
@@ -17,17 +18,15 @@ const Homepage2 = () => {
       }}
     >
       <div className={clsx(classes.root, "root d-flex")}>
-        <div
-          style={{
-            backgroundImage: `url('${image.src}')`,
-            backgroundAttachment: "fixed",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
-          }}
-          className={clsx(classes.left, "w-50")}
-        >
+        <div className={clsx(classes.left, "w-50 p-relative")}>
           &nbsp;
+          <Image
+            src={image.src}
+            alt="cover"
+            className={clsx(classes.left, "w-50")}
+            fill={true}
+            objectFit="cover"
+          />
         </div>
         <div
           className={clsx(
