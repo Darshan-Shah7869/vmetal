@@ -1078,20 +1078,30 @@ const SectionInquiryForm: NextPage = ({ productData, brandData }: any) => {
 };
 
 export async function getStaticProps() {
-  const [res1, res2] = await Promise.all([
-    axios.get(`${baseURL}/api/products?populate=*`),
-    axios.get(`${baseURL}/api/brands?populate=*`),
-  ]);
+  try {
+    const [res1, res2] = await Promise.all([
+      axios.get(`${baseURL}/api/products?populate=*`),
+      axios.get(`${baseURL}/api/brands?populate=*`),
+    ]);
 
-  return {
-    props: {
-      productData: res1.data.data,
-      brandData: res2.data.data.map((el: any) => {
-        return el.attributes.name;
-      }),
-    },
-    revalidate: REVALIDATE,
-  };
+    return {
+      props: {
+        productData: res1.data.data,
+        brandData: res2.data.data.map((el: any) => {
+          return el.attributes.name;
+        }),
+      },
+      revalidate: REVALIDATE,
+    };
+  } catch (error) {
+    return {
+      props: {
+        productData: null,
+        brandData: [],
+      },
+      revalidate: REVALIDATE,
+    };
+  }
 }
 
 export default SectionInquiryForm;

@@ -21,13 +21,22 @@ const ServicesPage: NextPage = ({ servicesData }: any) => {
 };
 
 export async function getStaticProps() {
-  const res1 = await axios.get(`${baseURL}/api/services?populate=*`);
-  return {
-    props: {
-      servicesData: res1.data.data,
-    },
-    revalidate: REVALIDATE,
-  };
+  try {
+    const res1 = await axios.get(`${baseURL}/api/services?populate=*`);
+    return {
+      props: {
+        servicesData: res1.data.data,
+      },
+      revalidate: REVALIDATE,
+    };
+  } catch (error) {
+    return {
+      props: {
+        servicesData: null,
+      },
+      revalidate: REVALIDATE,
+    };
+  }
 }
 
 export default ServicesPage;

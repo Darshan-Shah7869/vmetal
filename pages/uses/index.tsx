@@ -25,14 +25,23 @@ const UsesPage: NextPage = ({ usesData }: any) => {
 };
 
 export async function getStaticProps() {
-  const res1 = await axios.get(`${baseURL}/api/uses?populate=*`);
+  try {
+    const res1 = await axios.get(`${baseURL}/api/uses?populate=*`);
 
-  return {
-    props: {
-      usesData: res1.data.data,
-    },
-    revalidate: REVALIDATE,
-  };
+    return {
+      props: {
+        usesData: res1.data.data,
+      },
+      revalidate: REVALIDATE,
+    };
+  } catch (error) {
+    return {
+      props: {
+        usesData: null,
+      },
+      revalidate: REVALIDATE,
+    };
+  }
 }
 
 export default UsesPage;

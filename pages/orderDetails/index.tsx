@@ -13,14 +13,23 @@ const OrderDetailsPage: NextPage = ({ productData }: any) => {
 };
 
 export async function getStaticProps() {
-  const res1 = await axios.get(`${baseURL}/api/products?populate=*`);
+  try {
+    const res1 = await axios.get(`${baseURL}/api/products?populate=*`);
 
-  return {
-    props: {
-      productData: res1.data.data,
-    },
-    revalidate: REVALIDATE,
-  };
+    return {
+      props: {
+        productData: res1.data.data,
+      },
+      revalidate: REVALIDATE,
+    };
+  } catch (error) {
+    return {
+      props: {
+        productData: null,
+      },
+      revalidate: REVALIDATE,
+    };
+  }
 }
 
 export default OrderDetailsPage;

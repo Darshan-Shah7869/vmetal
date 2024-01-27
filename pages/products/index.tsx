@@ -24,14 +24,23 @@ const ProductsPage: NextPage = ({ productsData }: any) => {
 };
 
 export async function getStaticProps() {
-  const res1 = await axios.get(`${baseURL}/api/products?populate=*`);
+  try {
+    const res1 = await axios.get(`${baseURL}/api/products?populate=*`);
 
-  return {
-    props: {
-      productsData: res1.data.data,
-    },
-    revalidate: REVALIDATE,
-  };
+    return {
+      props: {
+        productsData: res1.data.data,
+      },
+      revalidate: REVALIDATE,
+    };
+  } catch (error) {
+    return {
+      props: {
+        productsData: null,
+      },
+      revalidate: REVALIDATE,
+    };
+  }
 }
 
 export default ProductsPage;

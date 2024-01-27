@@ -34,20 +34,31 @@ const Home: NextPage = ({ productsData, brandsData, reviewsData }: any) => {
 };
 
 export async function getStaticProps() {
-  const [res1, res2, res3] = await Promise.all([
-    axios.get(`${baseURL}/api/products?populate=*`),
-    axios.get(`${baseURL}/api/brands?populate=*`),
-    axios.get(`${baseURL}/api/reviews?populate=*`),
-  ]);
+  try {
+    const [res1, res2, res3] = await Promise.all([
+      axios.get(`${baseURL}/api/products?populate=*`),
+      axios.get(`${baseURL}/api/brands?populate=*`),
+      axios.get(`${baseURL}/api/reviews?populate=*`),
+    ]);
 
-  return {
-    props: {
-      productsData: res1.data.data,
-      brandsData: res2.data.data,
-      reviewsData: res3.data.data,
-    },
-    revalidate: REVALIDATE,
-  };
+    return {
+      props: {
+        productsData: res1.data.data,
+        brandsData: res2.data.data,
+        reviewsData: res3.data.data,
+      },
+      revalidate: REVALIDATE,
+    };
+  } catch (error) {
+    return {
+      props: {
+        productsData: null,
+        brandsData: null,
+        reviewsData: null,
+      },
+      revalidate: REVALIDATE,
+    };
+  }
 }
 
 export default Home;
