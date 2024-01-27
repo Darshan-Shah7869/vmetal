@@ -5,13 +5,17 @@ import clsx from "clsx";
 import DropdownMenu from "components/DropdownMenu/DropdownMenu";
 import CaptchaImage from "public/assets/images/captcha.png";
 import popupContext from "contexts/popupContext";
-import ThankYouPopup from "components/ThankYouPopup/ThankYouPopup";
 import orderContext from "contexts/orderContext";
 import axios from "axios";
 import { baseURL } from "config";
 // @ts-ignore
 import validator from "validator";
 import { useRouter } from "next/router";
+import dynamic from "next/dynamic";
+
+const ThankYouPopup = dynamic(
+  () => import("components/ThankYouPopup/ThankYouPopup")
+);
 
 const BuyerDetails = () => {
   const router = useRouter();

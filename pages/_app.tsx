@@ -7,7 +7,8 @@ import "animate.css";
 import "@splidejs/react-splide/css";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import "../styles/globals.css";
-import UserPopup from "components/UserPopup/UserPopup";
+import dynamic from "next/dynamic";
+const UserPopup = dynamic(() => import("components/UserPopup/UserPopup"));
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [popupData, setPopupData] = useState<any>({

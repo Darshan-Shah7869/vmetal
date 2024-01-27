@@ -7,9 +7,13 @@ import { REVALIDATE, baseURL } from "config";
 import axios from "axios";
 // @ts-ignore
 import validator from "validator";
-import ThankYouPopup from "components/ThankYouPopup/ThankYouPopup";
 import popupContext from "contexts/popupContext";
 import { NextPage } from "next";
+import dynamic from "next/dynamic";
+
+const ThankYouPopup = dynamic(
+  () => import("components/ThankYouPopup/ThankYouPopup")
+);
 
 const SectionInquiryForm: NextPage = ({ productData, brandData }: any) => {
   const { setPopupData } = useContext(popupContext);
