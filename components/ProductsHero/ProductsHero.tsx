@@ -26,6 +26,7 @@ const ProductsHero = ({ title, subtitle, image, isLocal }: any) => {
           <div className={clsx(classes.right, "bg-dummy-grey w-60 p-relative")}>
             &nbsp;
             <Image
+              loading="eager"
               src={image}
               alt="cover"
               fill={true}
