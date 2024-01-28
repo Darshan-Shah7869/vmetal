@@ -42,6 +42,8 @@ const Homepage1 = () => {
         <div className={clsx(classes.right, "w-60 bg-dummy-grey p-relative")}>
           &nbsp;
           <Image
+            loading="eager"
+            // unoptimized={true}
             src={
               activeSlide % 2 === 0
                 ? img2.src
