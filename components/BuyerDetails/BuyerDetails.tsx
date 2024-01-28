@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from "react";
 import classes from "./../SectionInquiryForm/SectionInquiryForm.module.css";
 import clsx from "clsx";
 import DropdownMenu from "components/DropdownMenu/DropdownMenu";
-import CaptchaImage from "public/assets/images/captcha.png";
 import popupContext from "contexts/popupContext";
 import orderContext from "contexts/orderContext";
 import axios from "axios";
@@ -17,12 +16,12 @@ const ThankYouPopup = dynamic(
   () => import("components/ThankYouPopup/ThankYouPopup")
 );
 
-const BuyerDetails = () => {
+const BuyerDetails = ({ brandsData, linksData }: any) => {
   const router = useRouter();
 
-  const { popupData, setPopupData } = useContext(popupContext);
+  const { setPopupData } = useContext(popupContext);
   const { orderData, setOrderData } = useContext(orderContext);
-  const [brandData, setBrandsData] = useState<any>([]);
+  // const [brandData, setBrandsData] = useState<any>([]);
   const [code, setCode] = useState("");
   const [enteredCode, setEnteredCode] = useState("");
   const [err, setErr] = useState<any>("");
@@ -39,15 +38,6 @@ const BuyerDetails = () => {
     }
     const randomCode = output.join("");
     setCode(randomCode);
-
-    axios
-      .get(`${baseURL}/api/brands`)
-      .then((brandRes) => {
-        setBrandsData((prev: any) => [...prev, ...brandRes?.data?.data]);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
   }, []);
 
   const state = [
@@ -531,8 +521,6 @@ const BuyerDetails = () => {
     "Åland Islands",
   ];
 
-  const [validate, isValidate] = useState(false);
-
   return (
     <div
       style={{ backgroundColor: "transparent" }}
@@ -679,7 +667,7 @@ const BuyerDetails = () => {
             }}
             label=""
             pvalue="Brand"
-            dataArr={brandData.map((el: any) => el.attributes.name)}
+            dataArr={brandsData.map((el: any) => el.attributes.name)}
           />
         </div>{" "}
       </div>
@@ -776,7 +764,7 @@ const BuyerDetails = () => {
                 setPopupData((prev: any) => ({
                   ...prev,
                   isVisible: true,
-                  childComponent: <ThankYouPopup />,
+                  childComponent: <ThankYouPopup data={linksData} />,
                 }))
               )
               .catch((err) => {

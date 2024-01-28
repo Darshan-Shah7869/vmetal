@@ -15,7 +15,11 @@ const ThankYouPopup = dynamic(
   () => import("components/ThankYouPopup/ThankYouPopup")
 );
 
-const SectionInquiryForm: NextPage = ({ productData, brandData }: any) => {
+const SectionInquiryForm: NextPage = ({
+  productData,
+  brandData,
+  linksData,
+}: any) => {
   const { setPopupData } = useContext(popupContext);
   const [orderData, setOrderData] = useState({
     firstName: "",
@@ -1054,7 +1058,12 @@ const SectionInquiryForm: NextPage = ({ productData, brandData }: any) => {
                         console.log(res.data);
                         setPopupData((prev: any) => ({
                           isVisible: true,
-                          childComponent: <ThankYouPopup isFromType2={true} />,
+                          childComponent: (
+                            <ThankYouPopup
+                              data={linksData}
+                              isFromType2={true}
+                            />
+                          ),
                         }));
                         setErr("");
                       })
@@ -1083,9 +1092,10 @@ const SectionInquiryForm: NextPage = ({ productData, brandData }: any) => {
 
 export async function getStaticProps() {
   try {
-    const [res1, res2] = await Promise.all([
+    const [res1, res2, res3] = await Promise.all([
       axios.get(`${baseURL}/api/products?populate=*`),
       axios.get(`${baseURL}/api/brands?populate=*`),
+      axios.get(`${baseURL}/api/links`),
     ]);
 
     return {
@@ -1094,6 +1104,7 @@ export async function getStaticProps() {
         brandData: res2.data.data.map((el: any) => {
           return el.attributes.name;
         }),
+        linksData: res3.data.data[0].attributes,
       },
       revalidate: REVALIDATE,
     };
@@ -1102,6 +1113,7 @@ export async function getStaticProps() {
       props: {
         productData: null,
         brandData: [],
+        linksData: null,
       },
       revalidate: REVALIDATE,
     };

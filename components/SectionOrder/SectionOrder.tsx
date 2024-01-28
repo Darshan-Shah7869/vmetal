@@ -9,7 +9,7 @@ import BuyerDetails from "components/BuyerDetails/BuyerDetails";
 import SummaryBox from "components/SummaryBox/SummaryBox";
 import orderContext from "contexts/orderContext";
 
-const SectionOrder = ({ productData }: any) => {
+const SectionOrder = ({ productData, brandsData, linksData }: any) => {
   const [active, setActive] = useState("OrderDetails");
   const { setOrderData } = useContext<any>(orderContext);
 
@@ -139,7 +139,7 @@ const SectionOrder = ({ productData }: any) => {
                 }}
               />
             ) : (
-              <BuyerDetails />
+              <BuyerDetails brandsData={brandsData} linksData={linksData} />
             )}
           </div>
         </div>

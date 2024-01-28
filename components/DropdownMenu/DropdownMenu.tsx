@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import classes from "./DropdownMenu.module.css";
 
 const DropdownMenu = ({
-  label,
   pvalue,
   dataArr,
   changeHandler = () => {},

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 
 import classes from "./../SectionInquiryForm/SectionInquiryForm.module.css";
 import clsx from "clsx";
@@ -18,7 +18,7 @@ const OrderDetails = ({
   price,
 }: any) => {
   const [err, setErr] = useState("");
-  const { orderData: orderDetails, } = useContext<any>(orderContext);
+  const { orderData: orderDetails } = useContext<any>(orderContext);
   return (
     <div
       style={{ backgroundColor: "transparent" }}
@@ -157,30 +157,30 @@ const OrderDetails = ({
           orderData.category === "Roofing Sheets" ||
           orderData.category === "C Purlin" ||
           orderData.category === "Z Purlin") && (
-            <div className="p-relative w-100 d-flex align-items-center mb-2">
-              <input
-                value={orderData.sheets}
-                onChange={(e) => {
-                  setOrderData((prev: any) => ({
-                    ...prev,
-                    sheets: e.target.value,
-                    tons: (
-                      ((prev.width *
-                        prev.thickness *
-                        prev.length *
-                        parseFloat(e.target.value)) /
-                        1000000000) *
-                      7.85
-                    ).toFixed(2),
-                  }));
-                }}
-                type="text"
-                className={classes.input}
-                placeholder=""
-              />
-              <span className={classes.placeholder}>No. of sheets</span>
-            </div>
-          )}
+          <div className="p-relative w-100 d-flex align-items-center mb-2">
+            <input
+              value={orderData.sheets}
+              onChange={(e) => {
+                setOrderData((prev: any) => ({
+                  ...prev,
+                  sheets: e.target.value,
+                  tons: (
+                    ((prev.width *
+                      prev.thickness *
+                      prev.length *
+                      parseFloat(e.target.value)) /
+                      1000000000) *
+                    7.85
+                  ).toFixed(2),
+                }));
+              }}
+              type="text"
+              className={classes.input}
+              placeholder=""
+            />
+            <span className={classes.placeholder}>No. of sheets</span>
+          </div>
+        )}
         {/* <div
           onClick={() => {
             setOrderData((prev: any) => ({
@@ -200,21 +200,25 @@ const OrderDetails = ({
           <div className={`${classes.addText} text-black`}>+Add</div>
           <div className={classes.lorem}>Lorem ipsum dolor sit amet</div>
         </div> */}
-
       </div>
-      {err.length > 0 && <p style={{ color: 'maroon', textAlign: 'center' }}>{err}</p>}
+      {err.length > 0 && (
+        <p style={{ color: "maroon", textAlign: "center" }}>{err}</p>
+      )}
       <button
         onClick={() => {
-
           if (orderData.product.length === 0) {
-            setErr('Please select a product.');
+            setErr("Please select a product.");
           } else if (orderData.category.length === 0) {
-            setErr('Please select a category.');
+            setErr("Please select a category.");
           } else if (orderData.tons.length === 0) {
-            setErr('Please enter tons you want to buy.')
+            setErr("Please enter tons you want to buy.");
           }
 
-          if (orderData.product.length > 0 && orderData.category.length > 0 && orderData.tons > 0) {
+          if (
+            orderData.product.length > 0 &&
+            orderData.category.length > 0 &&
+            orderData.tons > 0
+          ) {
             setErr("");
             setOrderData((prev: any) => ({
               ...prev,
@@ -233,14 +237,16 @@ const OrderDetails = ({
       >
         Add to cart
       </button>
-      {(orderDetails.order.length > 0) && <button
-        onClick={() => {
-          clicked();
-        }}
-        className="btn btn-contained mt-5 w-100"
-      >
-        Continue Buyer’s Details
-      </button>}
+      {orderDetails.order.length > 0 && (
+        <button
+          onClick={() => {
+            clicked();
+          }}
+          className="btn btn-contained mt-5 w-100"
+        >
+          Continue Buyer’s Details
+        </button>
+      )}
     </div>
   );
 };

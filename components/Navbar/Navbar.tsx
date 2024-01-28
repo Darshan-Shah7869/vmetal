@@ -19,39 +19,6 @@ const Navbar = () => {
   const [serviceData, setServiceData] = useState<any>([]);
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/products?populate=*`)
-      .then((res) => {
-        const productsName = res.data.data.map((el: any) => {
-          return el.attributes.name;
-        });
-        const routesName = res.data.data.map((el: any) => {
-          return el.attributes.slug;
-        });
-        setProductData(productsName);
-        setRoutes(routesName);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-    axios
-      .get(`${baseURL}/api/services?populate=*`)
-      .then((res) => {
-        const servicesName = res.data.data.map((el: any) => {
-          return el.attributes.name;
-        });
-        const routesName = res.data.data.map((el: any) => {
-          return el.attributes.slug;
-        });
-        setServiceData(servicesName);
-        setRoutes2(routesName);
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  }, []);
-
   const [scrollPosition, setScrollPosition] = useState(0);
 
   // Function to disable scrolling and store the scroll position
@@ -297,13 +264,35 @@ const Navbar = () => {
                 <Image
                   width={24}
                   height={24}
-                  onClick={() => {
+                  onClick={async () => {
+                    const [res1, res2] = await Promise.all([
+                      axios.get(`${baseURL}/api/products?populate=*`),
+                      axios.get(`${baseURL}/api/services?populate=*`),
+                    ]);
+                    const productsName = res1.data.data.map((el: any) => {
+                      return el.attributes.name;
+                    });
+                    const routesName = res1.data.data.map((el: any) => {
+                      return el.attributes.slug;
+                    });
+                    setProductData(productsName);
+                    setRoutes(routesName);
+                    const servicesName = res2.data.data.map((el: any) => {
+                      return el.attributes.name;
+                    });
+                    const routes2Name = res2.data.data.map((el: any) => {
+                      return el.attributes.slug;
+                    });
+                    setServiceData(servicesName);
+                    setRoutes2(routes2Name);
+
                     const product = productData.filter((el: string) =>
                       el.toLowerCase().includes(search.toLowerCase())
                     );
                     const service = serviceData.filter((el: string) =>
                       el.toLowerCase().includes(search.toLowerCase())
                     );
+
                     if (search.length !== 0 && product.length !== 0) {
                       return router.push(
                         `/products/${routes[productData.indexOf(product[0])]}`

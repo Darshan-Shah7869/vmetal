@@ -14,7 +14,7 @@ const ThankYouPopup = dynamic(
   () => import("components/ThankYouPopup/ThankYouPopup")
 );
 
-const SectionInquiryForm = ({ productsData }: any) => {
+const SectionInquiryForm = ({ productsData, linksData }: any) => {
   const { setPopupData } = useContext(popupContext);
   const [contactData, setContactData] = useState({
     firstName: "",
@@ -452,7 +452,10 @@ const SectionInquiryForm = ({ productsData }: any) => {
                               setPopupData((prev: any) => ({
                                 isVisible: true,
                                 childComponent: (
-                                  <ThankYouPopup isFromType2={true} />
+                                  <ThankYouPopup
+                                    isFromType2={true}
+                                    data={linksData}
+                                  />
                                 ),
                               }));
                             })
@@ -478,7 +481,10 @@ const SectionInquiryForm = ({ productsData }: any) => {
                             return setPopupData((prev: any) => ({
                               isVisible: true,
                               childComponent: (
-                                <ThankYouPopup isFromType2={true} />
+                                <ThankYouPopup
+                                  data={linksData}
+                                  isFromType2={true}
+                                />
                               ),
                             }));
                           }

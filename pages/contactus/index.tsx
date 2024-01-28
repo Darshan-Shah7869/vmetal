@@ -9,10 +9,10 @@ const SectionContact = dynamic(
   () => import("components/SectionContact/SectionContact")
 );
 
-const ContactUsPage: NextPage = ({ productsData }: any) => {
+const ContactUsPage: NextPage = ({ productsData, linksData }: any) => {
   return (
     <div>
-      <SectionInquiryForm productsData={productsData} />
+      <SectionInquiryForm productsData={productsData} linksData={linksData} />
       <SectionContact />
     </div>
   );
@@ -20,11 +20,15 @@ const ContactUsPage: NextPage = ({ productsData }: any) => {
 
 export async function getStaticProps() {
   try {
-    const res1 = await axios.get(`${baseURL}/api/products?populate=*`);
+    const [res1, res2] = await Promise.all([
+      axios.get(`${baseURL}/api/products?populate=*`),
+      axios.get(`${baseURL}/api/links`),
+    ]);
 
     return {
       props: {
         productsData: res1.data.data,
+        linksData: res2.data.data[0].attributes,
       },
       revalidate: REVALIDATE,
     };
@@ -32,6 +36,7 @@ export async function getStaticProps() {
     return {
       props: {
         productsData: null,
+        linksData: null,
       },
       revalidate: REVALIDATE,
     };

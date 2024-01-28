@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import classes from "./SectionProducts.module.css";
 import clsx from "clsx";
 import CardProduct from "components/CardProduct/CardProduct";
-import axios from "axios";
 import { baseURL } from "config";
 
 const SectionProducts = ({ productData }: any) => {

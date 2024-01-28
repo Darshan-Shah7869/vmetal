@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import classes from "./ThankYouPopup.module.css";
 import clsx from "clsx";
 import i1 from "public/assets/images/whatsapp.png";
 import i2 from "public/assets/images/linkedIn.png";
 import i3 from "public/assets/images/instagram.png";
-import axios from "axios";
-import { baseURL } from "config";
 
-const ThankYouPopup = ({ isFromType2 = false }: any) => {
-  const [data, setData] = useState<any>(null);
-
-  useEffect(() => {
-    axios
-      .get(`${baseURL}/api/links`)
-      .then((response) => {
-        setData(response.data.data[0].attributes);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
+const ThankYouPopup = ({ isFromType2 = false, data }: any) => {
   return (
     <div>
       {data && (
