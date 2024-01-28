@@ -89,7 +89,7 @@ const Navbar = () => {
               "container d-flex align-items-center justify-content-between"
             )}
           >
-            <div className={clsx(classes.left, "")}>
+            <div className={clsx(classes.left, "p-relative")}>
               <Link href="/" passHref={true}>
                 <div
                   style={{ height: "7rem" }}
