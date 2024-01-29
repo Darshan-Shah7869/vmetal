@@ -83,12 +83,24 @@ const Navbar = () => {
                   >
                     Home
                   </div>
-                  {router.pathname === "/" && (
+                  {router.pathname === "/" ? (
                     <div
                       style={{
                         width: "1rem",
                         height: "1rem",
                         backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "transparent",
                         borderRadius: "50%",
                         marginLeft: "-5rem",
                       }}
@@ -108,12 +120,24 @@ const Navbar = () => {
                   >
                     About Us
                   </div>
-                  {router.pathname === "/aboutus" && (
+                  {router.pathname === "/aboutus" ? (
                     <div
                       style={{
                         width: "1rem",
                         height: "1rem",
                         backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "transparent",
                         borderRadius: "50%",
                         marginLeft: "-5rem",
                       }}
@@ -133,12 +157,24 @@ const Navbar = () => {
                   >
                     Products
                   </div>
-                  {router.pathname === "/products" && (
+                  {router.pathname === "/products" ? (
                     <div
                       style={{
                         width: "1rem",
                         height: "1rem",
                         backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "transparent",
                         borderRadius: "50%",
                         marginLeft: "-5rem",
                       }}
@@ -158,12 +194,24 @@ const Navbar = () => {
                   >
                     Services
                   </div>
-                  {router.pathname === "/services" && (
+                  {router.pathname === "/services" ? (
                     <div
                       style={{
                         width: "1rem",
                         height: "1rem",
                         backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "transparent",
                         borderRadius: "50%",
                         marginLeft: "-5rem",
                       }}
@@ -183,12 +231,24 @@ const Navbar = () => {
                   >
                     Uses
                   </div>
-                  {router.pathname === "/uses" && (
+                  {router.pathname === "/uses" ? (
                     <div
                       style={{
                         width: "1rem",
                         height: "1rem",
                         backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "transparent",
                         borderRadius: "50%",
                         marginLeft: "-5rem",
                       }}
@@ -208,12 +268,24 @@ const Navbar = () => {
                   >
                     Contact Us
                   </div>
-                  {router.pathname === "/contactus" && (
+                  {router.pathname === "/contactus" ? (
                     <div
                       style={{
                         width: "1rem",
                         height: "1rem",
                         backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "transparent",
                         borderRadius: "50%",
                         marginLeft: "-5rem",
                       }}
@@ -233,12 +305,24 @@ const Navbar = () => {
                   >
                     Order
                   </div>
-                  {router.pathname === "/order" && (
+                  {router.pathname === "/order" ? (
                     <div
                       style={{
                         width: "1rem",
                         height: "1rem",
                         backgroundColor: "var(--yellow)",
+                        borderRadius: "50%",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      &nbsp;
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        width: "1rem",
+                        height: "1rem",
+                        backgroundColor: "transparent",
                         borderRadius: "50%",
                         marginLeft: "-5rem",
                       }}

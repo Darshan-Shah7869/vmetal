@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import classes from "./Homepage1.module.css";
 import clsx from "clsx";
@@ -33,6 +33,7 @@ const Homepage1 = () => {
             animationDuration: "10s",
             animationTimingFunction: "ease-out",
             animationIterationCount: "infinite",
+            animationDelay: "2s",
             zIndex: 200,
           }}
           className={clsx(classes.left, "h-100 w-50")}
@@ -51,7 +52,7 @@ const Homepage1 = () => {
                 ? img3.src
                 : img1.src
             }
-            fill={true}
+            layout="fill"
             alt="slider-cover"
             objectFit="cover"
           />
