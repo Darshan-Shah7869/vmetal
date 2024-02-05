@@ -52,6 +52,7 @@ const Homepage1 = () => {
                 ? img3.src
                 : img1.src
             }
+            fetchPriority="high"
             layout="fill"
             alt="slider-cover"
             objectFit="cover"
