@@ -20,25 +20,25 @@ const SectionContact = () => {
           <div className={clsx(classes.leftBody, "w-100")}>
             <div className={clsx(classes.input, classes.fullRow, "")}>
               523, First Floor, Road No. 14, Kathwada G.I.D.C., Kathwada,
-              Ahmedabad- 382430
+              Ahmedabad
             </div>
-            <input
-              type="text"
-              className={clsx(classes.input, "")}
-              placeholder="Ahmedabad"
-              readOnly
-            />
-
             <input
               type="text"
               className={clsx(classes.input, "")}
               placeholder="Gujarat"
               readOnly
             />
+
             <input
               type="text"
               className={clsx(classes.input, "")}
-              placeholder="380005"
+              placeholder="India"
+              readOnly
+            />
+            <input
+              type="text"
+              className={clsx(classes.input, "")}
+              placeholder="382430"
               readOnly
             />
             <input
