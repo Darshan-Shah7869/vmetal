@@ -38,13 +38,13 @@ const SectionContact = () => {
             <input
               type="text"
               className={clsx(classes.input, "")}
-              placeholder="382430"
+              placeholder="Pin - 382430"
               readOnly
             />
             <input
               type="text"
               className={clsx(classes.input, "")}
-              placeholder="95102 15623"
+              placeholder="Mob. - 95102 15623"
               readOnly
             />
           </div>
