@@ -65,6 +65,7 @@ const Homepage1 = () => {
             animationDuration: "10s",
             animationTimingFunction: "ease-out",
             animationIterationCount: "infinite",
+            minWidth: "100%",
             opacity: "0",
           }}
           className={clsx(classes.titleBox, "p-absolute")}
@@ -96,7 +97,7 @@ const Homepage1 = () => {
               onClick={() => {
                 router.push("/contactus");
               }}
-              className={clsx(classes.btn, "btn btn-outline")}
+              className={clsx(classes.btn, classes.btn2, "btn btn-outline")}
             >
               Send inquiry
             </button>

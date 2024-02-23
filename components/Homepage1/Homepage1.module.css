@@ -74,4 +74,9 @@
     text-align: center;
     max-width: 80%;
   }
+
+  .btn2 {
+    color: var(--blue);
+    border-color: var(--blue);
+  }
 }
