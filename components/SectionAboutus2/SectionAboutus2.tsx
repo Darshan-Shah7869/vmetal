@@ -41,8 +41,8 @@ const SectionAboutus2 = () => {
               visibility && "animate__animated animate__fadeInRight"
             )}
           >
-            Our company believes in Quality with Excellence. V Metal Solutions
-            Inc is the sister company of Ackroll Group.
+            V Metal Solutions Inc is established and operated by a female
+            entrepreneur.
           </div>
           <div
             className={clsx(
@@ -50,11 +50,9 @@ const SectionAboutus2 = () => {
               visibility && "animate__animated animate__fadeInRight"
             )}
           >
-            V Metal Solutions Inc’s coil processing service Centre is in
-            Ahmedabad, Gujarat stands on solid foundation of 30 years of
-            association of mild steel. Ackroll Steel Group is fully geared to
-            process 6,000 tones on its Cut-To-Length line, Corrugation line and
-            Slitting line to the minimum.
+            V Metal Solutions Inc's coil processing service Centre is in
+            Ahmedabad, Gujarat. We are fully geared to process and cater to your
+            needs as per your specifications and requirements.
           </div>
         </div>
       </div>

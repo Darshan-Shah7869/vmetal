@@ -259,7 +259,7 @@ const SectionInquiryForm = ({ productsData, linksData }: any) => {
               </div>
               <div className={clsx(classes.row3, "")}>
                 <div className={clsx(classes.inputBox, "")}>
-                  <div className={clsx(classes.label, "")}>Dimensions</div>
+                  <div className={clsx(classes.label, "")}>Cut-To-Length</div>
                   <div className="p-relative w-100 d-flex align-items-center">
                     <input
                       disabled={contactData.length === "N / A"}
