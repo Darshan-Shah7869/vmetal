@@ -50,7 +50,7 @@ const SectionAboutus2 = () => {
               visibility && "animate__animated animate__fadeInRight"
             )}
           >
-            V Metal Solutions Inc's coil processing service Centre is in
+            V Metal Solutions Inc&apos;s coil processing service Centre is in
             Ahmedabad, Gujarat. We are fully geared to process and cater to your
             needs as per your specifications and requirements.
           </div>
