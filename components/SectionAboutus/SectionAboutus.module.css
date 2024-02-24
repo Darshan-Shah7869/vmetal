@@ -36,12 +36,25 @@
   position: relative;
 }
 
-.title {
+.title,
+.msTitle {
   position: absolute;
   transform: rotate(-90deg) !important;
   left: 6rem;
   top: 50%;
   animation-fill-mode: backwards;
+}
+
+@media (max-width: 1029px) {
+  .msTitle {
+    position: relative !important;
+    transform: rotate(0) !important;
+    left: 0;
+    text-align: center;
+    margin: 0 auto;
+    left: 0 !important;
+    margin-bottom: 60px !important;
+  }
 }
 
 @media (max-width: 600px) {

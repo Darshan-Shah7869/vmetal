@@ -31,7 +31,7 @@ const ProductPage: NextPage = ({ productData, brandData }: any) => {
           {/* <SectionVideo video={productData?.video?.data[0]?.attributes?.url} /> */}
           <SectionSlider
             title="Brands Supplied"
-            bgColor="#f1f1f1"
+            bgColor="#fafafa"
             isBrandSlider={true}
             data={brandData}
           />

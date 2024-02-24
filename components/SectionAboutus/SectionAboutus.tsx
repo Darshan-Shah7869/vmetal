@@ -6,9 +6,11 @@ import clsx from "clsx";
 
 import VisibilitySensor from "react-visibility-sensor";
 import Markdown from "react-markdown";
+import { useRouter } from "next/router";
 
 const SectionAboutus = ({ title, subtitle, description, type }: any) => {
   const [visibility, setVisibility] = useState(false);
+  const router = useRouter();
   return (
     <VisibilitySensor
       partialVisibility={false}
@@ -18,21 +20,25 @@ const SectionAboutus = ({ title, subtitle, description, type }: any) => {
     >
       <div className={clsx(classes.root, "bg-white-2 root")}>
         <div className={clsx(classes.container, "container")}>
-          <div
-            style={{
-              animationDuration: "5s !important",
-              animationDelay: "0.5s !important",
-            }}
-            className={clsx(
-              classes.title,
-              "heading-1 ",
-              visibility && "animate__animated animate__fadeIn"
-            )}
-          >
-            {title}
-          </div>
-
           <div className={clsx(classes.body, "bg-white")}>
+            <div
+              style={{
+                animationDuration: "5s !important",
+                animationDelay: "0.5s !important",
+                left:
+                  router.query.productID === "ms"
+                    ? "-10vw"
+                    : "translateY(-30vw) !important",
+              }}
+              className={clsx(
+                router.query.productID === "ms" && classes.msTitle,
+                classes.title,
+                "heading-1 ",
+                visibility && "animate__animated animate__fadeIn"
+              )}
+            >
+              {title}
+            </div>
             <div
               style={{
                 animationDuration: "5s !important",
