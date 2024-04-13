@@ -25,6 +25,18 @@
   max-width: 47rem;
 }
 
+@media (min-width: 1800px) {
+  .root input {
+    max-width: 58rem;
+  }
+}
+
+@media (min-width: 2200px) {
+  .root input {
+    max-width: 100%;
+  }
+}
+
 .inputBox {
   width: 100%;
   display: flex;
